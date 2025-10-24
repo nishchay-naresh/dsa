@@ -1,0 +1,91 @@
+
+
+
+# ===============================
+# IDEs / Editors
+# ===============================
+.vscode/
+.idea/
+*.sublime-workspace
+*.sublime-project
+
+# IntelliJ / JetBrains
+*.iml
+*.ipr
+*.iws
+out/
+
+# Eclipse
+.settings/
+.project
+.classpath
+bin/
+tmp/
+
+# NetBeans
+nbproject/private/
+build/
+nbbuild/
+dist/
+nbdist/
+.nb-gradle/
+
+# ===============================
+# Java / JVM
+# ===============================
+*.class
+*.jar
+*.war
+*.ear
+*.log
+*.javadoc
+
+# virtual machine crash logs
+hs_err_pid*
+replay_pid*
+
+
+# Package Files #
+*.zip
+*.tar.gz
+*.rar
+
+
+
+# ===============================
+# Build tools
+# ===============================
+# Maven
+target/
+
+# Gradle
+.gradle/
+build/
+
+
+# ===============================
+# Logs & temp files
+# ===============================
+*.tmp
+*.bak
+*.swp
+*.lock
+
+
+# ===============================
+# OS-specific
+# ===============================
+Thumbs.db
+.DS_Store
+ehthumbs.db
+Icon?
+Desktop.ini
+$RECYCLE.BIN/
+
+
+
+
+
+
+
+
