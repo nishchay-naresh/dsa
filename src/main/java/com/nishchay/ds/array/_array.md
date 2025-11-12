@@ -17,7 +17,7 @@
 
 
 Pattern : 
-    In a solution, where we find a solution in - O(n) Time and O(n) Space
+    In a solution, where we find a solution in - O(n) Time and O(n) Space, 
     We can further optimize/improve the solution to - O(n) Time and O(1) Space by using two pointers.  
     We will be using these 2 pointers, to utilize the main array itself as extra space 
 Refer :
@@ -30,3 +30,7 @@ Refer :
 https://www.geeksforgeeks.org/dsa/array-data-structure-guide/
 
 https://www.youtube.com/watch?v=wvcQg43_V8U&list=PLgUwDviBIf0rENwdL0nEH0uGom9no0nyB&index=3
+
+Algo :
+ 2 pointer  :
+    [ReverseAnArray.java](basic/ReverseAnArray.java)

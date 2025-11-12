@@ -21,18 +21,18 @@ public class CheckPrime {
 
     public static void main(String[] args) {
         int n = 15;
-        System.out.printf("%d is even = %b", n, isPrime(n));
+        System.out.printf("%d is even = %b", n, isPrimeLegacy(n));
         n = 44;
-        System.out.printf("\n%d is even = %b", n, isPrime(n));
+        System.out.printf("\n%d is even = %b", n, isPrimeLegacy(n));
         n = 11;
-        System.out.printf("\n%d is even = %b", n, isPrime(n));
+        System.out.printf("\n%d is even = %b", n, isPrimeLegacy(n));
 
         n = 43;
-        System.out.printf("\n%d is even = %b", n, isPrimeFast(n));
+        System.out.printf("\n%d is even = %b", n, isPrime(n));
         n = 51;
-        System.out.printf("\n%d is even = %b", n, isPrimeFast(n));
+        System.out.printf("\n%d is even = %b", n, isPrime(n));
         n = 53;
-        System.out.printf("\n%d is even = %b", n, isPrimeFast(n));
+        System.out.printf("\n%d is even = %b", n, isPrime(n));
     }
 
     /*
@@ -42,7 +42,7 @@ public class CheckPrime {
      *     Time Complexity: O(√n)
      *     Auxiliary Space: O(1)
      * */
-    private static boolean isPrime(int n) {
+    private static boolean isPrimeLegacy(int n) {
         if (n <= 1)
             return false;
 
@@ -73,14 +73,8 @@ public class CheckPrime {
      *  - Then checks only numbers of form 6k ± 1 up to √n — making it fast and efficient.
      *
      *
-         for (int i = 5; i * i <= n; i = i + 6) {
-            if (n % i == 0 || n % (i + 2) == 0) {
-                return false;
-            }
-        }
-
      * */
-    private static boolean isPrimeFast(int n) {
+    public static boolean isPrime(int n) {
         if (n == 2 || n == 3)
             return true;
 

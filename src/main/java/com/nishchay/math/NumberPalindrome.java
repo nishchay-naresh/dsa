@@ -30,7 +30,7 @@ public class NumberPalindrome {
     *  Time Complexity : O(d) , where d = log₁₀(n), we can ignore 10, so can be called as, log n
     *  Auxiliary space: O(1)
     * */
-    public static boolean isPalindrome(int n) {
+    private static boolean isPalindrome(int n) {
         int original = n;
         int reversed = 0;
 

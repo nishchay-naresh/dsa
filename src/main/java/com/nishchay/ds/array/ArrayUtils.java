@@ -23,7 +23,7 @@ public class ArrayUtils {
     public static int linearSearch(int[] arr, int key) {
 
         for (int i = 0; i < arr.length; i++) {
-            // Return the index of the element if the element is found
+            // Return the index if key is found
             if (arr[i] == key)
                 return i;
         }
