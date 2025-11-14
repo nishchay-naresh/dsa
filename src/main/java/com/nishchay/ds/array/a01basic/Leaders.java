@@ -1,4 +1,4 @@
-package com.nishchay.ds.array.basic;
+package com.nishchay.ds.array.a01basic;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -17,14 +17,14 @@ import java.util.List;
  * 			Output: [17 5 2]
  * 			Explanation:
  *					17 is greater than all the elements to its right i.e., [4, 3, 5, 2], therefore 17 is a leader.
- *					5 is greater than all the elements to its right i.e., [2], therefore 5 is a leader.
- *					2 has no element to its right, therefore 2 is a leader.
+ *					5 is greater than all the elements to its right i.e., [2], therefore, 5 is a leader.
+ *					2 has no element to its right, therefore, 2 is a leader.
  *
  * 			Input: arr[] = [1, 2, 3, 4, 5, 2]
  * 			Output: [5 2]
  * 			Explanation:
  *					5 is greater than all the elements to its right i.e., [2], therefore 5 is a leader.
- *					2 has no element to its right, therefore 2 is a leader.
+ *					2 has no element to its right, therefore, 2 is a leader.
  *
  *
  * https://www.geeksforgeeks.org/dsa/leaders-in-an-array/
@@ -45,7 +45,6 @@ public class Leaders {
 
     /*
      * ================ [Naive/Bruteforce Approach] Using Nested Two Pass  =====================
-     *
      *
      *  Assuming each element is leader, using a flag to mark it
      *  Then checking ti against of each of its next elements in next nexted loop
@@ -77,8 +76,8 @@ public class Leaders {
      * ================ [Optimal Approach] Using Suffix Maximum  =====================
      *
      *  Scan all the elements from right to left in an array and keep track of the maximum till now
-     *     If current element is great than maximum, then its a leader
-     *      and updating the maximum
+     *     If the current element is greater than a maximum, then it's a leader
+     *      and update the maximum
      *
      *  Time Complexity     : O(n)
      *  Space complexity    : O(1)
@@ -103,7 +102,6 @@ public class Leaders {
 
         // Reverse the result list to maintain the original order
         Collections.reverse(result);
-
         return result;
     }
 }

@@ -1,4 +1,4 @@
-package com.nishchay.ds.array.basic.subArray;
+package com.nishchay.ds.array.a06subarray;
 
 /*
  *  ======================= Count Subarrays having Sum K ====================

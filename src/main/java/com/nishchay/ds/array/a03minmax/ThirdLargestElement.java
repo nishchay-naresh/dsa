@@ -1,4 +1,4 @@
-package com.nishchay.ds.array.basic.minmax;
+package com.nishchay.ds.array.a03minmax;
 
 /*
  *	=========== Third largest element in an array of distinct elements ===========

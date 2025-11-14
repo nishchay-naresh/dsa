@@ -1,7 +1,7 @@
-package com.nishchay.ds.array.basic.subArray;
+package com.nishchay.ds.array.a06subarray;
 
 /*
- *  ======================= Longest Subarray With Sum K ====================
+ *  ======================= Longest Subarray With Sum 0 ====================
  *
  *  Given an array arr[] consisting of both positive and negative integers, find the length of the longest subarray whose element sum is zero.
  *
@@ -24,7 +24,7 @@ package com.nishchay.ds.array.basic.subArray;
  * */
 
 
-import static com.nishchay.ds.array.basic.subArray.LongestSubarraySumK.getLongestSubarray_2pointers;
+import static com.nishchay.ds.array.a06subarray.LongestSubarraySumK.getLongestSubarray_2pointers;
 
 public class LongestSubarraySum0 {
 

@@ -1,4 +1,4 @@
-package com.nishchay.ds.array.basic.subArray;
+package com.nishchay.ds.array.a06subarray;
 
 /*
  *  ======================= Kadane's Algorithm | MSS Maximum Subarray Sum | Finding and Printing ====================
@@ -19,6 +19,11 @@ package com.nishchay.ds.array.basic.subArray;
  * 			Output: 25
  * 			Explanation: The subarray [5, 4, 1, 7, 8] has the largest sum 25.
  *
+ * 			Input: arr[] = [-2, 1, -3, 4, -1, 2, 1, -5, 4]
+ * 			Output: 6
+ * 			Explanation: The subarray [4, -1, 2, 1] has the largest sum 6.
+ *
+ * https://takeuforward.org/data-structure/kadanes-algorithm-maximum-subarray-sum-in-an-array/
  * https://www.geeksforgeeks.org/dsa/largest-sum-contiguous-subarray/
  * https://leetcode.com/problems/maximum-subarray/description/
  * https://youtu.be/9IZYqostl2M?si=O2Ql8RBYo6enmPC9
@@ -31,6 +36,20 @@ public class MaxSubarraySum {
         int[] arr = {2, 3, -8, 7, -1, 2, 3};
         System.out.println(maxSubarraySum_3loop(arr));
         System.out.println(maxSubarraySum_2loop(arr));
+        System.out.println(kadaneAlgorithm(arr));
+
+        arr = new int[]{-2, -4};
+        System.out.println(kadaneAlgorithm(arr));
+
+        arr = new int[]{5, 4, 1, 7, 8};
+        System.out.println(kadaneAlgorithm(arr));
+
+        System.out.println("----------------------------");
+        System.out.println(kadaneAlgorithmSubarrayIndex(arr));
+
+        arr = new int[]{-2, 1, -3, 4, -1, 2, 1, -5, 4};
+        System.out.println(kadaneAlgorithmSubarrayIndex(arr));
+
     }
 
 
@@ -98,29 +117,36 @@ public class MaxSubarraySum {
 
     /*
      *  ================ [Optimize/Expected Approach] Kadane's Algorithm - O(n) Time =====================
+     * Since we are not required to find the subarray (sub array itself with elements or start index - index end )
+     * we only need to tell the sum of sub-array, so Kadane's algorithm can help us on this.
+     * We aren't required to run loop 2, in one loop by finding the subarray sum we can find the max sum
      *
-     * Intuition :
+     * Intuition:
      *                  +ve  	    + 	    +ve     = +ve
      *                  -ve(small)  +   +ve(big)    = +ve
      *                  +ve(small)  +   -ve(big)    = -ve Kadane's Algorithm
      *
-     * If a subarray sum is -ve, then adding it to another subarray will never give me a max sum.
-     * So better discard that subarray and reset subarray sum to 0
+     * If a subarray sum is -ve, then adding it with the next available element will never give me a max sum.
+     * So better discard that subarray and reset subarray sum to 0, start forming next subarray from next element
      *
+     * NOTE: why adding the next element to the current subarray sum: possibly extending the current subarray by considering the next element
+     *
+     * Steps:
+     *          We will run a loop(say i) to iterate the given array.
+     *          Now, while iterating, we will add the elements to the sum variable and consider the maximum one.
+     *          If at any point, the sum becomes negative, we will set the sum to 0 as we are not going to consider it as a part of our answer.
      *
      * Time Complexity  : O(n)
      * Space Complexity : O(1)
      *
-     *
      */
-    private static int kadanesAlgorithm(int[] arr) {
+    private static int kadaneAlgorithm(int[] arr) {
         int n = arr.length;
-        int maxSum = Long.MIN_VALUE;
+        int maxSum = Integer.MIN_VALUE;
         int currSum = 0;
 
         for (int i = 0; i < n; i++) {
-
-            currSum += arr[i];
+            currSum = currSum + arr[i];
             maxSum = Math.max(currSum, maxSum);
 
             // If currSum < 0: discard the currSum calculated
@@ -128,11 +154,57 @@ public class MaxSubarraySum {
                 currSum = 0;
             }
         }
+        return maxSum;
+    }
 
-        // To consider the currSum of the empty subarray
-        // uncomment the following check:
+    /*
+     *  ================ [Optimize/Expected Approach] Kadane's Algorithm - O(n) Time =====================
+     * Followup question :
+     *          There might be more than one subarray with the maximum sum. We need to print any of them.
+     *
+     * Intuition:   Our approach is to store the starting index and the ending index of the subarray.
+     *              Thus we can easily get the subarray afterward without actually storing the subarray elements.
+     *
+     *      If we carefully observe our algorithm :
+     *          startIndex - subarray always starts at the particular index where the sum variable is equal to 0
+     *          endIndex -  sum always crosses the maximum sum (updating the maxSum)
+     *     The rest of the approach will be the same as Kadane’s Algorithm.
+     *
+     *
+     *
+     *
+     */
+    private static int kadaneAlgorithmSubarrayIndex(int[] arr) {
+        int n = arr.length;
+        int maxSum = Integer.MIN_VALUE;
+        int currSum = 0;
 
-        //if (maxSum < 0) maxSum = 0;
+        int currStart = 0;
+        int ansStart = -1, ansEnd = -1;
+        for (int i = 0; i < n; i++) {
+            if (currSum == 0)
+                currStart = i;
+
+            currSum = currSum + arr[i];
+            if (currSum > maxSum) {
+                maxSum = currSum;
+                // updating start and end index of subarray
+                ansStart = currStart;
+                ansEnd = i;
+            }
+
+            // If currSum < 0: discard the currSum calculated
+            if (currSum < 0) {
+                currSum = 0;
+            }
+        }
+
+        //printing the subarray:
+        System.out.print("The subarray is: [");
+        for (int i = ansStart; i <= ansEnd; i++) {
+            System.out.print(arr[i] + " ");
+        }
+        System.out.print("]\n");
 
         return maxSum;
     }

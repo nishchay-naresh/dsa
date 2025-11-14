@@ -1,4 +1,4 @@
-package com.nishchay.ds.array.basic;
+package com.nishchay.ds.array.a01basic;
 /*
  * =========== Find no of contiguous Prime Numbers in an array ===========
  *

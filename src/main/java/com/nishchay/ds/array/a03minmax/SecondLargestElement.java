@@ -1,4 +1,4 @@
-package com.nishchay.ds.array.basic.minmax;
+package com.nishchay.ds.array.a03minmax;
 
 import com.nishchay.ds.array.ArrayUtils;
 

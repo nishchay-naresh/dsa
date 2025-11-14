@@ -1,4 +1,4 @@
-package com.nishchay.ds.array.basic.rotate;
+package com.nishchay.ds.array.a02rotate;
 
 import java.util.Arrays;
 

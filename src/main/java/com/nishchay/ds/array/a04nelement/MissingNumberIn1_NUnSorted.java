@@ -1,4 +1,4 @@
-package com.nishchay.ds.array.basic.nelement;
+package com.nishchay.ds.array.a04nelement;
 
 /*
  *  ======================= Find the Missing Number ====================
