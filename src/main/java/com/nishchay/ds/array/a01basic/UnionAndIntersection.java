@@ -26,7 +26,7 @@ package com.nishchay.ds.array.a01basic;
  *		Explanation: 3, 5, 10, 15, 20 and 30 are the distinct elements present in either array.
  *
  *
- * ----------- Union of Two Sorted Arrays ------------------
+ * ----------- Intersection of Two Sorted Arrays ------------------
  *
  *  Intersection of two sorted arrays combines all unique elements that are common to both arrays into a single sorted array.
  *

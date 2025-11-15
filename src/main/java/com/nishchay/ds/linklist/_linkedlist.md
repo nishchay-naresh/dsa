@@ -7,7 +7,7 @@
   create a singly linked list from an array int[]
 * Length of Linked List - Counts the number of nodes in linked list 
 * Print Linked List - Traversal of a linked list or print a given linked list
-* Search in a Linked List
+* Search in a Linked List - search a node(based on key)
 * Linked List Insertion - insert in a given linked list
 - beginning(before the head),
 - end(after the tail) and
@@ -39,15 +39,14 @@
 
 printing a linked list from back
 Front & Back traversal of a linked list
+check if a palindrome - linked list
 
-check if palindrome - linked list
 
-search a node(based on key) in a given linked list
-Get Nth node from front in a linked list
-- Nth node from front
-- Nth node from last
 
-Reverse a linked list
+=== common problem at both array & list ===
+UnionAndIntersection
+MergeTwoSortedList
+RemoveDuplicatesSortedList
 
 
 https://www.geeksforgeeks.org/dsa/linked-list-data-structure/
