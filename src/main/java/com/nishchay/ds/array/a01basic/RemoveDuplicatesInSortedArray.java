@@ -28,6 +28,7 @@ import java.util.HashSet;
  *		Explanation: No change as all elements are distinct.
  *
  * https://www.geeksforgeeks.org/dsa/remove-duplicates-sorted-array/
+ * https://takeuforward.org/data-structure/remove-duplicates-in-place-from-sorted-array/
  *
  * */
 public class RemoveDuplicatesInSortedArray {
@@ -100,7 +101,6 @@ public class RemoveDuplicatesInSortedArray {
      *  2nd pointer - to scan all elements of array
      *
      * element arr[0] is - always the right place, means it can't be duplicate, its unique
-     *
      *
      *  Traverse the array from 1st index, check each element
      *      check if its equivalent to arr[i]

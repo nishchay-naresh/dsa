@@ -163,15 +163,12 @@ public class MaxSubarraySum {
      *          There might be more than one subarray with the maximum sum. We need to print any of them.
      *
      * Intuition:   Our approach is to store the starting index and the ending index of the subarray.
-     *              Thus we can easily get the subarray afterward without actually storing the subarray elements.
+     *              Thus, we can easily get the subarray afterward without actually storing the subarray elements.
      *
-     *      If we carefully observe our algorithm :
+     *      If we carefully observe our algorithm:
      *          startIndex - subarray always starts at the particular index where the sum variable is equal to 0
-     *          endIndex -  sum always crosses the maximum sum (updating the maxSum)
+     *          endIndex - sum always crosses the maximum sum (updating the maxSum)
      *     The rest of the approach will be the same as Kadane’s Algorithm.
-     *
-     *
-     *
      *
      */
     private static int kadaneAlgorithmSubarrayIndex(int[] arr) {
