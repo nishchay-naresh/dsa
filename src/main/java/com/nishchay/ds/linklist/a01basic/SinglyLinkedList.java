@@ -21,8 +21,6 @@ class SinglyLinkedList {
         printFrontAndBackEx();
         isPalindromeEx();
         searchNodeEx();
-        nthNodeFromStartEx();
-        nthNodeFromLastEx();
     }
 
     private static void createPrintListEx() {
@@ -52,7 +50,7 @@ class SinglyLinkedList {
         System.out.println("--------------insert at end ----------------------");
         head = Utils.createList();
 
-        if (head == null) { // If the list is empty6
+        if (head == null) { // If the list is empty
             head = newNode;
             return;
         }
@@ -255,120 +253,12 @@ class SinglyLinkedList {
         return -1; // not found
     }
 
-    /*
-     *
-     * Function to get Nth Node from Start
-     *
-     * Input:  1->10->30->14,  N = 2
-     * Output: 10
-     * Explanation: The node value at N 2 is 10
-     *
-     * Input:  1->32->12->10->30->14->100,  N = 6
-     * Output: 14
-     * Explanation: The node value at N 6 is 14
-     *
-     * Input:  1->32->12->10->30->14->100,  N = 8
-     * Output: -1
-     * Explanation: No such node exists at N = 8.
-     *
-     * */
-    private static void nthNodeFromStartEx() {
-        Node head = createList(new int[]{1, 10, 30, 14});
-        // head -> 1->10->30->14
-        printList(head);
-        int index = 2;
-        System.out.println(index + "th node in list - " + nthNodeFromStart(head, index));
 
-        System.out.println("-------------------------------------------------------------");
-        head = createList(new int[]{1, 32, 12, 10, 30, 14, 100});
-        // head -> 1->32->12->10->30->14->100
-        printList(head);
-
-        index = 6;
-        System.out.println(index + "th node in list - " + nthNodeFromStart(head, index));
-
-        index = 8;
-        System.out.println(index + "th node in list - " + nthNodeFromStart(head, index));
-    }
-
-    private static int nthNodeFromStart(Node head, int n) {
-        if (head == null || n < 1)
-            return -1;
-
-        // if n equal to 1 return node.data
-        if (n == 1)
-            return head.data;
-
-        Node curr = head;
-        while (n > 1 && curr != null) {
-            curr = curr.next;
-            n--;
-        }
-        if (curr != null)
-            return curr.data;
-
-        return -1;
-    }
 
     /*
-     *
-     * Function to get Nth Node from end
-     *
-     * Input:  1 -> 2 -> 3 -> 4, N = 3
-     * Output: 2
-     * Explanation: Node 2 is the third node from the end of the linked list.
-     *
-     * Input:  35 -> 15 -> 4 -> 20, N = 4
-     * Output: 35
-     * Explanation: Node 35 is the fourth node from the end of the linked list.
-     *
-     * */
-    private static void nthNodeFromLastEx() {
-        Node head = Utils.createList();
-        printList(head);
-
-        int n = 2;
-        System.out.printf("%d th node from last = %s%n", n, nthNodeFromLast(head, n));
-        n = 4;
-        System.out.printf("%d th node from last = %s%n", n, nthNodeFromLast(head, n));
-
-        // edge cases
-        n = 1;
-        System.out.printf("%d th node from last = %s%n", n, nthNodeFromLast(head, n));
-        n = 5;
-        System.out.printf("%d th node from last = %s%n", n, nthNodeFromLast(head, n));
-
-        // failure cases
-        n = 0;
-        System.out.printf("%d th node from last = %s%n", n, nthNodeFromLast(head, n));
-        n = 8;
-        System.out.printf("%d th node from last = %s%n", n, nthNodeFromLast(head, n));
-    }
-
-    // method to get nth node from the last, return node else null
-    private static Node nthNodeFromLast(Node head, int n) {
-        if (null == head || n < 1)
-            return null;
-
-        Node firstPtr = head;
-        Node secondPtr = head;
-
-        // skip n node from start
-        for (int i = 1; i <= n; i++) {
-            if (firstPtr == null)
-                return null;
-            firstPtr = firstPtr.next;
-        }
-
-        while (firstPtr != null) {
-            firstPtr = firstPtr.next;
-            secondPtr = secondPtr.next;
-        }
-
-        return secondPtr;
-    }
-
-    // prints content of a singly linked list from end
+    * ======== backward traversal in a list ==============
+    *  printing a singly linked list from the end
+    * */
     private static void printFromBack(Node head) {
         Node p, end;
         // get end node

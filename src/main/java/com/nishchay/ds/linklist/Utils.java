@@ -69,6 +69,7 @@ public class Utils {
         System.out.println(" -> null");
     }
 
+
     public static void printList1(Node head) {
         String delim = "head => ";
         for (Node p = head; p != null; p = p.next) {
