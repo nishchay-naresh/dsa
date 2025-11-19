@@ -106,8 +106,7 @@ public class CountSubarraySumK {
      *  Space complexity    : O(1)
      *
      * */
-
-    private static int countSubarrays_2loop(int arr[], int k) {
+    private static int countSubarrays_2loop(int[] arr, int k) {
         int n = arr.length;
         int cnt = 0;
 

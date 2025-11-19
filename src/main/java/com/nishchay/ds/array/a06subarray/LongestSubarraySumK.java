@@ -30,7 +30,6 @@ package com.nishchay.ds.array.a06subarray;
  *
  * */
 
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -42,7 +41,6 @@ public class LongestSubarraySumK {
         int k = 15;
         System.out.println(longestSubarray(arr, k));
         System.out.println("----------------------------------------");
-        prefixSum();
 
         arr = new int[]{1, 2, 3, 1, 1, 1, 1, 4, 2, 3};
         k = 3;
@@ -107,17 +105,6 @@ public class LongestSubarraySumK {
      * Time Complexity  : O(n)
      * Space Complexity : O(n)
      * */
-    private static void prefixSum() {
-        int[] arr = new int[]{9, 4, 20, 3, 10, 5};
-        int n = arr.length;
-        int[] prefixSum = new int[n];
-        prefixSum[0] = arr[0];
-        for (int i = 1; i < n; i++) {
-            prefixSum[i] = prefixSum[i - 1] + arr[i];
-        }
-        System.out.println("arr       = " + Arrays.toString(arr));
-        System.out.println("prefixSum = " + Arrays.toString(prefixSum));
-    }
 
 
     /*
@@ -160,7 +147,7 @@ public class LongestSubarraySumK {
     /*
      *  ================ [Optimize/Expected Approach] Using 2 pointer approach - O(n) Time =====================
      *
-     * We are using two pointers i.e. left and right.
+     * We are using two pointers, i.e. left and right.
      *  The left pointer denotes the starting index of the subarray and the right pointer denotes the ending index.
      *    MOVE - We will move the right pointer in arr forward direction every time adding the element i.e. arr[right] to the sum.
      *    SHRINK -  But when the sum of the subarray crosses k, we will move the left pointer in the forward direction as well to shrink the size of the subarray as well as to decrease the sum.

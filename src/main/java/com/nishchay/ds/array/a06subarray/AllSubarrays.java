@@ -21,10 +21,10 @@ public class AllSubarrays {
     public static void main(String[] args) {
 
         int[] arr = new int[]{1, 2, 3};
-        getSubArrays(arr);
+        printSubArrays(arr);
         System.out.println("-----------------------------------------");
         arr = new int[]{1, 2};
-        getSubArrays(arr);
+        printSubArrays(arr);
     }
 
     /*
@@ -44,7 +44,7 @@ public class AllSubarrays {
      *  Space complexity    : O(1)
      *
      */
-    private static void getSubArrays(int[] arr) {
+    public static void printSubArrays(int[] arr) {
         int n = arr.length;
 
         for (int i = 0; i < n; i++) {
