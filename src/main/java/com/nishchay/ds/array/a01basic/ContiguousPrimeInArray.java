@@ -17,7 +17,7 @@ package com.nishchay.ds.array.a01basic;
  * https://www.geeksforgeeks.org/dsa/longest-sub-array-of-prime-numbers-using-segmented-sieve/
  * */
 
-import static com.nishchay.math.CheckPrime.isPrime;
+import static com.nishchay.math.a01easy.CheckPrime.isPrime;
 
 public class ContiguousPrimeInArray {
 
