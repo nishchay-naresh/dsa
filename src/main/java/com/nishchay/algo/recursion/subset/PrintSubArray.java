@@ -1,6 +1,6 @@
 package com.nishchay.algo.recursion.subset;
 
-import static com.nishchay.ds.array.a06subarray.AllSubarrays.printSubArrays;
+import static com.nishchay.ds.array.a09subarray.AllSubarrays.printSubArrays;
 
 public class PrintSubArray {
 
@@ -19,9 +19,9 @@ public class PrintSubArray {
             return;
 
         //print all the subarray from currIndex to end
-        String result = "";
+        StringBuilder result = new StringBuilder();
         for (int i = currIndex; i < input.length; i++) {
-            result = result + " " + input[i] + " ";
+            result.append(" ").append(input[i]).append(" ");
             System.out.println("[" + result + "] ");
         }
         printSubArray(input, currIndex + 1);
