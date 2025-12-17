@@ -70,7 +70,6 @@ public class SecondLargestElement {
     static int getSecondLargest(int[] arr) {
         int n = arr.length;
 
-        // Sort the array in ascending order
         Arrays.sort(arr);
 
         // Check for the second largest element: n-2 to 0
@@ -112,11 +111,10 @@ public class SecondLargestElement {
     /*
      * ============ [Optimal Approach] One Pass Approach ===============
      *  Using the same logic of finding the largest element in an array
-     *      using this fact  : if the largest is getting updated during the scan, its previous value become second largest
+     *   Using this fact  : if the largest is getting updated during the scan, its previous value become second largest
      *
      *   Time Complexity  : O(n)
-     *   Space Complexity : 1
-     *
+     *   Space Complexity : O(1)
      * */
     private static int getSecondLargest_1pass(int[] arr) {
 
