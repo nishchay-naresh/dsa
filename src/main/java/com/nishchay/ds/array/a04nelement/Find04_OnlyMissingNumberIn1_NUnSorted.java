@@ -20,7 +20,7 @@ package com.nishchay.ds.array.a04nelement;
  * https://www.geeksforgeeks.org/dsa/find-the-missing-number/
  * https://www.youtube.com/watch?v=6KHW7ZQwtCA
  * */
-class MissingNumberIn1_NUnSorted {
+class Find04_OnlyMissingNumberIn1_NUnSorted {
 
     public static void main(String[] args) {
 
@@ -122,8 +122,8 @@ class MissingNumberIn1_NUnSorted {
 
     /*
      *  ================ [Optimize/Expected Approach] Using XOR Operation - O(n) Time and O(1) Space  =====================
-     * XOR of a number with itself is 0 .       i.e. x ^ x = 0
-     * And XOR of a number with 0 is number.    i.e. 0 ^ x = x
+     * XOR of a number with itself is 0 .       I.e. x ^ x = 0
+     * And XOR of a number with 0 is number.    I.e. 0 ^ x = x
      *
      *      1-n     : 1, 2, 3, 4, 5
      *      array   : 1, 2,    4, 5     XOR
