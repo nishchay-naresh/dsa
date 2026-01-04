@@ -1,7 +1,7 @@
-package com.nishchay.ds.array.a06subarray;
+package com.nishchay.ds.array.a09subarray;
 
 /*
- *  ======================= Longest Subarray With Sum K ====================
+ *  ======================= Longest Subarray With Sum <= K ====================
  *
  *  Given an array arr[] of size n containing integers,
  *  The task is to find the length of the longest subarray having sum equal to the given value k.
@@ -85,7 +85,7 @@ public class LongestSubarraySumK {
     /*
      *  ================ [Optimize/Expected Approach] Using Prefix Sum and hashing concept - O(n) Time and O(n) Space  =====================
      *
-     * To get the subarray sun, we have used two nested loops,
+     * To get the subarray sum, we have used two nested loops,
      * To optimize this from n^2 to n, we will use a concept like prefix sum to get the subarray sum
      *
      *              arr = [1, 2, 3, 4, 5 ], n=5
@@ -94,23 +94,16 @@ public class LongestSubarraySumK {
      *      prefixSum[] =[ 1, 3, 6, 10, 15], sum till the current index (starting from 0 index)
      *                     0, 1, 2, 3, 4
      *      (i,j)= 2,3
-     *          sumArraySum(i,j) = ps[j] - ps[i-1] or sumArraySum(i+1,j) = ps[j] - ps[i]
-     *          sumArraySum(2,3) = ps[3] - ps[1] = 10 - 3 = 7
+     *          sumArraySum(i,j) = prefixSum[j] - prefixSum[i-1] or sumArraySum(i+1,j) = prefixSum[j] - prefixSum[i]
+     *          sumArraySum(2,3) = prefixSum[3] - prefixSum[1] = 10 - 3 = 7
      *
-     * These 2 equations will help us to solve the problem :
+     * These 2 equations will help us to solve the problem:
      *  1.  sumArraySum(i,j) = ps[j] - ps[i-1]
      *  2.  k = ps[j] - ps[i-1]
      *
      *
      * Time Complexity  : O(n)
      * Space Complexity : O(n)
-     * */
-
-
-    /*
-     * Time Complexity  : O(n)
-     * Space Complexity : O(n)
-     *
      * */
     private static int getLongestSubarray(int[] arr, long k) {
         int n = arr.length;

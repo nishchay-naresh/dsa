@@ -1,4 +1,4 @@
-package com.nishchay.ds.array.a06subarray;
+package com.nishchay.ds.array.a09subarray;
 
 /*
  *  ======================= Longest Subarray With Sum 0 ====================
@@ -24,7 +24,7 @@ package com.nishchay.ds.array.a06subarray;
  * */
 
 
-import static com.nishchay.ds.array.a06subarray.LongestSubarraySumK.getLongestSubarray_2pointers;
+import static com.nishchay.ds.array.a09subarray.LongestSubarraySumK.getLongestSubarray_2pointers;
 
 public class LongestSubarraySum0 {
 

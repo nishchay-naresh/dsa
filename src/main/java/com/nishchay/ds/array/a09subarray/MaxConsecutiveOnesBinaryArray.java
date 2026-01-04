@@ -1,4 +1,4 @@
-package com.nishchay.ds.array.a06subarray;
+package com.nishchay.ds.array.a09subarray;
 
 /*
  *  ======================= Maximum consecutive one’s (or zeros) in a binary array ====================

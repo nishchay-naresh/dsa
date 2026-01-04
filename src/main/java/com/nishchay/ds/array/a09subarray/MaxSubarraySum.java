@@ -1,4 +1,4 @@
-package com.nishchay.ds.array.a06subarray;
+package com.nishchay.ds.array.a09subarray;
 
 /*
  *  ======================= Kadane's Algorithm | MSS Maximum Subarray Sum | Finding and Printing ====================
@@ -141,12 +141,11 @@ public class MaxSubarraySum {
      *
      */
     private static int kadaneAlgorithm(int[] arr) {
-        int n = arr.length;
         int maxSum = Integer.MIN_VALUE;
         int currSum = 0;
 
-        for (int i = 0; i < n; i++) {
-            currSum = currSum + arr[i];
+        for (int curr : arr) {
+            currSum = currSum + curr;
             maxSum = Math.max(currSum, maxSum);
 
             // If currSum < 0: discard the currSum calculated

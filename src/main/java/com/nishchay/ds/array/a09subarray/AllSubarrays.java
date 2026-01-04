@@ -1,4 +1,4 @@
-package com.nishchay.ds.array.a06subarray;
+package com.nishchay.ds.array.a09subarray;
 
 /*
  *  ======================= Generating All Subarrays ====================
@@ -7,7 +7,7 @@ package com.nishchay.ds.array.a06subarray;
  *
  * Examples:
  *			Input: arr[] = [1, 2, 3]
- *			Output: [ [1], [1, 2], [2], [1, 2, 3], [2, 3], [3] ]
+ *			Output: [ [1], [1, 2], [1, 2, 3], [2], [2, 3], [3] ]
  *
  *			Input: arr[] = [1, 2]
  *			Output: [ [1], [1, 2], [2] ]

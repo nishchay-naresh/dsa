@@ -1,4 +1,4 @@
-package com.nishchay.ds.array.a06subarray;
+package com.nishchay.ds.array.a09subarray;
 
 /*
  *  ======================= Count Subarrays having Sum K ====================
@@ -62,8 +62,7 @@ public class CountSubarraySumK {
     /*
      * ================ [Naive/Bruteforce Approach] Iterative Approach - O(n^3) Time and O(1) Space =====================
      *
-     *  The idea is to check the sum of all the subarrays and count them if a subarray sum is equal to k.
-     *  return the count
+     *  The idea is to check the sum of all the subarrays and count them if a subarray sum is equal to k, then return the count
      *
      *  Time Complexity     : O(n^3)
      *  Space complexity    : O(1)
@@ -72,7 +71,7 @@ public class CountSubarraySumK {
         int n = arr.length;
         int cnt = 0;
 
-        for (int i = 0 ; i < n; i++) {
+        for (int i = 0; i < n; i++) {
             for (int j = i; j < n; j++) {
                 // calculate the sum of subarray [i...j]
                 int sum = 0;
@@ -110,7 +109,7 @@ public class CountSubarraySumK {
         int n = arr.length;
         int cnt = 0;
 
-        for (int i = 0 ; i < n; i++) { // starting index i
+        for (int i = 0; i < n; i++) { // starting index i
             int sum = 0;
             for (int j = i; j < n; j++) { // ending index j
                 // calculate the sum of subarray [i...j]
@@ -139,9 +138,12 @@ public class CountSubarraySumK {
      * Time Complexity  : O(n)
      * Space Complexity : O(1)
      *
-     * this approach is not working here
+     * this approach is not working here - because of -ve data
+     * Sliding window DOES NOT WORK for mixed positive & negative integers.
+     * keeping this code here to have the general structure for 2-pointer and sliding window approach
+     * Correct Approach: Prefix Sum + HashMap
      * */
-    static int countSubarrays_2pointers(int[] arr, int k) {
+    private static int countSubarrays_2pointers(int[] arr, int k) {
         int n = arr.length;
 
         int left = 0, right = 0;
@@ -168,16 +170,48 @@ public class CountSubarraySumK {
         return cnt;
     }
 
-    static int countSubarrays_prefixSumHashing(int[] arr, int k) {
+    /*
+     *  this approach will work for bth +ve ad -ve data
+     *
+     *				0, 1, 2, 3,  4, 5, 6, 7
+     *				3, 4, 7, 2, -3, 1, 4, 2
+     *				^  ^  ^  ^   ^  ^  ^  ^
+     *				3  7  14 16  13 14 18 20
+     *
+     *              k =7
+     *
+     *			if(currSum== k)
+     *			 count +=1;
+     *			if(myMap.find(currSum - k))
+     *			 count += myMap[currSum - k]
+     *
+     *			myMap
+     *			k | count
+     *			------------
+     *			3  -> 1
+     *			7  -> 1
+     *			14 -> 1/2
+     *			16 -> 1
+     *			13 -> 1
+     *			18 -> 1
+     *			20 -> 1
+     *
+     *			count = 0/1/2/3/4
+     *
+     *	Time Complexity: O(n^2)
+     *	Auxiliary Space: O(1)
+     *
+     * */
+    private static int countSubarrays_prefixSumHashing(int[] arr, int k) {
 
         // HashMap to store prefix sums frequencies
         Map<Integer, Integer> prefixSums = new HashMap<>();
         int count = 0;
         int currSum = 0;
 
-        for (int i = 0; i < arr.length; i++) {
+        for (int curr : arr) {
             // Add the current element to sum so far.
-            currSum += arr[i];
+            currSum += curr;
 
             // If currSum is equal to a desired sum
             // then a new subarray is found.
