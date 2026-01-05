@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.HashSet;
 
 /*
- *	=================================== 2Sum problem ================================
+ *	=================================== 2 Sum problem ================================
  *
  *	The 2-Sum problem is a popular algorithmic challenge where the goal is to identify two distinct elements in an array whose sum equals a specific target.
  *	Emphasizes ones understanding on :

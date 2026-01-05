@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /*
- *	=================================== Two Sum - Pair with given Sum ================================
+ *	=================================== Two Sum - Pair with given Sum, pair index ================================
  *
  * Given an Array of integers, return all the pairs which sum up to a specific integer.
  *

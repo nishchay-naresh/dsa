@@ -3,7 +3,7 @@ package com.nishchay.ds.array.a05twosum;
 import java.util.*;
 
 /*
- *	=================================== Two Sum - Pair with given Sum ================================
+ *	=================================== Two Sum - Pair with given Sum count pairs ================================
  *
  * Given an array arr[] of n integers and a target value, find the number of pairs of integers in the array whose sum is equal to target.
  *

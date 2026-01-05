@@ -3,7 +3,7 @@ package com.nishchay.ds.array.a05twosum;
 import java.util.*;
 
 /*
- *	=================================== Two Sum - Pair with given Sum ================================
+ *	=================================== Two Sum - Pair with given Sum, multiple pairs ================================
  *
  * Given an Array of integers, return all the pairs which sum up to a specific integer.
  *
