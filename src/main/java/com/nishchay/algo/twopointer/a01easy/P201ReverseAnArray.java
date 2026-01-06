@@ -1,12 +1,25 @@
-package com.nishchay.ds.array.a01basic;
+package com.nishchay.algo.twopointer.a01easy;
 
 import java.util.Arrays;
-
-
 /*
- *  ======================= Reverse An Array ====================
+ * ===================================== 2 pointer Approach =======================================
+ *	What is the Two Pointer Approach?
+ *		Is a problem-solving technique where two indices (pointers) traverse a data structure (usually an array or string) to reduce time complexity—often from O(n²) to O(n).
+ *		Used when we want to process (generally compare) two value in each step/computation
  *
- *  Reverse an array arr[]. it means reversing the content of an int array
+ *	Instead of checking all pairs with nested loops, you move pointers intelligently based on conditions.
+ *	Types of Two Pointer Techniques
+ *	    1. Opposite Direction Pointers
+ *	    2. Same Direction (Fast & Slow Pointer)
+ *	    3. Sliding Window (Variable Pointers)
+ *
+ *	When Should You Apply Two Pointer Approach?
+ *	 - array reverse,
+ *	 - palindrome checking
+ *	In both of the above example, we are processing/tracking 2 value at each steps then we can think of applying 2 pointer approach
+ *
+ * ===================================== Reverse An Array =======================================
+ *  Reverse an array arr[]. It means reversing the content of an int array
  *  Reversing an array means rearranging the elements such that the first element becomes the last, the second element becomes second last and so on.
  *
  *  * Examples:
@@ -20,7 +33,7 @@ import java.util.Arrays;
  *
  * https://www.geeksforgeeks.org/dsa/program-to-reverse-an-array/
  * */
-public class ReverseAnArray {
+public class P201ReverseAnArray {
 
     public static void main(String[] args) {
         int[] arr = new int[]{10, 20, 30, 40, 50};

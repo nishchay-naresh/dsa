@@ -1,4 +1,4 @@
-package com.nishchay.ds.array.a01basic;
+package com.nishchay.algo.twopointer.a01easy;
 
 import java.util.Arrays;
 import java.util.HashSet;
@@ -29,6 +29,7 @@ import java.util.HashSet;
  *
  * https://www.geeksforgeeks.org/dsa/remove-duplicates-sorted-array/
  * https://takeuforward.org/data-structure/remove-duplicates-in-place-from-sorted-array/
+ * https://www.callicoder.com/remove-duplicates-from-sorted-array/
  *
  * */
 public class RemoveDuplicatesInSortedArray {
@@ -37,7 +38,7 @@ public class RemoveDuplicatesInSortedArray {
 
         int[] arr = {1, 2, 2, 3, 4, 4, 4, 5, 5};
         int newSize = removeDuplicates(arr);
-        System.out.print("Actual Array =" + Arrays.toString(arr) + ", newSize = " + newSize + ", Result array - ");
+        System.out.print("Actual Array =" + Arrays.toString(arr) + ", newSize = " + newSize + ", Result array = ");
         for (int i = 0; i < newSize; i++) {
             System.out.print(arr[i] + ", ");
         }
@@ -59,7 +60,7 @@ public class RemoveDuplicatesInSortedArray {
 
     private static void executeFor2PointerApproach(int[] arr) {
         int newSize = removeDuplicates_2pointers(arr);
-        System.out.print("Actual Array =" + Arrays.toString(arr) + ", newSize = " + newSize + ", Result array - ");
+        System.out.print("Actual Array =" + Arrays.toString(arr) + ", newSize = " + newSize + ", Result array = ");
         for (int i = 0; i < newSize; i++) {
             System.out.print(arr[i] + ", ");
         }
@@ -115,11 +116,15 @@ public class RemoveDuplicatesInSortedArray {
      *  Space complexity    : O(1)
      */
     private static int removeDuplicates_2pointers(int[] arr) {
-        int i = 0;
+        int i = 0; // the first element is always unique
+
+        // scanning the array from 1st index
         for (int j = 1; j < arr.length; j++) {
             if (arr[j] != arr[i]) {
-                arr[i+1] = arr[j];
+                // Move unique index forward
                 i++;
+                // copying the next unique element
+                arr[i] = arr[j];
             }
         }
         return (i + 1);
