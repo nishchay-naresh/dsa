@@ -1,4 +1,4 @@
-package com.nishchay.ds.array.a05twosum;
+package com.nishchay.algo.twopointer.a03twosum;
 
 import java.util.*;
 
@@ -48,7 +48,7 @@ public class TwoSumPairCount {
      *  The basic approach is to generate all the possible pairs and check if any of them add up to the target value.
      *  To generate all pairs, we simply run two nested loops.
      *
-     *	1. Run a loop to maintain the first index of the solution in the array
+     *	1. Run a loop to maintain the first index of the solution in array
      *	2. Run another loop to maintain a second index of the solution for every first integer
      *	3. If at any point, the sum of values at these two indices is equal to the target
      *		 count the pair
@@ -80,16 +80,14 @@ public class TwoSumPairCount {
      * 		else
      * 			we store each number in a hashMap
      *
-     *
      * Step By Step Implementations:
      * 		Create an empty HashMat
      * 		Iterate through the array and for each number in the array:
      * 		=> Calculate the complement (target - current number).
-     * 		=> Check if the complement exists in the set:
-     * 				- If it is, then pair found. Return the index as (i, hm.get(complement))
+     * 		=> Check if the complement exists in the map:
+     * 				- If it is, then a pair found. Return the index as (i, hm.get(complement))
      * 				- If it isn’t, add the current number to the hashMap. hm.put(arr[i], i)
      * 		If the loop completes without finding a pair, return that no pair exists.
-     *
      *
      *  Time Complexity     : O(n)
      *  Space complexity    : O(n)

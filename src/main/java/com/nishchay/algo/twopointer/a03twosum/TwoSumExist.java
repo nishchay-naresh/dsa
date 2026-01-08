@@ -1,4 +1,4 @@
-package com.nishchay.ds.array.a05twosum;
+package com.nishchay.algo.twopointer.a03twosum;
 
 import java.util.Arrays;
 import java.util.HashSet;
@@ -11,7 +11,7 @@ import java.util.HashSet;
  *	    - array manipulation
  *	    - optimizing search operations through hashing
  *
- *	Problem can ctegories in 2 gatories :
+ *	Problem can categories in 2 gatories:
  *	    1. 2Sum on Unsorted Input
  *	    2. 2Sum on Sorted Input
  *
@@ -86,7 +86,7 @@ public class TwoSumExist {
      * 	-	If the complement is found, return true.
      * 	-	If the loop completes without finding any valid pair, return false.
      *
-     *  Time Complexity     : O(n × log(n))
+     *  Time Complexity     : n log(n) sorting + n log(n) solution  = O(n × log(n))
      *  Space complexity    : O(1)
      */
     private static boolean twoSum_binarySearch(int[] arr, int target) {
