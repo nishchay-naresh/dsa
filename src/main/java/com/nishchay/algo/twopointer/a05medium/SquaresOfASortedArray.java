@@ -1,9 +1,10 @@
-package com.nishchay.algo.twopointer.a02medium;
+package com.nishchay.algo.twopointer.a05medium;
 
 import java.util.Arrays;
 
 /*
- *  ======================= Sort array after converting elements to their squares ====================
+ * ======================= Sort array after converting elements to their squares ====================
+ *
  * Given an array of both positive and negative integers 'arr[]' which are sorted.
  * The task is to sort the square of the numbers of the Array.
  *
