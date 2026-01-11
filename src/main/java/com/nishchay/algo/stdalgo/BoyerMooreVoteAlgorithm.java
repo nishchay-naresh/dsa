@@ -1,7 +1,8 @@
 package com.nishchay.algo.stdalgo;
 
 /*
- *	==================================== Majority Element ========================================
+ * ======================================  Majority Element ================================================
+ * ======================================  Boyer Moore Vote Algorithm ================================================
  *
  *	Given an array arr[] of size n, find the element that appears more than ⌊n/2⌋ times. If no such element exists, return -1.
  *
@@ -21,6 +22,7 @@ package com.nishchay.algo.stdalgo;
  *
  * https://www.geeksforgeeks.org/dsa/majority-element/
  * https://takeuforward.org/data-structure/find-the-majority-element-that-occurs-more-than-n-2-times/
+ * https://leetcode.com/problems/majority-element/description/
  * */
 import java.util.Arrays;
 import java.util.HashMap;
