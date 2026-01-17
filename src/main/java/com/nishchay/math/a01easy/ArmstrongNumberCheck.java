@@ -1,12 +1,13 @@
-package com.nishchay.math;
+package com.nishchay.math.a01easy;
 
 /*
- *  ========= Check Armstrong Numbers =========
+ *  ============================ Check Anagram =============================
  *
  * A positive integer of n digits is called an Armstrong number of order n (order is the number of digits) if
- *
  * 	abcd... = pow(a,n) + pow(b,n) + pow(c,n) + pow(d,n) + ....
  * 	Here a, b, c and d are digits of input number abcd.....
+ *
+ *  if it is equal to the sum of cubes of its digits for example 0, 1, 153, 370, 371, 407 etc.
  *
  * Examples
  * 	Input: n = 153
@@ -30,6 +31,13 @@ public class ArmstrongNumberCheck {
         System.out.printf("\n%d is Armstrong number = %b", number, isArmstrong(number));
         number = 123;
         System.out.printf("\n%d is Armstrong number = %b", number, isArmstrong(number));
+
+        System.out.println("isArmstrong(1)   - " +  isArmstrong(1));
+        System.out.println("isArmstrong(153) - " +  isArmstrong(153));
+        System.out.println("isArmstrong(370) - " +  isArmstrong(370));
+        System.out.println("isArmstrong(371) - " +  isArmstrong(371));
+        System.out.println("isArmstrong(407) - " +  isArmstrong(407));
+        System.out.println("isArmstrong(512) - " +  isArmstrong(512));
     }
 
     /*

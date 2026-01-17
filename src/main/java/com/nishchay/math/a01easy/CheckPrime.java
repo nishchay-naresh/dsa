@@ -1,4 +1,6 @@
-package com.nishchay.math;
+package com.nishchay.math.a01easy;
+
+import java.util.stream.IntStream;
 
 /*
  * ====================== Check for Prime =======================
@@ -33,6 +35,7 @@ public class CheckPrime {
         System.out.printf("\n%d is even = %b", n, isPrime(n));
         n = 53;
         System.out.printf("\n%d is even = %b", n, isPrime(n));
+        System.out.printf("\nisPrimeStream(53) = %b", n, isPrimeStream(53));
     }
 
     /*
@@ -88,5 +91,14 @@ public class CheckPrime {
                 return false;
         }
         return true;
+    }
+
+    // Declarative way to find the Prime - Using Stream & Predicate
+    public static boolean isPrimeStream(int number) {
+
+        // range vs  rangeClosed : To properly check for factors, we should include number / 2, so rangeClosed
+        return 1 < number &&
+                IntStream.rangeClosed(2, (int) Math.sqrt(number))
+                        .noneMatch(index -> number % index == 0);
     }
 }

@@ -1,4 +1,4 @@
-package com.nishchay.math;
+package com.nishchay.math.a01easy;
 
 import java.util.ArrayList;
 
