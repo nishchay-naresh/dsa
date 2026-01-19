@@ -1,0 +1,69 @@
+
+
+ ==== Bitwise Operators ====
+
+1. & (bitwise AND)  : result of AND is 1 only if both bits are 1.
+2. | (bitwise OR) 	: result of OR is 1 if any of the two bits is 1.
+3. ^ (bitwise XOR)  : result of XOR is 1 if the two bits are different.
+4. << (left shift)  : the left shifts the bits of the first operand, and the second operand decides the number of places to shift.
+5. ,>> (right shift) : the right shifts the bits of the first operand, and the second operand decides the number of places to shift.
+6. ~ (bitwise NOT)  : takes one number and inverts all bits of it.
+
+![img.png](img.png)
+
+Interesting Facts About Bitwise Operators :
+
+**Shift Operators:**
+
+    n = n >> 1; // divide by 2
+    n = n << 1; // multiply by 2
+
+**Bitwise XOR (^)**:
+
+Very useful in programming problems. For example, finding the odd occurring number in a set where all other numbers occur even times can be done efficiently using XOR.
+
+    XOR of a number with itself is 0 .       i.e. x ^ x = 0
+    And XOR of a number with 0 is number.    i.e. 0 ^ x = x
+    
+          1-n     : 1, 2, 3, 4, 5
+         array   :  1, 2,    4, 5     XOR
+      --------------------------------
+                    0, 0, 3, 0, 0
+
+**Check Odd/Even:**
+
+The AND operator (&) can quickly check if a number is odd or even. (x & 1) is non-zero if x is odd, and 0 if even.
+
+    Is the number odd?  -> Odd numbers end with 1 in binary (last bit will be 1)
+    & 1 checks the last bit
+    5  -> 101 & 001 = 1 -> odd
+    4  -> 100 & 001 = 0 -> not odd, means even
+    Now doing  (n & 1), will give me 0/1, which I can use to decide odd or even
+
+**Removes the rightmost set bit(i.e. 1) from n:**
+
+    n = n & (n – 1)
+    n = 12 	   ->	 1100
+    n - 1 = 11 ->	 1011
+    AND        ->	 1000
+    The last 1 is gone or rightmost 1 bit from n is been removed
+
+
+Count set bits in an integer
+Counting number of 1s in the binary representation of a number
+
+    private static int countSetBits(int n) {
+        int count = 0;
+        while (n > 0) {
+            n = n & (n-1); // this removes the rightmost set bit from n
+            count++;
+        }
+        return count;
+    }
+
+
+![img_1.png](img_1.png)
+
+
+https://www.geeksforgeeks.org/dsa/introduction-to-bitwise-algorithms-data-structures-and-algorithms-tutorial/
+https://www.geeksforgeeks.org/competitive-programming/bit-tricks-competitive-programming/
