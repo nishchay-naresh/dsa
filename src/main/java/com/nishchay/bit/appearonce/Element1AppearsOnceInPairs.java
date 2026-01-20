@@ -1,7 +1,11 @@
-package com.nishchay.ds.array.a04nelement;
+package com.nishchay.bit.appearonce;
+
+import java.util.HashSet;
+import java.util.Set;
 
 /*
  *  ======================= Unique Number ====================
+ *  ======================= Element Appears Once In Pairs - Only 1 such elements is there ====================
  *
  *  Given an array of integers, every element in the array appears twice except for one element which appears only once.
  *  The task is to identify and return the element that occurs only once.
@@ -27,23 +31,26 @@ package com.nishchay.ds.array.a04nelement;
  * https://www.geeksforgeeks.org/dsa/find-element-appears-array-every-element-appears-twice/
  * https://leetcode.com/problems/single-number/description/
  * */
-class UniqueNumber {
+class Element1AppearsOnceInPairs {
 
     public static void main(String[] args) {
 
         int[] arr = {2, 3, 5, 4, 5, 3, 4};
-        System.out.println(getSingleElement(arr));  // 2
-        System.out.println(findUnique(arr));        // 2
+        System.out.println("getSingleElement(arr)   = " + getSingleElement(arr));   // 2
+        System.out.println("findUnique_hashing(arr) = " + findUnique_hashing(arr)); // 2
+        System.out.println("findUnique_xor(arr)     = " + findUnique_xor(arr));     // 2
 
         arr = new int[]{2, 2, 5, 5, 20, 30, 30};
-        System.out.println(findUnique(arr));        // 20
+        System.out.println("findUnique_hashing(arr) = " + findUnique_hashing(arr)); // 20
+        System.out.println("findUnique_xor(arr)     = " + findUnique_xor(arr));     // 20
 
         arr = new int[]{4, 1, 2, 1, 2};
-        System.out.println(findUnique(arr));        // 4
+        System.out.println("findUnique_hashing(arr) = " + findUnique_hashing(arr)); // 4
+        System.out.println("findUnique_xor(arr)     = " + findUnique_xor(arr));     // 4
 
         arr = new int[]{1};
-        System.out.println(findUnique(arr));        // 1
-
+        System.out.println("findUnique_hashing(arr) = " + findUnique_hashing(arr)); // 1
+        System.out.println("findUnique_xor(arr)     = " + findUnique_xor(arr));     // 1
     }
 
     /*
@@ -72,32 +79,52 @@ class UniqueNumber {
         int n = arr.length;
 
         for (int i = 0; i < n; i++) {
-            int num = arr[i]; // selected element
+            int candidate = arr[i]; // selected element
             int cnt = 0;
 
             //find the occurrence using linear search:
             for (int j = 0; j < n; j++) {
-                if (arr[j] == num)
+                if (arr[j] == candidate)
                     cnt++;
             }
 
             // if the occurrence is 1 return ans:
             if (cnt == 1)
-                return num;
+                return candidate;
         }
         return -1;
     }
 
+    /*
+     *  ================ [Optimize/Expected Approach] Using hashing - O(n) Time and O(n) Space  =====================
+     *
+     * just using a Set<Integer>
+     *      Add the element in Set for its first occurrence, and remove it for its 2nd occurrence
+     *
+     * Time Complexity  : O(n)
+     * Space Complexity : O(n/2) = O(n)
+     */
+
+    private static int findUnique_hashing(int[] arr) {
+        Set<Integer> duplicates = new HashSet<>();
+        for (int x :  arr ) {
+            if (!duplicates.contains(x))
+                duplicates.add(x);
+            else
+                duplicates.remove(x);
+        }
+        return duplicates.iterator().next();
+    }
 
     /*
      *  ================ [Optimize/Expected Approach] Using XOR Operation - O(n) Time and O(1) Space  =====================
-     * XOR of a number with itself is 0 .       i.e. x ^ x = 0
-     * And XOR of a number with 0 is number.    i.e. 0 ^ x = x
+     * XOR of a number with itself is 0 .       I.e. x ^ x = 0
+     * And XOR of a number with 0 is number.    I.e. 0 ^ x = x
      *
-     *      array   : 1, 2, 3, 4, 5
-     *      array   : 1, 2,    4, 5     XOR
+     *      array : 1, 2, 3, 4, 5
+     *      array : 1, 2,    4, 5     XOR
      *  --------------------------------
-     *                 0, 0, 3, 0, 0
+     *              0, 0, 3, 0, 0
      *
      * XOR of two identical numbers cancels them out (results in zero),
      * So after XORing all the elements, only the element that appears once will remain.
@@ -105,14 +132,13 @@ class UniqueNumber {
      * Time Complexity  : O(n)
      * Space Complexity : O(1)
      * */
-    private static int findUnique(int[] arr) {
+    private static int findUnique_xor(int[] arr) {
         int res = 0;
 
         // Find XOR of all elements
-        for (int i = 0; i < arr.length; i++) {
-            res = res ^ arr[i];
+        for (int x : arr) {
+            res = res ^ x;
         }
         return res;
     }
-
 }
