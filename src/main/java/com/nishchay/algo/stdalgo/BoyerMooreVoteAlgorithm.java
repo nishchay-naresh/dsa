@@ -1,5 +1,9 @@
 package com.nishchay.algo.stdalgo;
 
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+
 /*
  * ======================================  Majority Element ================================================
  * ======================================  Boyer Moore Vote Algorithm ================================================
@@ -19,15 +23,10 @@ package com.nishchay.algo.stdalgo;
  *				Output: -1
  *				Explanation: No element appears more than (2/2) = 1 time, so there is no majority element.
  *
- *
  * https://www.geeksforgeeks.org/dsa/majority-element/
  * https://takeuforward.org/data-structure/find-the-majority-element-that-occurs-more-than-n-2-times/
  * https://leetcode.com/problems/majority-element/description/
  * */
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-
 public class BoyerMooreVoteAlgorithm {
 
     public static void main(String[] args) {
@@ -146,6 +145,11 @@ public class BoyerMooreVoteAlgorithm {
 
     /*
      *  ================ [Expected Approach] Using Moore's Voting Algorithm - O(n) Time and O(1) Space  =====================
+     *
+     *                                                          voteCount
+     *      voting in favor of the current candidate        =    +1
+     *      voting in favor of other than current candidate =    -1
+     *      if voteCount = 0, get a new candidate
      *
      *  The idea is to use the Boyer-Moore Voting Algorithm to efficiently find a potential majority element by canceling out different elements.
      *  If a majority element exists, it will remain as the candidate. Then verify it.

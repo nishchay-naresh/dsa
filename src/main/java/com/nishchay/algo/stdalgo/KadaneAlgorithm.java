@@ -1,7 +1,7 @@
 package com.nishchay.algo.stdalgo;
 
 /*
- *	=========== Find maximum Sum Contiguous Subarray ===========
+ *	============================= Find maximum Sum Contiguous Subarray =======================================
  * Kadane’s Algorithm
  *
  * Given an integer array nums, find the contiguous subarray (containing at least one number) which has the largest sum and return its sum.
@@ -28,27 +28,20 @@ package com.nishchay.algo.stdalgo;
 public class KadaneAlgorithm {
 
     public static void main(String[] args) {
-        bruteForceEx();
-        kadaneEx();
-    }
+        int[] arr;
+        arr = new int[]{-2, -3, 4, -1, -2, 1, 5, -3, -1};
+        System.out.println("maxSubArraySum_2loop(arr)   = " + maxSubArraySum_2loop(arr));
+        System.out.println("kadaneAlgorithm(arr)        = " + kadaneAlgorithm(arr));
 
-    private static void bruteForceEx() {
-        int[] arr = {-2, -3, 4, -1, -2, 1, 5, -3, -1};
-        System.out.println("Maximum contiguous sum is " + maxSubArraySum_2loop(arr));
         arr = new int[]{5, 4, -1, 7, 8};
-        System.out.println("Maximum contiguous sum is " + maxSubArraySum_2loop(arr));
-    }
-
-    private static void kadaneEx() {
-        int[] arr = {-2, -3, 4, -1, -2, 1, 5, -3, -1};
-        System.out.println("Maximum contiguous sum is " + kadaneAlgorithm(arr));
-        arr = new int[]{5, 4, -1, 7, 8};
-        System.out.println("Maximum contiguous sum is " + kadaneAlgorithm(arr));
+        System.out.println("maxSubArraySum_2loop(arr)   = " + maxSubArraySum_2loop(arr));
+        System.out.println("kadaneAlgorithm(arr)        = " + kadaneAlgorithm(arr));
     }
 
 
     /*
-     * Brute force approach
+     * ================ [Naive/Bruteforce Approach] Using Two Nested Loops  =====================
+     *
      * Generating all possible sub arrays
      *
      *      1,  -3,  2,  1,  -1
@@ -56,9 +49,9 @@ public class KadaneAlgorithm {
      *          +----|---|----|
      *              +----|----|
      *
-     *	Time Complexity: O(n^2)
-     *	Auxiliary Space: O(1)
-     * */
+     *  Time Complexity     : O(n^2)
+     *  Space complexity    : O(1)
+     */
     private static int maxSubArraySum_2loop(int[] arr) {
         int n = arr.length;
         int curr_sum, max_sum;
@@ -76,6 +69,7 @@ public class KadaneAlgorithm {
 
     /*
      *  ================ [Optimize/Expected Approach] Kadane's Algorithm - O(n) Time =====================
+     *
      * Since we are not required to find the subarray (sub array itself with elements or start index - index end )
      * we only need to tell the sum of sub-array, so Kadane's algorithm can help us on this.
      * We aren't required to run loop 2, in one loop by finding the subarray sum we can find the max sum
@@ -100,12 +94,11 @@ public class KadaneAlgorithm {
      *
      */
     private static int kadaneAlgorithm(int[] arr) {
-        int n = arr.length;
         int maxSum = Integer.MIN_VALUE;
         int currSum = 0;
 
-        for (int i = 0; i < n; i++) {
-            currSum = currSum + arr[i];
+        for (int curr : arr) {
+            currSum = currSum + curr;
             maxSum = Math.max(currSum, maxSum);
 
             // If currSum < 0: discard the currSum calculated
