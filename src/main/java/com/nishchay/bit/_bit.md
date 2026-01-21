@@ -43,11 +43,16 @@ The AND operator (&) can quickly check if a number is odd or even. (x & 1) is no
 **Removes the rightmost set bit(i.e. 1) from n:**
 
     n = n & (n – 1)
+
+    num      = 1 0 1 0 1 0 0
+    num-1    = 1 0 1 0 0 1 1
+    ----------------------------
+    &          1 0 1 0 0 0 0     if you observe that everything right to rightmost set bit is turn to 0, and left part is copied
+
     n = 12 	   ->	 1100
     n - 1 = 11 ->	 1011
     AND        ->	 1000
-    The last 1 is gone or rightmost 1 bit from n is been removed
-
+    rightmost set bit is now set to 0,everything right to rightmost set bit is turn to 0, and left part is copied
 
 Count set bits in an integer
 Counting number of 1s in the binary representation of a number
@@ -67,3 +72,30 @@ Counting number of 1s in the binary representation of a number
 
 https://www.geeksforgeeks.org/dsa/introduction-to-bitwise-algorithms-data-structures-and-algorithms-tutorial/
 https://www.geeksforgeeks.org/competitive-programming/bit-tricks-competitive-programming/
+
+
+ == Get the frequency / count of a number in n array - 2 nested loop / hashMap == 
+
+
+        for (int i = 0; i < n; i++) {
+            int candidate = arr[i]; // selected element
+            int cnt = 0;
+
+            //find the occurrence using linear search:
+            for (int j = 0; j < n; j++) {
+                if (arr[j] == candidate)
+                    cnt++;
+            }
+
+            // if the occurrence is 1 return ans:
+            if (cnt == 1)
+                return candidate;
+        }
+
+
+    Element is used as key and the frequency is used as the value 
+    HashMap<Integer, Integer> map = new HashMap<>();
+    for (int curr : arr) {
+        map.put(curr, freq.getOrDefault(curr, 0) + 1);
+    }
+    
