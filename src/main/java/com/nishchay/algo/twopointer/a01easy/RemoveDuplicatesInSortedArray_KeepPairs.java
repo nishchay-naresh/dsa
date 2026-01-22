@@ -11,16 +11,16 @@ import java.util.Arrays;
  *
  *
  * Examples:
- *			    Input : array[] = {2, 2, 2, 2, 2}
+ *			    Input : array[]  = {2, 2, 2, 2, 2}
  *			    Output : array[] = {2,2}, new size = 2
  *
- *			    Input : arr[] = {1, 2, 2, 3, 4, 4, 4, 5, 5}
+ *			    Input : array[]  = {1, 2, 2, 3, 4, 4, 4, 5, 5}
  *			    Output : array[] = {1, 2, 2, 3, 4, 4, 5, 5}, new size = 8
  *
- *			    Input : arr[] = {1, 1, 1, 3, 5, 5, 7}
+ *			    Input : array[]  = {1, 1, 1, 3, 5, 5, 7}
  *			    Output : array[] = {1, 1, 3, 5, 5, 7}, new size = 6
  *
- *			    Input : arr[] = {}
+ *			    Input : array[]  = {}
  *			    Output : array[] = {}, new size = 0
  *
  * https://www.callicoder.com/remove-duplicates-from-sorted-array-ii/
@@ -99,35 +99,39 @@ public class RemoveDuplicatesInSortedArray_KeepPairs {
         if (n == 0 || n == 1 || n == 2)
             return n;
 
-       // using the writeIndex to write a refined element in the same array
-        int writeIndex  = 0;
+        // using the writeIndex to write a refined element in the same array
+        int writeIndex = 0;
 
-        for (int i = 0; i < n; i++){
+        for (int i = 0; i < n; i++) {
 
             // If arr[i] == arr[i+2] then skip the arr[i] because it is repeated more than twice.
             if (i < n - 2 && arr[i] == arr[i + 2]) {
                 continue;
             }
-            arr[writeIndex ++] = arr[i];
+            arr[writeIndex++] = arr[i];
         }
 
-        return writeIndex ;
+        return writeIndex;
     }
 
     /*
-    * https://codechunkers.medium.com/solution-to-leetcodes-remove-duplicates-from-sorted-array-ii-62deced592a1
-    *
-    * skipping the first 2 index, 0, 1 because an element can be almost 2, (1,2 or 1,1)
-    * */
+     * https://codechunkers.medium.com/solution-to-leetcodes-remove-duplicates-from-sorted-array-ii-62deced592a1
+     *
+     * skipping the first 2 index, 0, 1 because an element can be almost - 2 unique / 1 pair, (1,2 or 1,1)
+     *
+     * star checking element for triplet from index 2
+     *      checking current element against of -2 index ( which is writeIndex)
+     *
+     * */
     private static int removeDuplicates(int[] nums) {
-        int indexCount = 2;
+        int writeIndex = 2;
         for (int i = 2; i < nums.length; i++) {
-            if (nums[i] != nums[indexCount-2]) {
-                nums[indexCount] = nums[i];
-                indexCount++;
+            if (nums[i] != nums[writeIndex - 2]) {
+                nums[writeIndex] = nums[i];
+                writeIndex++;
             }
         }
-        return indexCount;
+        return writeIndex;
     }
 
 }

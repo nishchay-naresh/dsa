@@ -5,7 +5,7 @@ import java.util.Arrays;
  * ===================================== 2 pointer Approach =======================================
  *	What is the Two Pointer Approach?
  *		Is a problem-solving technique where two indices (pointers) traverse a data structure (usually an array or string) to reduce time complexity—often from O(n²) to O(n).
- *		Used when we want to process (generally compare) two value in each step/computation
+ *		Used when we want to process (generally compare) two values in each step/computation
  *
  *	Instead of checking all pairs with nested loops, you move pointers intelligently based on conditions.
  *	Types of Two Pointer Techniques
@@ -16,7 +16,7 @@ import java.util.Arrays;
  *	When Should You Apply Two Pointer Approach?
  *	 - array reverse,
  *	 - palindrome checking
- *	In both of the above example, we are processing/tracking 2 value at each steps then we can think of applying 2 pointer approach
+ *	In both of the above examples, we are processing/tracking 2 values at each step then we can think of applying 2 pointer approach
  *
  * ===================================== Reverse An Array =======================================
  *  Reverse an array arr[]. It means reversing the content of an int array
@@ -77,13 +77,11 @@ public class P201ReverseAnArray {
      */
     private static void reverseArray(int[] arr) {
         int left = 0, right = arr.length - 1;
-        int temp;
         while (left < right) {
             // swap arr[left] & arr[right] element
-            temp = arr[left];
+            int temp = arr[left];
             arr[left] = arr[right];
             arr[right] = temp;
-
             left++;
             right--;
         }

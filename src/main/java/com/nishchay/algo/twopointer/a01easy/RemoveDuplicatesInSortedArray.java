@@ -30,7 +30,6 @@ import java.util.HashSet;
  * https://www.geeksforgeeks.org/dsa/remove-duplicates-sorted-array/
  * https://takeuforward.org/data-structure/remove-duplicates-in-place-from-sorted-array/
  * https://www.callicoder.com/remove-duplicates-from-sorted-array/
- *
  * */
 public class RemoveDuplicatesInSortedArray {
 
@@ -80,14 +79,14 @@ public class RemoveDuplicatesInSortedArray {
      */
     private static int removeDuplicates(int[] arr) {
 
-        HashSet<Integer> s = new HashSet<>();
+        HashSet<Integer> set = new HashSet<>();
 
         // To maintain the new size of the array
         int idx = 0;
 
         for (int i = 0; i < arr.length; i++) {
-            if (!s.contains(arr[i])) {
-                s.add(arr[i]);
+            if (!set.contains(arr[i])) {
+                set.add(arr[i]);
                 arr[idx] = arr[i];
                 idx++;
             }
@@ -101,33 +100,33 @@ public class RemoveDuplicatesInSortedArray {
      *  1st pointer - to track the unique elements
      *  2nd pointer - to scan all elements of array
      *
-     * element arr[0] is - always the right place, means it can't be duplicate, its unique
+     * element arr[0] is always the right place, means it can't be duplicate, its unique
      *
      *  Traverse the array from 1st index, check each element
      *      check if its equivalent to arr[i]
      *              keep moving j
      *      else
-     *              move i
+     *              move 'i'
      *              copy a[j] at a[i]
      *
-     * why returning i+1 - because i is an index, we need to return the size of unique elements
+     * why returning i+1 - because 'i' is an index, we need to return the size of unique elements
      *
      *  Time Complexity     : O(n)
      *  Space complexity    : O(1)
      */
     private static int removeDuplicates_2pointers(int[] arr) {
-        int i = 0; // the first element is always unique
+        int writeIndex = 0; // the first element is always unique
 
         // scanning the array from 1st index
         for (int j = 1; j < arr.length; j++) {
-            if (arr[j] != arr[i]) {
+            if (arr[writeIndex] != arr[j]) {
                 // Move unique index forward
-                i++;
+                writeIndex++;
                 // copying the next unique element
-                arr[i] = arr[j];
+                arr[writeIndex] = arr[j];
             }
         }
-        return (i + 1);
+        return (writeIndex + 1);
     }
 
 }
