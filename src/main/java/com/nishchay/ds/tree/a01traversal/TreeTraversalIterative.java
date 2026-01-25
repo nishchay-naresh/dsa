@@ -34,7 +34,7 @@ public class TreeTraversalIterative {
         //	 /  \      /  \
         //	4    5    6    7
 
-        // inorder NVR      - 4, 2, 5, 1, 6, 3, 7
+        // inorder LVR      - 4, 2, 5, 1, 6, 3, 7
         // preorder VLR     - 1, 2, 4, 5, 3, 6, 7
         // postorder LRV    - 4, 5, 2, 6, 7, 3, 1
 
@@ -62,7 +62,6 @@ public class TreeTraversalIterative {
      *
      * https://takeuforward.org/data-structure/iterative-preorder-traversal-of-binary-tree
      * https://www.geeksforgeeks.org/dsa/iterative-preorder-traversal/
-     *
      * */
     public static List<Integer> preorderIterative(Node root) {
         List<Integer> preorder = new ArrayList<>();
