@@ -45,7 +45,8 @@ public class TwoSumMultiplePairs {
         arr= new int[]{0, -1, 2, -3, 1};
         target = -2;
         System.out.print("\n----------------");
-        printPairs(findPair_hashing(arr, target));
+        printPairs(twoSum_2loop(arr, target));
+        printPairs(twoSum_hashing(arr, target));
     }
 
     private static void printPairs(List<int[]> res) {
@@ -126,21 +127,4 @@ public class TwoSumMultiplePairs {
         return pairs;
     }
 
-    /*
-    * Same code as above, works when an input array doesn't have duplicates
-    * */
-    private static List<int[]> findPair_hashing(int[] arr, int sum) {
-
-        List<int[]> pairs = new ArrayList<>();
-
-        Set<Integer> numMap = new HashSet<>();
-        for (int curr : arr) {
-            int complement = sum - curr;
-            if (numMap.contains(complement)) {
-                pairs.add(new int[]{curr, complement});
-            }
-            numMap.add(curr);
-        }
-        return pairs;
-    }
 }

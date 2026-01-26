@@ -12,7 +12,7 @@ import java.util.Set;
  *	    - array manipulation
  *      - sorting
  *
- *	Problem can categories in 2 gatories:
+ *	Problem can categories in 2 categories:
  *	    1. 3Sum on Unsorted Input
  *	    2. 3Sum on Sorted Input
  *
@@ -94,8 +94,8 @@ public class ThreeSumExist {
      *	-	Inside a nested loop, check if given sum - arr[i] - arr[j] is present in the hash set. If yes, then print the triplet.
      *	-	If no triplet is found in the entire array, the function returns false.
      *
-     *  Time Complexity     : n log(n) sorting + n log(n) solution  = O(n × log(n))
-     *  Space complexity    : O(1)
+     *  Time Complexity     : O(n^2)
+     *  Space complexity    : O(n)
      */
     static boolean hasTripletSum_hashing(int[] arr, int target) {
         int n = arr.length;
@@ -132,7 +132,7 @@ public class ThreeSumExist {
      *	-	If the sum is greater than the target, move the right pointer.
      *
      *
-     *  Time Complexity     : O(n × log(n))
+     *  Time Complexity     : O(n × log(n)) + O(n^2) = O(n^2)
      *  Space complexity    : O(1)
      */
     private static boolean hasTripletSum_2pointers(int[] arr, int target) {

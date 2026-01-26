@@ -82,7 +82,7 @@ public class SquaresOfASortedArray {
      *
      *  Simple solution is to first convert each array element into its square and then apply any "O(nlogn)" sorting algorithm to sort the array elements.
      *
-     *  Time Complexity     : O(n log n)
+     *  Time Complexity     : O(n) + O(n log n) =  O(n log n)
      *  Space complexity    : O(1) assuming we are using the same input array for result as well
      */
     private static int[] sortSquares_sorting(int[] arr) {
@@ -105,7 +105,7 @@ public class SquaresOfASortedArray {
      * The optimal solution uses two pointers to build the result in O(n) time by comparing absolute values from both ends:
      *
      * 	1.	Initialize two pointers: left = 0 and right = n-1
-     * 	2.	Initialize an empty result array to store the squared values. Intir;izeits writes index to n-1, bcus we are processing the bigger element first
+     * 	2.	Initialize an empty result array to store the squared values. Initialize writes index to n-1, bcus we are processing the bigger element first
      * 	3.	While left <= right,
      * 			compare the absolute values of nums[left] and nums[right].
      * 				If abs(nums[left]) is greater than abs(nums[right]), append nums[left] * nums[left] to result and increment left.

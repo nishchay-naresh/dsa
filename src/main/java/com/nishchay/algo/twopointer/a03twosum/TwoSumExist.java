@@ -55,12 +55,9 @@ public class TwoSumExist {
      */
     private static boolean twoSum_2loop(int[] arr, int target) {
         int n = arr.length;
-
         for (int i = 0; i < n-1; i++) {
-
             // For each element arr[i], check every other element arr[j] that comes after it
             for (int j = i + 1; j < n; j++) {
-
                 // Check if the sum of the current pair equals the target
                 if (arr[i] + arr[j] == target) {
                     return true;
@@ -69,7 +66,6 @@ public class TwoSumExist {
         }
         return false;
     }
-
 
     /*
      * ================ [Better Approach 1] Sorting and Binary Search - O(n × log(n)) time and O(1) space  =====================
@@ -121,7 +117,7 @@ public class TwoSumExist {
     /*
      * ================ [Better Approach 2] Sorting and Two-Pointer Technique - O(n × log(n)) time and O(1) space  =====================
      *
-     *  The idea is to use the two-pointer technique over sorted array.
+     *  The idea is to use the two-pointer technique over sorted array
      *  Once the array is sorted then we can use this approach by keeping one pointer at the beginning (left) and another at the end (right) of the array.
      *  Keep moving left and right pointers based on their computed sum.
      *
@@ -131,7 +127,7 @@ public class TwoSumExist {
      *	-	If the sum is greater than the target, move the right pointer.
      *
      *
-     *  Time Complexity     : O(n × log(n))
+     *  Time Complexity     : O(n × log(n)) + O(n) = O(n log n)
      *  Space complexity    : O(1)
      */
     private static boolean twoSum_2pointers(int[] arr, int target) {
@@ -150,7 +146,6 @@ public class TwoSumExist {
         }
         return false;
     }
-
 
     /*
      * ================ [Expected Approach] Using HashSet - O(n) time and O(n) space  =====================

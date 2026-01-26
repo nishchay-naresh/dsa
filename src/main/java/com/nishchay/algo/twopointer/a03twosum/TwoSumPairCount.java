@@ -97,14 +97,12 @@ public class TwoSumPairCount {
         int cnt = 0;
 
         for (int curr : arr) {
-
-            // Check if the complement (target - arr[i])
-            // exists in the map. If yes, increment count
-            if (freq.containsKey(target - curr)) {
-                cnt = cnt + freq.get(target - curr);
+            int complement = target - curr;
+            // Check if the complement (target - arr[i]) exists in the map. If yes, increment count
+            if (freq.containsKey(complement)) {
+                cnt = cnt + freq.get(complement);
             }
-
-            // Increment the frequency of arr[i]
+            // Increment the frequency of arr[i] (for the case of duplicates)
             freq.put(curr, freq.getOrDefault(curr, 0) + 1);
         }
         return cnt;
