@@ -40,21 +40,37 @@ The AND operator (&) can quickly check if a number is odd or even. (x & 1) is no
     4  -> 100 & 001 = 0 -> not odd, means even
     Now doing  (n & 1), will give me 0/1, which I can use to decide odd or even
 
-**Removes the rightmost set bit(i.e. 1) from n:**
+**Negative representation of a number in binary:**
 
-    n = n & (n – 1)
+    => In Java (and most languages), negative numbers are stored in two’s complement form.
+    => -num  = ~num + 1 (bitwise NOT plus 1)
+    +num = +5,               0000 0101
+    -num = -5, => ~num + 1   => 1111 1010 + 1 => 1111 1011 // this is -5 in two’s complement
 
-    num      = 1 0 1 0 1 0 0
-    num-1    = 1 0 1 0 0 1 1
-    ----------------------------
-    &          1 0 1 0 0 0 0     if you observe that everything right to rightmost set bit is turn to 0, and left part is copied
 
-    n = 12 	   ->	 1100
-    n - 1 = 11 ->	 1011
-    AND        ->	 1000
-    rightmost set bit is now set to 0,everything right to rightmost set bit is turn to 0, and left part is copied
+**Get the rightmost set bit(i.e. 1) from n:**
 
-Count set bits in an integer
+    formula to get the rightmost set bit of a num        =>     num = num & -num
+
+        num     = 1 0 1 0 1 0 0
+       -num     => ~num + 1 => 0 1 0 1 0 1 1 + 1 => 0 1 0 1 1 0 0
+       
+        num     = 1 0 1 0 1 0 0
+       -num     = 0 1 0 1 1 0 0
+       ----------------------------
+       &          0 0 0 0 1 0 0 => we get the rightmost-set bit
+
+    n = +12 	            ->	 1100
+    n = -12 =  ~n + 1       ->	 0011 + 1   ->  0100
+
+    n = +12     ->	 1100
+    n = -12     ->	 0100
+            ---------------
+    AND         ->	 0100
+    rightmost set bit is now set to 1, everything else is set to 0
+
+**Count set bits in an integer**
+
 Counting number of 1s in the binary representation of a number
 
     private static int countSetBits(int n) {

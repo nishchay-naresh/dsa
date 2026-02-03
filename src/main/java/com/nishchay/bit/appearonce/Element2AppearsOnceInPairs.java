@@ -120,6 +120,7 @@ class Element2AppearsOnceInPairs {
 
     /*
      *  ================ [Optimize/Expected Approach] Using XOR Operation - O(n) Time and O(1) Space  =====================
+     *      XOR + Right Most Bit diff bucketing concept
      *
      * XOR of a number with itself is 0.        ie x ^ x = 0
      * And XOR of a number with 0 is number.    ie 0 ^ x = x
@@ -131,7 +132,7 @@ class Element2AppearsOnceInPairs {
      *
      *  ------- Concept of bucketing --------
      *	1.	Find one bit where the two unique numbers differ → rightmost difference Bit which is set
-     *	2.	use it to separate the array
+     *	2.	use it to distribute the array in two buckets
      *	3.	XOR cancels duplicates
      *	4.	uniques remain.
      *
@@ -148,13 +149,22 @@ class Element2AppearsOnceInPairs {
      * ----------------------
      *    ^        1 0 1 0 , we can use either of the bit (since both are the difference bit), here we will use rightmost bit here
      *
+     *
+     * storing negative numbers in two’s complement form     => -num  = ~num + 1 (bitwise NOT plus 1)
+     *      num = +5,               0000 0101
+     *      -num, -5, => ~num + 1   1111 1010 + 1 => 1111 1011 // this is -5 in two’s complement
+     *
+     * formula to get the rightmost set bit of a num        => num = num AND -num
+     * It isolates the rightmost set bit (lowest 1-bit) in the integer
+     *                               XOR = XOR AND -XOR
+     *
      *  num     = 1 0 1 0 1 0 0
-     * num-1    = 1 0 1 0 0 1 1
+     * -num     => ~num + 1 => 0 1 0 1 0 1 1 + 1 => 0 1 0 1 1 0 0
+     *
+     *  num     = 1 0 1 0 1 0 0
+     * -num     = 0 1 0 1 1 0 0
      * ----------------------------
-     * &          1 0 1 0 0 0 0     if you observe that everything right to rightmost set bit is turn to 0, and left part is copied
-     *   num    = 1 0 1 0 1 0 0
-     * ----------------------------
-     * ^          0 0 0 0 1 0 0
+     * &          0 0 0 0 1 0 0 => we get the rightmost-set bit
      *
      * Now, coming back to our problem, we will do the same with xorAll
      * Based on this rightmost set bit, number is been collected in 2 diff buckets :
@@ -180,14 +190,14 @@ class Element2AppearsOnceInPairs {
 
         // Step 2: get the rightmost difference Bit which is set in overall XOR
         // variable to get the rightmostDiffBit is set in overall XOR
-        int rightmostDiffBit = (xorAll & (xorAll - 1)) ^ xorAll;
+        int rightmostSetBit = xorAll & -xorAll;
 
         // variables to stores XOR of elements in bucket 1 and 2
         int xor1 = 0, xor2 = 0;
 
         // Step 3: Divide numbers into two buckets based on rightmostDiffBit
         for (int e : arr) {
-            if ((e & rightmostDiffBit) == 0) {
+            if ((e & rightmostSetBit) == 0) {
                 xor1 = xor1 ^ e;
             } else {
                 xor2 = xor2 ^ e;
