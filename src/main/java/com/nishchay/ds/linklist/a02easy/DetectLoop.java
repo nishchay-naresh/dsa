@@ -24,13 +24,11 @@ package com.nishchay.ds.linklist.a02easy;
 import com.nishchay.ds.linklist.Node;
 import com.nishchay.ds.linklist.Utils;
 
-import static com.nishchay.ds.linklist.Utils.printList;
-
 public class DetectLoop {
 
     public static void main(String[] args) {
         Node head = Utils.createList();
-        printList(head);
+        Utils.printList(head);
         System.out.printf("%s%n", isLoopExists(head) ? "Loop found" : "Loop not found");
 
         System.out.println("-----------------------------------");

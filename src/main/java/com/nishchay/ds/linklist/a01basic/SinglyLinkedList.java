@@ -3,7 +3,6 @@ package com.nishchay.ds.linklist.a01basic;
 import com.nishchay.ds.linklist.Node;
 import com.nishchay.ds.linklist.Utils;
 
-import static com.nishchay.ds.linklist.Utils.*;
 
 /*
  * Java class to solve various small problems on a singly linked list
@@ -24,14 +23,14 @@ class SinglyLinkedList {
     }
 
     private static void createPrintListEx() {
-        Node head = createList();
-        printList(head);
+        Node head = Utils.createList();
+        Utils.printList(head);
     }
 
     private static void countNodeEx() {
-        Node head = createList(new int[]{10, 20, 30, 40, 50, 60});
-        printList(head);
-        System.out.println("Length of list :" + getLength(head));
+        Node head = Utils.createList(new int[]{10, 20, 30, 40, 50, 60});
+        Utils.printList(head);
+        System.out.println("Length of list :" + Utils.getLength(head));
     }
 
     // insert in - beginning(before the head), end(after the tail) and middle (random locating, after some node based on value)
@@ -39,13 +38,13 @@ class SinglyLinkedList {
 
         Node head = Utils.createList();
 
-        printList(head);
+        Utils.printList(head);
 
         System.out.println("--------------insert in beginning----------------------");
         Node newNode = new Node(99);
         newNode.next = head;
         head = newNode;
-        printList(head);
+        Utils.printList(head);
 
         System.out.println("--------------insert at end ----------------------");
         head = Utils.createList();
@@ -55,14 +54,14 @@ class SinglyLinkedList {
             return;
         }
 
-        // position p to the last node
-        Node p = head;
-        while (p.next != null)
-            p = p.next;
+        // position tail to the last node
+        Node tail = head;
+        while (tail.next != null)
+            tail = tail.next;
 
-        newNode.next = p.next;
-        p.next = newNode;
-        printList(head);
+        newNode.next = tail.next;
+        tail.next = newNode;
+        Utils.printList(head);
 
         System.out.println("--------------insert in middle : after 40 ----------------------");
         head = Utils.createList();
@@ -71,7 +70,7 @@ class SinglyLinkedList {
         }
         int key = 40;
 
-        // position p to node having value 40
+        // position tail to node having value 40
         Node q = head;
         while (q.data != key && q.next != null) {
             q = q.next;
@@ -83,15 +82,15 @@ class SinglyLinkedList {
         }
         newNode.next = q.next;
         q.next = newNode;
-        printList(head);
+        Utils.printList(head);
     }
 
     private static void deleteEx() {
         Node head = Utils.createList();
-        printList(head);
+        Utils.printList(head);
         System.out.println("-------------- deleting last node ----------------------");
         head = removeLastNode(head);
-        printList(head);
+        Utils.printList(head);
     }
 
     private static Node removeLastNode(Node head) {
@@ -110,35 +109,32 @@ class SinglyLinkedList {
             secondLast = secondLast.next;
         }
 
-        // Delete the last node by making
-        // secondLast point to null
+        // Delete the last node by making secondLast point to null
         secondLast.next = null;
 
         return head;
     }
 
-
     private static void printFromBackEx() {
         Node head = Utils.createList();
-        printList(head);
+        Utils.printList(head);
 
         System.out.println("List printing from back :");
         printFromBack(head);
     }
 
-
     private static void printFrontAndBackEx() {
         // odd list
         Node head = Utils.createList();
-        printList(head);
+        Utils.printList(head);
         System.out.println("Front & Back traversal :");
         printFrontAndBack(head);
 
         System.out.println("\n----------------------------------------");
 
         // even list
-        head = createList(new int[]{10, 20, 30, 40, 50, 60});
-        printList(head);
+        head = Utils.createList(new int[]{10, 20, 30, 40, 50, 60});
+        Utils.printList(head);
         System.out.println("Front & Back traversal :");
         printFrontAndBack(head);
     }
@@ -179,14 +175,14 @@ class SinglyLinkedList {
         head.next.next.next.next = new Node(20);
         head.next.next.next.next.next = new Node(10);
         // head -> 10->20->30->30->20->10 , even length
-        printList(head);
+        Utils.printList(head);
         System.out.println("Current list is palindrome - " + isPalindrome(head));
 
         System.out.println("--------------------------------------");
 
-        head = createList(new int[]{10, 20, 50, 20, 10});
+        head = Utils.createList(new int[]{10, 20, 50, 20, 10});
         // head -> 10->20->50->20->10 , odd length
-        printList(head);
+        Utils.printList(head);
         System.out.println("Current list is palindrome - " + isPalindrome(head));
     }
 
@@ -220,7 +216,7 @@ class SinglyLinkedList {
 
     private static void searchNodeEx() {
         Node head = Utils.createList();
-        printList(head);
+        Utils.printList(head);
 
         int key = 8;
         System.out.printf("Search key = %d, Found at = %d%n", key, searchNode(head, key));
@@ -260,20 +256,24 @@ class SinglyLinkedList {
     *  printing a singly linked list from the end
     * */
     private static void printFromBack(Node head) {
-        Node p, end;
-        // get end node
-        for (p = head; p.next != null; p = p.next) ;
-        end = p;
+        Node tail = head;
+        // get tail node
+        while (tail.next != null){
+            tail = tail.next;
+        }
 
         String delim = "head => ";
-        while (head != end) {
-            System.out.print(delim + end.data);
+        while (tail != head) {
+            System.out.print(delim + tail.data);
             delim = " -> ";
 
-            for (p = head; p.next != end; p = p.next) ;
-            end = p;
+            Node p = head;
+            while ( p.next != tail){
+                p = p.next;
+            }
+            tail = p;
         }
-        System.out.print(delim + end.data);
+        System.out.print(delim + tail.data);
         System.out.println(" -> null");
     }
 }

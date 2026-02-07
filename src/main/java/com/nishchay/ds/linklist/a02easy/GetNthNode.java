@@ -30,9 +30,6 @@ package com.nishchay.ds.linklist.a02easy;
 import com.nishchay.ds.linklist.Node;
 import com.nishchay.ds.linklist.Utils;
 
-import static com.nishchay.ds.linklist.Utils.createList;
-import static com.nishchay.ds.linklist.Utils.printList;
-
 public class GetNthNode {
 
     public static void main(String[] args) {
@@ -59,16 +56,16 @@ public class GetNthNode {
      *
      * */
     private static void nthNodeFromStartEx() {
-        Node head = createList(new int[]{1, 10, 30, 14});
+        Node head = Utils.createList(new int[]{1, 10, 30, 14});
         // head -> 1->10->30->14
-        printList(head);
+        Utils.printList(head);
         int index = 2;
         System.out.println(index + "th node in list - " + nthNodeFromStart(head, index));
 
         System.out.println(".............................");
-        head = createList(new int[]{1, 32, 12, 10, 30, 14, 100});
+        head = Utils.createList(new int[]{1, 32, 12, 10, 30, 14, 100});
         // head -> 1->32->12->10->30->14->100
-        printList(head);
+        Utils.printList(head);
 
         index = 6;
         System.out.println(index + "th node in list - " + nthNodeFromStart(head, index));
@@ -112,7 +109,7 @@ public class GetNthNode {
      * */
     private static void nthNodeFromLastEx() {
         Node head = Utils.createList();
-        printList(head);
+        Utils.printList(head);
 
         int n = 2;
         System.out.printf("%d th node from last = %s%n", n, nthNodeFromLast(head, n));

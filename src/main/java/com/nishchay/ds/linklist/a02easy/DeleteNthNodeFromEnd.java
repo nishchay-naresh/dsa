@@ -30,22 +30,20 @@ package com.nishchay.ds.linklist.a02easy;
  * */
 
 import com.nishchay.ds.linklist.Node;
-
-import static com.nishchay.ds.linklist.Utils.createList;
-import static com.nishchay.ds.linklist.Utils.printList;
+import com.nishchay.ds.linklist.Utils;
 
 public class DeleteNthNodeFromEnd {
 
     public static void main(String[] args) {
-        Node head = createList(new int[]{1, 10, 30, 14});
-        printList(head);
+        Node head = Utils.createList(new int[]{1, 10, 30, 14});
+        Utils.printList(head);
         head = deleteNthNodeFromEnd(head, 2);
-        printList(head);
+        Utils.printList(head);
         System.out.println("-----------------------------------");
-        head = createList(new int[]{1, 2, 3, 4, 5});
-        printList(head);
+        head = Utils.createList(new int[]{1, 2, 3, 4, 5});
+        Utils.printList(head);
         head = deleteNthNodeFromEnd(head, 4);
-        printList(head);
+        Utils.printList(head);
     }
 
     /*

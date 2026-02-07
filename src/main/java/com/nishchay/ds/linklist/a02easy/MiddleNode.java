@@ -15,20 +15,17 @@ package com.nishchay.ds.linklist.a02easy;
 import com.nishchay.ds.linklist.Node;
 import com.nishchay.ds.linklist.Utils;
 
-import static com.nishchay.ds.linklist.Utils.createList;
-import static com.nishchay.ds.linklist.Utils.printList;
-
 public class MiddleNode {
 
     public static void main(String[] args) {
         // odd list
         Node head = Utils.createList();
-        printList(head);
+        Utils.printList(head);
         System.out.println("The middle element is = " + getMiddleNode(head));
 
         // even list
-        head = createList(new int[]{10, 20, 30, 40, 50, 60});
-        printList(head);
+        head = Utils.createList(new int[]{10, 20, 30, 40, 50, 60});
+        Utils.printList(head);
         System.out.println("The middle element is = " + getMiddleNode(head));
     }
 
