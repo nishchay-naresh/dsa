@@ -38,9 +38,11 @@ public class Utils {
     /*
     *   ========= Dummy Node Approach ============
     *  Create a dummy node that is not part of the actual list.
-    *  Build the list starting from dummy.next.
-    *  No special case needed for the first element.
-    *  Code is easier to maintain.
+     *  Build the list starting from dummy.next.
+     *  No special case needed for the first element.
+     *     Making it align with the common steps to add a node, next to head (which is p here)
+     *       create nn, add it next to p, move p
+     *  Code is easier to maintain.
     * */
     public static Node createList(int[] arr) {
         if (arr == null || arr.length == 0) {
@@ -50,8 +52,8 @@ public class Utils {
         Node dummy = new Node(-1);
         Node p = dummy;
         Node newNode;
-        for (int i = 0; i < arr.length; i++) {
-            newNode = new Node(arr[i]);
+        for (int e : arr) {
+            newNode = new Node(e);
             p.next = newNode;
             p = p.next;
         }
@@ -81,12 +83,9 @@ public class Utils {
 
     public static int getLength(Node head) {
         int size = 0;
-        Node curr = head;
-        while (curr != null) {
+        for (Node curr = head; curr != null; curr = curr.next) {
             size++;
-            curr = curr.next;
         }
         return size;
     }
-
 }

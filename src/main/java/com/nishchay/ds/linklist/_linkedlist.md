@@ -49,4 +49,33 @@ MergeTwoSortedList
 RemoveDuplicatesSortedList
 
 
+Dummy Node Approach
+
+    /*
+     *   ========= Dummy Node Approach ============
+     *  Create a dummy node that is not part of the actual list.
+     *  Build the list starting from dummy.next.
+     *  No special case needed for the first element.
+     *     Making it align with the common steps to add a node, next to head (which is p here)
+     *       create nn, add it next to p, move p
+     * */
+
+    public static Node createList(int[] arr) {
+        if (arr == null || arr.length == 0) {
+            return null;
+        }
+
+        Node dummy = new Node(-1);
+        Node p = dummy;
+        Node newNode;
+        for (int i = 0; i < arr.length; i++) {
+            newNode = new Node(arr[i]);
+            p.next = newNode;
+            p = p.next;
+        }
+        return dummy.next;
+    }
+
+
+
 https://www.geeksforgeeks.org/dsa/linked-list-data-structure/
