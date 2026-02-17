@@ -1,4 +1,4 @@
-package com.nishchay.ds.tree.a02travesal;
+package com.nishchay.ds.tree.a02traversal;
 
 
 import com.nishchay.ds.tree.Node;

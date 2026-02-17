@@ -1,38 +1,30 @@
-package com.nishchay.ds.tree.a02travesal.veticle;
+package com.nishchay.ds.tree.a02traversal.vertical;
 
 
 /*
- * ==================== Bottom View of a Binary Tree ======================================
+ * ==================== Top View of a Binary Tree ======================================
  *
- * Given the root of a binary tree, find the bottom view of the tree as a list of node values in order of increasing horizontal distance(HD).
- * The root has HD = 0.
- *
- * The left child decreases HD by 1, and the right child increases HD by 1.
- * If multiple nodes share the same HD and depth, select the node that appears later in level-order traversal.
- * Return the values of these nodes from the leftmost to the rightmost horizontal distance.
+ * Given the root of a binary tree, find the top view of the tree.
+ * The top view of a binary tree represents the set of nodes visible when the tree is viewed from above.
  *
  * Examples:
  *			Input :
- *			        1
+ *			        10
  *			     /     \
- *			    2       3
- *			 /  \         \
- *			4    5         6
+ *			   20       30
+ *			 /  \      /  \
+ *			40  60    90  100
  *
  *
- *          Output: [4, 2, 5, 3, 6]
+ *          Output: [40, 20, 10, 30, 100]
  *          Explanation: The Green colored nodes represents the top view in the below Binary tree.
  *
  *			Input :
- *		        20
- *		       /  \
- *		      8    22
- *		     / \   / \
- *		    5   3 4  25
- *		       / \     \
- *		     10  14    28
- *          Output: [5, 10, 4, 28, 25]
- *          Explanation: Here, 14 and 28 both have horizontal distance = 1 from root, but we are taking 28 in our answer as 28 appears later in the level order traversal.
+ *				      1
+ *				     / \
+ *				   2    3
+ *          Output: [2, 1, 3]
+ *          Explanation: The Green colored nodes represents the top view in the below Binary tree.
  *
  *  https://www.geeksforgeeks.org/dsa/print-nodes-top-view-binary-tree/
  *
@@ -42,7 +34,7 @@ import com.nishchay.ds.tree.Node;
 
 import java.util.*;
 
-public class BottomView {
+public class TopView {
 
     public static void main(String[] args) {
 

@@ -1,4 +1,4 @@
-package com.nishchay.ds.tree.a02travesal.veticle;
+package com.nishchay.ds.tree.a02traversal.vertical;
 
 import com.nishchay.ds.tree.Node;
 
@@ -35,8 +35,8 @@ import java.util.Queue;
  *          Explanation: The below image shows the horizontal distances used to print vertical traversal starting from the leftmost level to the rightmost level
  *
  *
- * vertical : -2, -1, 0, 1, 2
- * level    :  0, 1, 2, 3, 4
+ * Vertical : -2, -1, 0, 1, 2
+ * Level    :  0, 1, 2, 3, 4
  *
  * <vertical, level >
  *
