@@ -85,23 +85,22 @@ public class MinAddMakeExprValid {
      *  Space complexity    : O(n)
      */
     private static int minAddToMakeValidStack(String s) {
-        Stack<Character> st = new Stack<>();
+        Stack<Character> stack = new Stack<>();
 
         char[] arr = s.toCharArray();
-        for (char currChar : arr) {
-            if (st.isEmpty()) {
-                st.push(currChar);           // stack is empty -> push whatever comes
-            } else {
-                if (currChar == '(') {       // opening bracket
-                    st.push(currChar);
-                } else if (currChar == ')' && st.peek() == '(') {
-                    st.pop();                   // matched pair
+        for (char curr : arr) {
+            if (curr == '(') {
+                stack.push(curr);
+            } else { // ')'
+                if (curr == ')' && stack.peek() == '(') {
+                    stack.pop();                           // matched pair
                 } else {
-                    st.push(currChar);       // unmatched ')'
+                    stack.push(curr);                      // unmatched ')'
                 }
             }
         }
-        return st.size();
+        // Remaining characters in stack are unmatched
+        return stack.size();
     }
 
     /*

@@ -93,10 +93,9 @@ public class ValidParentheses {
      */
     public static boolean isBalanced(String exprStr) {
 
-        char[] charArr = exprStr.trim().toCharArray();
         Stack<Character> stack = new Stack<>();
 
-        for (char currChar : charArr) {
+        for (char currChar : exprStr.trim().toCharArray()) {
 
             // Push opening brackets
             if (currChar == '(' || currChar == '{' || currChar == '[') {
@@ -106,12 +105,11 @@ public class ValidParentheses {
                 if (stack.isEmpty()) {
                     return false;
                 }
-
                 char top = stack.pop();
                 if (
                         (currChar == ')' && top != '(') ||
                         (currChar == '}' && top != '{') ||
-                       (currChar == ']' && top != '[')
+                        (currChar == ']' && top != '[')
                 ) {
                     return false;
                 }
@@ -120,5 +118,4 @@ public class ValidParentheses {
         // Stack should be empty at the end
         return stack.empty();
     }
-
 }
