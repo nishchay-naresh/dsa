@@ -22,30 +22,29 @@ import java.util.Stack;
  * 				Output: false
  * 				Explanation: The expression is not balanced because there is a closing ']' before the closing '}'.
  *
- * 				Example 1:
  * 				Input: s = "()"
  * 				Output: true
  *
- * 				Example 2:
  * 				Input: s = "()[]{}"
  * 				Output: true
  *
- * 				Example 3:
  * 				Input: s = "(]"
  * 				Output: false
  *
- * 				Example 4:
  * 				Input: s = "([)]"
  * 				Output: false
  *
- * 				Example 5:
  * 				Input: s = "{[]}"
  * 				Output: true
  *
+ * 				Input: s = "{[()]}"
+ * 				Output: true
+ *
+ * 				Input: s = "{[(])}"
+ * 				Output: false
  *
  * https://www.geeksforgeeks.org/dsa/check-for-balanced-parentheses-in-an-expression/
  * */
-
 public class ValidParentheses {
 
     public static void main(String[] args) {
@@ -60,15 +59,14 @@ public class ValidParentheses {
         System.out.println((isBalanced(s) ? "true" : "false"));
     }
 
-
     /**
      * Boolean doTestsPass()
      * Returns true if all tests pass. Otherwise, returns false.
      */
     public static void doTestsPass() {
 
-        String expr = "{[}], [[()]], ({([])}), [[]), {{[]))]]), {[()]}, [[]]))), (), ()[]{}, (], ([)], {[]}";
-        boolean[] outputs = {false, true, false, false, false, false, false, true, true, false, false, true};
+        String expr = "{[}], [[()]], ({([])}), [[]), {{[]))]]), {[()]}, {[(])}, [[]]))), (), ()[]{}, (], ([)], {[]}";
+        boolean[] outputs = {false, true, true, false, false, true, false, false, true, true, false, false, true};
 
         String[] inputs = expr.split(",");
 
@@ -81,7 +79,6 @@ public class ValidParentheses {
                 System.out.println("Test passed for: " + inputs[i]);
         }
     }
-
 
     /*
      * ================ [Approach 1] Using Stack - O(n) Time and O(n) Space  =====================
@@ -101,25 +98,26 @@ public class ValidParentheses {
 
         for (char currChar : charArr) {
 
+            // Push opening brackets
             if (currChar == '(' || currChar == '{' || currChar == '[') {
                 stack.push(currChar);
-            } else if (currChar == ')' || currChar == '}' || currChar == ']') {
-
-                // No opening bracket
-                if (stack.isEmpty())
-                    return false;
-                char top = stack.peek();
-                if ((currChar == ')' && top != '(') ||
-                        (currChar == '}' && top != '{') ||
-                        (currChar == ']' && top != '[')
-                ) {
+                // Handle closing brackets
+            } else {
+                if (stack.isEmpty()) {
                     return false;
                 }
 
-                // Pop matching opening bracket
-                stack.pop();
+                char top = stack.pop();
+                if (
+                        (currChar == ')' && top != '(') ||
+                        (currChar == '}' && top != '{') ||
+                       (currChar == ']' && top != '[')
+                ) {
+                    return false;
+                }
             }
         }
+        // Stack should be empty at the end
         return stack.empty();
     }
 
