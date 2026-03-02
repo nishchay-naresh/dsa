@@ -155,36 +155,36 @@ class FindRepeatingMissingElementIn1_N {
         // variable to get the rightmostSetBit which is set in overall XOR
         int rightmostSetBit = xorAll &  -xorAll;
 
-        // variables to stores XOR of elements in bucket 1 and 2
-        int xor1 = 0, xor2 = 0;
+        // variables to stores XOR of elements in bucket1 and bucket2
+        int bucket1 = 0, bucket2 = 0;
 
         // Step 3: Divide numbers into two buckets based on rightmostSetBit
         for (int e : arr) {
             if ((e & rightmostSetBit) == 0) {
-                xor1 = xor1 ^ e;
+                bucket1 = bucket1 ^ e;
             } else {
-                xor2 = xor2 ^ e;
+                bucket2 = bucket2 ^ e;
             }
         }
 
         // iterate again 1..n, to find x and y
         for (int i = 1; i <= n; i++) {
             if ((i & rightmostSetBit) == 0)
-                xor1 ^= i;
+                bucket1 ^= i;
             else
-                xor2 ^= i;
+                bucket2 ^= i;
         }
 
-        int repeating = -1, missing = -1;
+        int repeating, missing;
         // determine which is repeating
         for (int num : arr) {
-            if (num == xor1) {
-                repeating = xor1;
-                missing = xor2;
+            if (num == bucket1) {
+                repeating = bucket1;
+                missing = bucket2;
                 return new int[]{repeating, missing};
             }
         }
-        repeating = xor2; missing = xor1;
+        repeating = bucket2; missing = bucket1;
         return new int[]{repeating, missing};
     }
 

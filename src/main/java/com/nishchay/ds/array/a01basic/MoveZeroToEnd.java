@@ -8,7 +8,7 @@ package com.nishchay.ds.array.a01basic;
  * Examples:
  * 		Input: arr[] = [1, 2, 0, 4, 3, 0, 5, 0]
  * 		Output: [1, 2, 4, 3, 5, 0, 0, 0]
- * 		Explanation: There are three 0s that are moved to the end.
+ * 		Explanation: There are three 0's that are moved to the end.
  *
  * 		Input: arr[] = [10, 20, 30]
  * 		Output: [10, 20, 30]
@@ -20,6 +20,7 @@ package com.nishchay.ds.array.a01basic;
  *
  * https://www.geeksforgeeks.org/dsa/move-zeroes-end-array/
  *
+ * Asked in EPAM Systems
  * */
 
 import java.util.Arrays;
@@ -61,7 +62,7 @@ public class MoveZeroToEnd {
      * ================ [Naive/Bruteforce Approach] Using Temporary Array  =====================
      *
      *
-     *  1. Traverse main array copy all non-zeros to a temp array
+     *  1. Traverse main array copy all non-zeros to temp array
      *  2. Fill the remaining cells with zeros in temp array
      *  3. Copy everything from temp array to main array
      *
@@ -94,13 +95,14 @@ public class MoveZeroToEnd {
      *  2. Second Traversal: Fill remaining positions with zeros
      *
      *
-     *  Time Complexity     : O(n) + O(n) = O(2n)
+     *  Time Complexity     : O(n) + O(n) = O(2n) = O(n)
      *  Space complexity    : O(1)
      */
     private static void moveZerosToEnd_2pass(int[] arr) {
         int n = arr.length;
 
         int nonZeroIndex = 0;
+        // Step 1: Move all non-zero elements forward
         for (int i = 0; i < n; i++) {
             if (arr[i] != 0) {
                 arr[nonZeroIndex] = arr[i];
@@ -108,7 +110,7 @@ public class MoveZeroToEnd {
             }
         }
 
-        // Fill remaining positions with zeros
+        //  Step 2: Fill remaining positions with zeros
         while (nonZeroIndex < n) {
             arr[nonZeroIndex] = 0;
             nonZeroIndex++;
@@ -116,57 +118,42 @@ public class MoveZeroToEnd {
     }
 
     /*
-     * ================ [Optimal Approach] 2 pointer approach  =====================
+     * ================ [Optimal Approach] Even Better (Single Pass Swap Version) ====================
      *
-     * We will modifying the last approach only to save the 2nd pass which we have used to fill the zeros
+     *Think of the array as divided into two zones:
+     *                      [ Non-zero zone | Unprocessed zone ]
+     *                           ^
+     *                       insertPos
      *
-     *  1. First Traversal: Shift non-zero elements to the beginning of array using 2 pointer
-     *              1st pointer - to track the non-zeros elements
-     *              2nd pointer - to scan all elements of array
-     *  We will do the same thing as step 1, while shifting rather than simply copying at nonZeroIndex
+     * Everything from insertPos onward is either zero or not yet processed.
+     * Push all non-zero elements to the left side, keeping order.
      *
-     *  We will be swaping it with zero
-     *              1st pointer - we will position it to next zero element after all non-zeros
-     *              when 2nd pointer will have a non-zero, we will swaping it with 1st pointer
-     *              keep increment j only when we do the swapping
-     *              in this way all the zeros will shift to the end of array
+     * If i == insertPos, nothing changes. Doing self-swaps
+     * can improve this by applying
+     *
+     * 	if (arr[i] != 0) {
+     * 	    if (i != insertPos) {
+     * 	        swap
+     * 	    }
+     * 	    insertPos++;
+     * 	}
      *
      *
-     *  Time Complexity     : O(n), as we are traversing the array only once.
-     *                          first loop - O(x) , x - no of non-zeros in array
-     *                          second loop - O(n-x)
-     *                          over all = O(x) + O(n-x) = O(n)
+     *  Time Complexity     : O(n)
      *  Space complexity    : O(1)
      *
      */
     private static void pushZerosToEnd_1pass(int[] arr) {
-        int n = arr.length;
+        int insertPos = 0;
 
-        // position j to then first zero, after all non-zeros from the beginning of array
-        int j = -1;
-        for (int i = 0; i < n; i++) {
-            if (arr[i] == 0) {
-                j = i;
-                break;
-            }
-        }
-        if (j == -1) {
-            // no zeros are there
-            return;
-        }
-        int t;
-        // now look for non-zeros in array, swap it with j
-        for (int i = j + 1; i < n; i++) {
+        // If i == insertPos, nothing changes.
+        for (int i = 0; i < arr.length; i++) {
             if (arr[i] != 0) {
-                // swap(arr[j],arr[i])
-                t = arr[j];
-                arr[j] = arr[i];
-                arr[i] = t;
-                // increment j only when we do the swapping
-                j++;
+                int temp = arr[i];
+                arr[i] = arr[insertPos];
+                arr[insertPos] = temp;
+                insertPos++;
             }
         }
-        // this loop will break when i will cross the boundary
-        // j will still point the - first zero, after all non-zeros from the beginning of array
     }
 }

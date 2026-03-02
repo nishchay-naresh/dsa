@@ -87,10 +87,4 @@ public class P2_04SortArrayOfPN {
         }
     }
 
-
 }
-/*
- * Original array = [2, 4, -6, 8, -5, -10, 6, -11, 3, 9]
- *   Sorted array = [-6, -5, -10, -11, 4, 2, 6, 8, 3, 9]
- *
- * */

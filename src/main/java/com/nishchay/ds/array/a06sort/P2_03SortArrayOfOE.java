@@ -15,7 +15,7 @@ import java.util.Arrays;
  *				Explanation: 0 2 4 are even and 1 3 are odd numbers.
  *				Please note that [2, 0, 4, 3, 1] or [4, 2, 0, 1, 3] are also valid outputs. We only need to make sure that all even elements are before all odd.
  *
- *				Input : arr = {1, 5, 11}
+ *				Input: arr = {1, 5, 11}
  *				Output : arr = {1, 5, 11}
  *				Explanation All numbers are odd
  *
@@ -40,9 +40,10 @@ public class P2_03SortArrayOfOE {
      *
      * Maintain two indexes. Initialize the first index left as 0 and the second index right as n-1.
      *	Do following while left < right
-     *	    a) Keep incrementing index left while there are even at it
-     *	    b) Keep decrementing index right while there are odd at it
-     *	    c) If left < right then exchange arr[left] and arr[right]
+     *	    1. Move left forward for even
+     *	    2. Move right backward for odd
+     *	    3. Swap misplaced values
+     *         arr[left]==even && arr[right] == odd, then swap them
      *
      *  Time Complexity     : O(n)
      *  Space complexity    : O(1)

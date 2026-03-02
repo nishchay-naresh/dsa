@@ -59,14 +59,14 @@ public class MakeElementEqual {
     /*
      * Approach:
      *  1. Find the max element in the array
-     *  2. traverse the array and check for each element
+     *  2. Traverse the array and check for each element
      *      if((max-a[i])%k==0)
      *          noOfOperations for a[i] = operations required can be calculated by finding value of (max - a[i])/k for all elements.
      *          minNoOfOperations = minNoOfOperations + noOfOperations
      *      else
      *          return -1;
      *
-     *  return minNoOfOperations;
+     *  Return minNoOfOperations;
      *
      *
      *  Time Complexity     : O(n)

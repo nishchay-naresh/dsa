@@ -79,6 +79,8 @@ public class Leaders {
      *     If the current element is greater than a maximum, then it's a leader
      *      and update the maximum
      *
+     *     [ 25, 22, 19, 15, 11, 9, 7] -> everyone is a leader
+     *
      *  Time Complexity     : O(n)
      *  Space complexity    : O(1)
      */

@@ -2,6 +2,32 @@ package com.nishchay.ds.array.a06sort;
 
 import java.util.Arrays;
 
+
+/*
+ *===================================== PriorityQueue in Java =====================================
+ *
+ * Sorting Algorithms:
+ * Comparison Based : Selection Sort, Bubble Sort, Insertion Sort, Merge Sort, Quick Sort, Heap Sort, Cycle Sort, 3-way Merge Sort
+ * Non Comparison Based : Counting Sort, Radix Sort, Bucket Sort, Pigeonhole Sort
+ * Hybrid Sorting Algorithms : IntroSort, TimSort
+ *
+ *
+ * Time Complexities of Sorting Algorithms :
+ *      Selection Sort, Bubble Sort	, Insertion Sort	- O(n^2)
+ *      Heap Sort, Quick Sort, Merge Sort 				- O(n log n)
+ *
+ * Arrays.sort() for Primitive Types
+ *  -   Algorithm Used: Dual-Pivot Quicksort
+ *  -   Uses two pivots instead of one
+ *
+ * Arrays.sort() for Object Types
+ *  -   Algorithm Used: TimSort
+ *  -   Hybrid of Merge Sort + Insertion Sort
+ *
+ *
+ * https://www.geeksforgeeks.org/dsa/sorting-algorithms/
+ *
+ * */
 public class AlgorithmsSorting {
 
     public static void main(String[] args) {
@@ -52,7 +78,8 @@ public class AlgorithmsSorting {
                 arr[jmin] = arr[i];
                 arr[i] = t;
             }
-
         }
     }
+
+
 }

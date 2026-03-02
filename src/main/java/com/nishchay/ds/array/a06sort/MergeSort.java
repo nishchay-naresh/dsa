@@ -21,7 +21,7 @@ public class MergeSort {
      * It solves a big problem by breaking it into smaller problems, solving those, and then combining the results.
      *
      * 1. Divide
-     * 	If the array has 0 or 1 element → it’s already sorted.
+     * 	If the array has 0 or 1 elements → it’s already sorted.
      * 	Otherwise:
      * 	Split the array into two halves:
      * 		Left half
@@ -65,7 +65,7 @@ public class MergeSort {
         // Initial indexes of first and second subarrays
         int i = 0, j = 0;
 
-        // Initial index of merged subarry array
+        // Initial index of a merged subarray
         int k = l;
         while (i < n1 && j < n2) {
             if (L[i] <= R[j]) {

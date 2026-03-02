@@ -17,7 +17,7 @@ package com.nishchay.ds.array.a01basic;
  * https://www.geeksforgeeks.org/dsa/longest-sub-array-of-prime-numbers-using-segmented-sieve/
  * */
 
-import static com.nishchay.math.a01easy.CheckPrime.isPrime;
+import com.nishchay.math.a01easy.CheckPrime;
 
 public class ContiguousPrimeInArray {
 
@@ -43,26 +43,26 @@ public class ContiguousPrimeInArray {
      * Algorithm:
      *      Create a sieve to check whether an element is prime or not in O(1).
      *      Traverse the array with two variables named current_max and max_so_far.
-     *      If a prime number is found then increment current_max and compare it with max_so_far.
+     *      If a prime number is found, then increment current_max and compare it with max_so_far.
      *      If current_max is greater than max_so_far, then assign max_so_far with current_max
-     *      Every time a non-prime element is found reset current_max to 0.
+     *      Every time a non-prime element is found to reset current_max to 0.
      *
      *  Time Complexity     : O(n)
      *  Space complexity    : O(1)
      *
      * */
     private static int primeSubarrayCount(int[] array) {
-        int maxCountSoFar, currentCount;
+        int maxCount, currCount;
 
-        maxCountSoFar = currentCount = 0;
+        maxCount = currCount = 0;
         for (int curr : array) {
-            if (isPrime(curr)) {
-                currentCount++;
-                maxCountSoFar = Math.max(currentCount, maxCountSoFar);
+            if (CheckPrime.isPrime(curr)) {
+                currCount++;
+                maxCount = Math.max(currCount, maxCount);
             } else {
-                currentCount = 0;
+                currCount = 0;
             }
         }
-        return maxCountSoFar;
+        return maxCount;
     }
 }

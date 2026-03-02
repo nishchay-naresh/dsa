@@ -1,4 +1,4 @@
-package com.nishchay.ds.array.a05mediaum;
+package com.nishchay.ds.array.a10medium;
 
 import java.util.Arrays;
 
@@ -48,42 +48,38 @@ public class MergeTwoSortedArray {
      *   compare each element, copy smaller element to result array
      *   then copy the remaining array to result array
      *
+     * How merging works:
+     * 	-	Compare the first elements of sorted array
+     * 	-	Pick the smaller one and put it into the result.
+     * 	-	Continue comparing until one side is fully consumed.
+     * 	-	Append the remaining elements.
+     *
+     *
      *  Time Complexity     : O(n + m)
      *  Space complexity    : O(n + m)
      */
-    private static int[] mergeSortedArray(int[] source1, int[] source2) {
+    public static int[] mergeSortedArray(int[] source1, int[] source2) {
 
-        int i, j, k;
         final int n = source1.length;
         final int m = source2.length;
         int[] result = new int[n + m];
 
-        i = j = k = 0;
+        int i = 0, j = 0, k = 0;
         // merge elements in sorted order
         while (i < n && j < m) {
-
             if (source1[i] < source2[j]) {
-                result[k] = source1[i];
-                i++;
+                result[k++] = source1[i++];
             } else {
-                result[k] = source2[j];
-                j++;
+                result[k++] = source2[j++];
             }
-            k++;
         }
 
-        // copy remaining elements from source1
+        // Copy remaining elements
         while (i < n) {
-            result[k] = source1[i];
-            k++;
-            i++;
+            result[k++] = source1[i++];
         }
-
-        // copy remaining elements from source2
         while (j < m) {
-            result[k] = source2[j];
-            k++;
-            j++;
+            result[k++] = source2[j++];
         }
         return result;
     }

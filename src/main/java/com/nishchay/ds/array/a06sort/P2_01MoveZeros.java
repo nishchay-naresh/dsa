@@ -110,7 +110,8 @@ public class P2_01MoveZeros {
         for (int i = 0; i < n; i++) {
             // If the element is non-zero, Shift them to the beginning of array
             if (arr[i] != 0) {
-                arr[writerIndex++] = arr[i];
+                arr[writerIndex] = arr[i];
+                writerIndex++;
             }
         }
 

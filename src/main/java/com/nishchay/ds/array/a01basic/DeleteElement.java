@@ -59,8 +59,8 @@ public class DeleteElement {
             }
         }
 
-        System.out.print("After Deletion :" );
-        for(int i = 0; i < array.length-count; i++){
+        System.out.print("After Deletion :");
+        for (int i = 0; i < array.length - count; i++) {
             System.out.print(" " + array[i]);
         }
         System.out.println();
