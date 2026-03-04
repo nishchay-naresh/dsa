@@ -9,11 +9,11 @@ import java.util.Arrays;
  * There are no duplicates in the array. One of the integers is missing in the array. Find the missing integer.
  *
  * Examples:
- *				Input : arr[] = [1, 2, 3, 4, 6, 7, 8]
+ *				Input: arr[] = [1, 2, 3, 4, 6, 7, 8]
  *				Output : 5
  *				Explanation: The missing integer in the above array is 5
  *
- *				Input : arr[] = [1, 2, 3, 4, 5, 6, 8, 9]
+ *				Input: arr[] = [1, 2, 3, 4, 5, 6, 8, 9]
  *				Output : 7
  *				Explanation: The missing integer in the above array is 7
  *
@@ -39,7 +39,7 @@ class Find03_OnlyMissingNumberIn1_NSorted {
     /*
      * If you analyze the problem statement, you will get two things:
      *   -   only one number is missing
-     *   -   data is sorted in array
+     *   -   data is sorted in an array
      *
      * just follow the first stmt : since array starting index is 0, starting Number is 1, so arr[i] == i+1
      * So our problem reduces to search in an array to find the first cell, whose value is not the same as its index + 1
@@ -80,10 +80,10 @@ class Find03_OnlyMissingNumberIn1_NSorted {
      * condition to get the - first instance of arr[i] != i+1
      *   if (arr[mid] != mid+1 && arr[mid - 1] == mid)
      *
-     * partition breaking / left & right logic :
+     * partition breaking / left and right logic :
      *
      *			if (arr[mid] != mid+1){
-     *                  // index sequencing is not correct -  go left
+     *                  // index sequencing is not correct - go left
      *                right = mid - 1;
      *            } else {
      *                  // index sequencing is correct -  go right
@@ -132,16 +132,14 @@ class Find03_OnlyMissingNumberIn1_NSorted {
         int n = arr.length + 1;
         int totalSum = n * (n + 1) / 2;
 
-        // Calculate sum of all elements in the given array
+        // Calculate a sum of all elements in the given array
         int arraySum = 0;
         for (int num : arr) {
             arraySum += num;
         }
 
         // Subtract and return the total sum with the sum of all elements in the array
-        int missingNumber = totalSum - arraySum;
-
-        return missingNumber;
+        return totalSum - arraySum;
     }
 
 

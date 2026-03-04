@@ -14,7 +14,7 @@ package com.nishchay.ds.array.a04nelement;
  *
  * 			Input: arr[] = [1, 2, 3, 5]
  * 			Output: 4
- * 			Explanation: Here the size of the array is 4, so the range will be [1, 5]. The missing number between 1 to 5 is 4
+ * 			Explanation: Here the size of the array is 4, so the range will be [1, 5]. The missing number between 1 and 5 is 4
  *
  *
  * https://www.geeksforgeeks.org/dsa/find-the-missing-number/
@@ -50,7 +50,7 @@ class Find04_OnlyMissingNumberIn1_NUnSorted {
     private static int getMissingNumber(int[] arr) {
         int n = arr.length + 1;
 
-        // Iterate from 1 to n and check - if the current number is present in array
+        // Iterate from 1 to n and check - if the current number is present in an array
         for (int i = 1; i <= n; i++) {
             boolean found = false;
             for (int j = 0; j < n - 1; j++) {
@@ -77,18 +77,18 @@ class Find04_OnlyMissingNumberIn1_NUnSorted {
     private static int getMissingNoHashMap(int[] arr) {
 
         int n = arr.length;
-        // n + 1, because n nos are there in array and 1 is missing, so n+1
+        // n + 1, because n nos are there in an array and 1 is missing, so n+1
         // again we are not using index 0, so n + 2
         int freqArraySize = n + 2;
         boolean[] freq = new boolean[freqArraySize];// all cells are initialized with false
 
-        for (int i = 0; i < n; i++) {
-            freq[arr[i]] = true;
+        for (int curr : arr) {
+            freq[curr] = true;
         }
 
         int res = -1;
         for (int i = 1; i < freqArraySize; i++) {
-            if (freq[i] == false)
+            if (!freq[i])
                 res = i;
         }
         return res;
@@ -112,8 +112,8 @@ class Find04_OnlyMissingNumberIn1_NUnSorted {
         long expSum = (long) (n + 1) * (n + 2) / 2; // sum of First N Numbers
 
         long sum = 0;
-        for (int i = 0; i < n; i++) {
-            sum += arr[i];
+        for (int curr : arr) {
+            sum += curr;
         }
 
         // Return the missing number
@@ -134,15 +134,15 @@ class Find04_OnlyMissingNumberIn1_NUnSorted {
      * This means that the result of XOR of first n natural numbers with all the array elements will give the missing number.
      * (XOR of all array elements) XOR (XOR of (1 to n+1) natural nos) = missing no
      *
-     * Time Complexity  : O(n)
-     * Space Complexity : O(1)
+     *  Time Complexity  : O(n)
+     *  Space Complexity : O(1)
      * */
     private static int getMissingNoXOR_2pass(int[] arr) {
 
         int n = arr.length;
         int x1 = 0;
         // For xor of all the elements from 1 to n+1
-        // n+1, bcus n nos are there in array and 1 is missing so n+1
+        // n+1, because n nos are there in an array and 1 is missing so n+1
         for (int i = 1; i <= n + 1; i++)  // loop : 1 - n+1
             x1 = x1 ^ i;
 
@@ -158,9 +158,9 @@ class Find04_OnlyMissingNumberIn1_NUnSorted {
     /*
      *  ================ Further optimizing previous code to single pass - O(n) Time and O(1) Space  =====================
      *
-     * In the above code, there are two loop, we can combine above two loop to one
-     *      natural number loop,    loop1 : 1 - n+1
-     *      array traversal loop,   loop2 : 0 - n-1
+     * In the above code, there are two loops; we can combine above two loops to one
+     *      natural number loop,        loop1: 1 - n+1
+     *      array traversal loop,       loop2: 0 - n-1
      *
      * we find the relationship between the above two loops can be combined like this:
      *          for (int i = 0; i < n; i++) {    // loop : 0 - n-1

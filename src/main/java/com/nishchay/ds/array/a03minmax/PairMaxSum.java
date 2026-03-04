@@ -133,7 +133,7 @@ public class PairMaxSum {
             secondLargest = arr[0];
         }
 
-        // Traverse remaining array and find first and second largest element
+        // Traverse the remaining array and find the first and second largest element
         for (int i = 2; i < n; i++) {
             if (arr[i] > largest) {
                 secondLargest = largest;

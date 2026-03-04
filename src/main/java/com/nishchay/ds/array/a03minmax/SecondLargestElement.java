@@ -33,26 +33,24 @@ public class SecondLargestElement {
         int[] arr;
 
         arr = new int[]{7, 2, 1, 7, 4, 5};
-        System.out.println("Second largest element = " + getSecondLargest(arr));
-        System.out.println("Second largest element = " + getSecondLargest_2pass(arr));
-        System.out.println("Second largest element = " + getSecondLargest_1pass(arr));
+        System.out.println("Array = "+ Arrays.toString(arr) + ", Second largest element = " + getSecondLargest(arr));
+        System.out.println("Array = "+ Arrays.toString(arr) + ", Second largest element = " + getSecondLargest_2pass(arr));
 
-        System.out.print("----------------------------------------------------");
+        System.out.println("----------------------------------------------------");
         arr = new int[]{12, 35, 1, 10, 34, 1};
-        System.out.printf("\n%s array is having second largest element = %d", Arrays.toString(arr), getSecondLargest_1pass(arr));
+        System.out.println("Array = "+ Arrays.toString(arr) + ", Second largest element = " + getSecondLargest_1pass(arr));
 
         arr = new int[]{10, 5, 10};
-        System.out.printf("\n%s array is having second largest element = %d", Arrays.toString(arr), getSecondLargest_1pass(arr));
+        System.out.println("Array = "+ Arrays.toString(arr) + ", Second largest element = " + getSecondLargest_1pass(arr));
 
         arr = new int[]{10, 10, 10};
-        System.out.printf("\n%s array is having second largest element = %d", Arrays.toString(arr), getSecondLargest_1pass(arr));
+        System.out.println("Array = "+ Arrays.toString(arr) + ", Second largest element = " +  getSecondLargest_1pass(arr));
 
         arr = new int[]{100};
-        System.out.printf("\n%s array is having second largest element = %d", Arrays.toString(arr), getSecondLargest_1pass(arr));
+        System.out.println("Array = "+ Arrays.toString(arr) + ", Second largest element = " +  getSecondLargest_1pass(arr));
 
         arr = new int[]{};
-        System.out.printf("\n%s array is having second largest element = %d", Arrays.toString(arr), getSecondLargest_1pass(arr));
-
+        System.out.println("Array = "+ Arrays.toString(arr) + ", Second largest element = " + getSecondLargest_1pass(arr));
     }
 
     /*
@@ -118,28 +116,27 @@ public class SecondLargestElement {
      * */
     private static int getSecondLargest_1pass(int[] arr) {
 
-        int length = arr.length;
-        int largest, secondLargest;
-
-        if (length < 2) {
-            System.out.println("Invalid Input ");
+        int n = arr.length;
+        if (n < 2)
             return -1;
+
+        int largest, secondLargest;
+        if (arr[0] > arr[1]) {
+            largest = arr[0];
+            secondLargest = arr[1];
+        } else {
+            largest = arr[1];
+            secondLargest = arr[0];
         }
 
-        largest = arr[0];
-        secondLargest = Integer.MAX_VALUE;
-        for (int i = 1; i < length - 1; i++) {
-            // if current element is smaller than largest then update both largest and secondLargest
+        // Traverse the remaining array and find the first and second largest element
+        for (int i = 2; i < n; i++) {
             if (arr[i] > largest) {
                 secondLargest = largest;
                 largest = arr[i];
-            }
-            // if arr[i] is in between largest and secondLargest then update secondLargest
-            else if (arr[i] > secondLargest && arr[i] != largest)
+            } else if (arr[i] > secondLargest && arr[i] != largest) {
                 secondLargest = arr[i];
-        }
-        if (secondLargest == Integer.MAX_VALUE) {
-            return -1;
+            }
         }
         return secondLargest;
     }

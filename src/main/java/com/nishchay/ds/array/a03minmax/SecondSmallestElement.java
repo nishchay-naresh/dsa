@@ -8,17 +8,16 @@ public class SecondSmallestElement {
     public static void main(String[] args) {
 
         int[] arr = {7, 2, 1, 7, 4, 5};
-        System.out.printf("\n%s array is having second smallest element = %d", Arrays.toString(arr), getSecondSmallest_1pass(arr));
+        System.out.println("Array = "+ Arrays.toString(arr) + ", Second largest element = " + getSecondSmallest_1pass(arr));
 
         arr = new int[]{12, 35, 1, 10, 34, 1};
-        System.out.printf("\n%s array is having second smallest element = %d", Arrays.toString(arr), getSecondSmallest_1pass(arr));
+        System.out.println("Array = "+ Arrays.toString(arr) + ", Second largest element = " + getSecondSmallest_1pass(arr));
 
         arr = new int[]{10, 5, 10};
-        System.out.printf("\n%s array is having second smallest element = %d", Arrays.toString(arr), getSecondSmallest_1pass(arr));
+        System.out.println("Array = "+ Arrays.toString(arr) + ", Second largest element = " + getSecondSmallest_1pass(arr));
 
         arr = new int[]{10, 10, 10};
-        System.out.printf("\n%s array is having second smallest element = %d", Arrays.toString(arr), getSecondSmallest_1pass(arr));
-
+        System.out.println("Array = "+ Arrays.toString(arr) + ", Second largest element = " + getSecondSmallest_1pass(arr));
     }
 
     /*
@@ -26,34 +25,34 @@ public class SecondSmallestElement {
      *  Using the same logic of finding the smallest element in an array
      *      using this fact  : if the smallest is getting updated during the scan, its previous value become second smallest
      *
-     *   Time Complexity  : n + n = 2n = O(n)
-     *   Space Complexity : 1
-     *
+     *   Time Complexity  : O(n)
+     *   Space Complexity : O(1)
      * */
     private static int getSecondSmallest_1pass(int[] arr) {
 
-        int length = arr.length;
-        int smallest, secondSmallest;
-
-        if (length < 2) {
+        int n = arr.length;
+        if (n < 2){
             System.out.println("Invalid Input ");
             return -1;
         }
-        smallest = arr[0];
-        secondSmallest = Integer.MAX_VALUE;
-        for (int i = 1; i < length - 1; i++) {
-            // if current element is smaller than smallest then update both smallest and secondSmallest
+
+        int smallest, secondSmallest;
+        if (arr[0] < arr[1]) {
+            smallest = arr[0];
+            secondSmallest = arr[1];
+        } else {
+            smallest = arr[1];
+            secondSmallest = arr[0];
+        }
+
+        for (int i = 2; i < n; i++) {
             if (arr[i] < smallest) {
                 secondSmallest = smallest;
                 smallest = arr[i];
-            }
-            // if arr[i] is in between smallest and secondSmallest then update secondSmallest
-            else if (arr[i] < secondSmallest && arr[i] != smallest)
+            } else if (arr[i] < secondSmallest && arr[i] != smallest)
                 secondSmallest = arr[i];
-        }
-        if (secondSmallest == Integer.MAX_VALUE) {
-            return -1;
         }
         return secondSmallest;
     }
+
 }

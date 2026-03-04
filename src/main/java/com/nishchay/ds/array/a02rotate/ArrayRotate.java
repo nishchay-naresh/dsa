@@ -39,7 +39,6 @@ public class ArrayRotate {
     }
 
     // Left rotate an array by one position
-
     static void leftRotate(int[] arr) {
         int n = arr.length;
 
@@ -57,8 +56,8 @@ public class ArrayRotate {
 
         // move back ward - right to left
         int last = arr[n - 1];
-        for (int i = n - 1; i > 0; i--) {
-            arr[i] = arr[i-1];
+        for (int i = n - 2; i >= 0; i--) {
+            arr[i+1] = arr[i];
         }
         arr[0] = last;
     }

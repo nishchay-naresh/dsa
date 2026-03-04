@@ -1,11 +1,7 @@
 package com.nishchay.ds.array.a04nelement;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
+import java.util.*;
+
 import com.nishchay.ds.array.ArrayUtils;
 
 /*
@@ -31,6 +27,20 @@ import com.nishchay.ds.array.ArrayUtils;
  * ans: [2, 6]
  * The solution must be in JAVA
  *
+ * ========================== Problem Summary =================================
+ *
+ *  Arrays nums[i] ∈ [1, n]
+ *	Array size = n
+ *
+ *	Some numbers appear twice, some once.
+ *	You must return numbers in range [1, n] that are missing.
+ *
+ *	Example
+ *	Input: [4,3,2,7,8,2,3,1]
+ *	Range: 1 -> 8
+ *	Missing: 5, 6
+ *
+ *
  * */
 public class Find05_ManyMissingNumbersIn1_NUnSorted {
 
@@ -41,43 +51,89 @@ public class Find05_ManyMissingNumbersIn1_NUnSorted {
 
     }
 
-
     private static void findDisappearedNumbersEx() {
 
         int[] nums;
 
         nums = new int[]{4, 3, 2, 7, 8, 2, 3, 1};
-        System.out.println("Missing numbers = " + findDisappearedNumbers(nums)); // [5, 6]
+        System.out.println("findDisappearedNumbers(nums) = " + findDisappearedNumbers(nums)); // [5, 6]
+        System.out.println("findMissingNumbers(nums) = " + findMissingNumbers(nums)); // [5, 6]
 
         nums = new int[]{1, 1};
-        System.out.println("Missing numbers = " + findDisappearedNumbers(nums)); // [2]
+        System.out.println("findDisappearedNumbers(nums) = " + findDisappearedNumbers(nums)); // [2]
+        System.out.println("findMissingNumbers(nums) = " + findMissingNumbers(nums)); // [2]
 
     }
 
-    // Constrain is here is that - to total no of element  = N ( max value of array)
+    /*
+     *  ================ Using Extra Space – Simpler but Not Optimal - O(n) Time and O(n) Space  =====================
+     *  Using Extra Space – using a boolean array to mark visited
+     *
+     * Creating a boolean array of size+1, using each element from the main array as index here to mark them as visited
+     *
+     * Time Complexity  : O(n)
+     * Space Complexity : O(n)
+     * */
     private static List<Integer> findDisappearedNumbers(int[] nums) {
-
-        List<Integer> missingNums = new ArrayList<>();
-        Set<Integer> set = new HashSet<>();
         int n = nums.length;
+        boolean[] visited = new boolean[n + 1];
 
-        // adding them in set will remove the duplicates, set will have 1 to N
-        for (int curr : nums )
-            set.add(curr);
+        for (int num : nums) {
+            visited[num] = true;
+        }
 
-        for (int i = 1; i <= n; i++)
-            if (!set.contains(i))
-                missingNums.add(i);
+        List<Integer> result = new ArrayList<>();
+        for (int i = 1; i <= n; i++) {
+            if (!visited[i])
+                result.add(i);
+        }
+        return result;
+    }
 
-        return missingNums;
+    /*
+     *  ================ [Optimize/Expected Approach] Using XOR Operation - O(n) Time and O(1) Space  =====================
+     *	----------- Key Insight ------------
+     *
+     *	Values are in range 1 to n.
+     *	That means: Value ↔ Index mapping exists
+     *	So we can use:Index = value - 1
+     *	This is the "Using Elements as Indexes" trick.
+     *
+     *	Algo:
+     *		1.	For each number x, go to index x-1
+     *		2.	Mark that index as negative (visited)
+     *		3.	After marking, any index that remains positive → number missing
+     *
+     *  Time Complexity  : O(n) + O(n) = O(2n) = O(n)
+     *  Space Complexity : O(1)
+     * */
+    private static List<Integer> findMissingNumbers(int[] nums) {
+        List<Integer> result = new ArrayList<>();
 
+        System.out.println("nums = " + Arrays.toString(nums));
+
+        // Step 1: Mark visited numbers
+        for (int i = 0; i < nums.length; i++) {
+            int index = Math.abs(nums[i]) - 1;
+            if (nums[index] > 0) {
+                nums[index] = -nums[index];
+            }
+        }
+
+        System.out.println("nums = " + Arrays.toString(nums));
+        // Step 2: Collect missing numbers
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[i] > 0) {
+                result.add(i + 1);
+            }
+        }
+        return result;
     }
 
     private static void findDisappearedNumbersWithUpperElementEx() {
 
         int[] nums = new int[]{1, 5, 3, 4, 7};
         System.out.println("Missing numbers = " + findDisappearedNumbersWithUpperElement(nums)); // [2, 6]
-        System.out.println("Missing numbers = " + findDisappearedNumbersWithUpperElement_stream(nums)); // [2, 6]
 
     }
 
@@ -88,7 +144,7 @@ public class Find05_ManyMissingNumbersIn1_NUnSorted {
      * The solution must be in JAVA
      *
      *  duplicates are not here, so hashSet is not required
-    * */
+     * */
     private static List<Integer> findDisappearedNumbersWithUpperElement(int[] arr) {
         List<Integer> missingNums = new ArrayList<>();
 
@@ -100,11 +156,4 @@ public class Find05_ManyMissingNumbersIn1_NUnSorted {
         return missingNums;
     }
 
-    private static List<Integer> findDisappearedNumbersWithUpperElement_stream(int[] arr) {
-        return IntStream.rangeClosed(1, ArrayUtils.findMax(arr))
-                        .filter(e -> -1 == ArrayUtils.linearSearch(arr,e))
-                        .boxed()
-                        .collect(Collectors.toList());
-
-    }
 }

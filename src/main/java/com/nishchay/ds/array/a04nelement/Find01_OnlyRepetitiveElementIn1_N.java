@@ -32,13 +32,13 @@ class Find01_OnlyRepetitiveElementIn1_N {
     public static void main(String[] args) {
 
         int[][] input2D = {
-                {1, 2, 3, 2, 4},                        // n-5, dup-2, missing-5
-                {9, 8, 2, 6, 1, 8, 5, 3, 4, 7},         // n-10, dup-8, missing-10
-                {1, 2, 3, 1, 5, 4},                     // n-6, dup-1, missing-6
-                {1, 4, 3, 3, 2, 6},                     // n-6, dup-3, missing-5
-                {9, 8, 2, 6, 1, 8, 5, 3, 4, 7},         // n-10, dup-8, missing-10
-                {1, 2, 3, 1, 5, 4},                     // n-6, dup-1, missing-6
-                {1, 5, 1, 2, 3, 4},                     // n-6, dup-1, missing-6
+                {1, 2, 3, 2, 4},                        // n-5, duplicate-2
+                {9, 8, 2, 6, 1, 8, 5, 3, 4, 7},         // n-10, duplicate-8
+                {1, 2, 3, 1, 5, 4},                     // n-6, duplicate-1
+                {1, 4, 3, 3, 2, 6},                     // n-6, duplicate-3
+                {9, 8, 2, 6, 1, 8, 5, 3, 4, 7},         // n-10, duplicate-8
+                {1, 2, 3, 1, 5, 4},                     // n-6, duplicate-1
+                {1, 5, 1, 2, 3, 4},                     // n-6, duplicate-1
         };
 
         int[] outputs = {2, 8, 1, 3, 8, 1, 1, 3};
@@ -76,7 +76,7 @@ class Find01_OnlyRepetitiveElementIn1_N {
      *  Logic : Using 2 nested loop
      *
      *  The idea is to use two nested loops.
-     *  The outer loop traverses through all elements and the inner loop check if the element picked by the outer loop appears anywhere else.
+     *  The outer loop traverses through all elements and the inner loop checks if the element picked by the outer loop appears anywhere else.
      *  Time Complexity     : O(n^2)
      *  Space complexity    : O(1)
      *
@@ -145,7 +145,7 @@ class Find01_OnlyRepetitiveElementIn1_N {
      *
      * As we know - sum of first n natural numbers is = (n * (n + 1)) / 2, we will use this
      *
-     * We compute sum of array elements and subtract a natural number sum from it to find the duplicate element.
+     * We compute a sum of array elements and subtract a natural number sum from it to find the duplicate element.
      * Logic:
      *          sumOfN = (n * (n + 1)) / 2;
      *          ArraySum = sum of all elements in arr (sumOfN + one duplicate)
@@ -210,7 +210,7 @@ class Find01_OnlyRepetitiveElementIn1_N {
      * Logic : As there are only positive numbers,
      *  so visit the index equal to the current element and make it negative.
      *  If an index value is already negative,
-     *  then it means that current element is repeated.
+     *  then it means that the current element is repeated.
      *
      *  PS - if we are sure that array is only having +ve nos, then we can remove Math.abs()) from all places
      *

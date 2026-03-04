@@ -3,17 +3,17 @@ package com.nishchay.ds.array.a03minmax;
 /*
  *	=========== Third largest element in an array of distinct elements ===========
  *
- * Given an array of n integers, find the third largest element. All the elements in the array are distinct integers.
+ * Given an array of n integers, find the third-largest element. All the elements in the array are distinct integers.
  *
  *	Example 1:
  *		Input: arr[] = {1, 14, 2, 16, 10, 20}
  *		Output: The third Largest element is 14
- *		Explanation: Largest element is 20, second largest element is 16 and third largest element is 14
+ *		Explanation: Largest element is 20, the second-largest element is 16 and the third-largest element is 14
  *
  *	Example 2:
  *		Input: arr[] = {19, -10, 20, 14, 2, 16, 10}
  *		Output: The third Largest element is 16
- *		Explanation: Largest element is 20, second largest element is 19 and third largest element is 16
+ *		Explanation: Largest element is 20, the second-largest element is 19 and the third-largest element is 16
  *
  * https://www.geeksforgeeks.org/third-largest-element-array-distinct-elements/
  *
@@ -37,12 +37,12 @@ public class ThirdLargestElement {
     /*
      * ============ [Better Approach] Three Pass Approach ===============
      *  The approach is to traverse the array thrice.
-     *      First, iterate through the array and find maximum.
+     *      First, iterate through the array and find the maximum.
      *      Store this as first maximum along with its index.
      *      Now traverse the whole array finding the second max, excluding the maximum element.
-     *      Finally traverse the array the third time and find the third largest element i.e., excluding the maximum and second maximum.
+     *      Finally, traverse the array the third time and find the third-largest element i.e., excluding the maximum and second maximum.
      *
-     *   Time Complexity  : n + n + n = 3n = O(n)
+     *   Time Complexity: n + n + n = 3n = O(n)
      *   Space Complexity : 1
      *
      * */
@@ -55,7 +55,7 @@ public class ThirdLargestElement {
             return -1;
         }
 
-        // Find first largest element
+        // Find the first largest element
         int first = arr[0];
         for (int i = 1; i < length; i++) {
             if (arr[i] > first) {
@@ -64,7 +64,7 @@ public class ThirdLargestElement {
 
         }
 
-        // Find second largest element
+        // Find the second largest element
         int second = Integer.MIN_VALUE;
         for (int i = 0; i < length; i++) {
             if (arr[i] > second && arr[i] < first) {
@@ -72,7 +72,7 @@ public class ThirdLargestElement {
             }
         }
 
-        // Find third largest element
+        // Find the third-largest element
         int third = Integer.MIN_VALUE;
         for (int i = 0; i < length; i++) {
             if (arr[i] > third && arr[i] < second) {
