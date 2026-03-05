@@ -118,8 +118,8 @@ class Element1AppearsOnceInPairs {
 
     /*
      *  ================ [Optimize/Expected Approach] Using XOR Operation - O(n) Time and O(1) Space  =====================
-     * XOR of a number with itself is 0 .       I.e. x ^ x = 0
-     * And XOR of a number with 0 is number.    I.e. 0 ^ x = x
+     * XOR of a number with itself is 0 .       i.e. x ^ x = 0
+     * And XOR of a number with 0 is number.    i.e. 0 ^ x = x
      *
      *      array : 1, 2, 3, 4, 5
      *      array : 1, 2,    4, 5     XOR

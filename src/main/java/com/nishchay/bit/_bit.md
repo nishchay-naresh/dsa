@@ -40,7 +40,7 @@ The AND operator (&) can quickly check if a number is odd or even. (x & 1) is no
     4  -> 100 & 001 = 0 -> not odd, means even
     Now doing  (n & 1), will give me 0/1, which I can use to decide odd or even
 
-**Negative representation of a number in binary:**
+**Negative representation of a number in binary: x = ~x + 1 **
 
     => In Java (and most languages), negative numbers are stored in two’s complement form.
     => -num  = ~num + 1 (bitwise NOT plus 1)
@@ -58,10 +58,10 @@ The AND operator (&) can quickly check if a number is odd or even. (x & 1) is no
         num     = 1 0 1 0 1 0 0
        -num     = 0 1 0 1 1 0 0
        ----------------------------
-       &          0 0 0 0 1 0 0 => we get the rightmost-set bit
+       &          0 0 0 0 1 0 0 => we get the rightmost-set bit , everything else is set to 0
 
     n = +12 	            ->	 1100
-    n = -12 =  ~n + 1       ->	 0011 + 1   ->  0100
+    n = -12 =  ~n + 1           ->	 0011 + 1   ->  0100
 
     n = +12     ->	 1100
     n = -12     ->	 0100

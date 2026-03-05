@@ -7,7 +7,7 @@ import java.util.*;
  *  ======================= Element Appears Once In Pairs - 2 such elements are there ====================
  *
  * Given an array arr[] containing 2*n + 2 positive numbers,
- * Out of which 2*n numbers exist in pairs whereas the other two number occur exactly once and are distinct.
+ * Out of which 2*n numbers exist in pairs, whereas the other two numbers occur exactly once and are distinct.
  * The task is to find the other two numbers.
  *
  * Note: Return the numbers in increasing order.
@@ -62,7 +62,7 @@ class Element2AppearsOnceInPairs {
 
         int i = 0;
         while (i < n) {
-            // If element is present twice, skip both
+            // If an element is present twice, skip both
             if (i + 1 < n && arr[i + 1] == arr[i]) {
                 i += 2;
             } else {
@@ -72,7 +72,7 @@ class Element2AppearsOnceInPairs {
             }
         }
 
-        // Copy valid elements to a properly-sized array
+        // Copy valid elements to a properly sized array
         int[] result = new int[idx];
         for (int j = 0; j < idx; j++) {
             result[j] = temp[j];
@@ -125,8 +125,8 @@ class Element2AppearsOnceInPairs {
      * XOR of a number with itself is 0.        ie x ^ x = 0
      * And XOR of a number with 0 is number.    ie 0 ^ x = x
      *
-     *      array : 1, 2, 3, 4, 5
-     *      array : 1, 2,    4,      XOR
+     *      array: 1, 2, 3, 4, 5
+     *      array: 1, 2,    4,      XOR
      *  --------------------------------
      *              0, 0, 3, 0, 5
      *
@@ -193,19 +193,19 @@ class Element2AppearsOnceInPairs {
         int rightmostSetBit = xorAll & -xorAll;
 
         // variables to stores XOR of elements in bucket 1 and 2
-        int xor1 = 0, xor2 = 0;
+        int bucket1 = 0, bucket2 = 0;
 
         // Step 3: Divide numbers into two buckets based on rightmostDiffBit
         for (int e : arr) {
             if ((e & rightmostSetBit) == 0) {
-                xor1 = xor1 ^ e;
+                bucket1 = bucket1 ^ e;
             } else {
-                xor2 = xor2 ^ e;
+                bucket2 = bucket2 ^ e;
             }
         }
         // Return the result in sorted order
-        if(xor1 < xor2)
-            return new int[]{xor1, xor2};
-        return new int[]{xor2, xor1};
+        if(bucket1 < bucket2)
+            return new int[]{bucket1, bucket2};
+        return new int[]{bucket2, bucket1};
     }
 }

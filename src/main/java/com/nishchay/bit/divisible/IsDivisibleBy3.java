@@ -76,7 +76,6 @@ public class IsDivisibleBy3 {
 
         int oddCount = 0;
         int evenCount = 0;
-
         int position = 1; // start from rightmost bit
 
         for (int i = binary.length() - 1; i >= 0; i--) {
@@ -89,7 +88,6 @@ public class IsDivisibleBy3 {
             }
             position++;
         }
-
         return Math.abs(oddCount - evenCount) % 3 == 0;
     }
 }

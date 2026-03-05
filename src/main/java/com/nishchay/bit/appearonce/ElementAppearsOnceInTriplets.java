@@ -17,11 +17,11 @@ import java.util.*;
  *
  *				Input: arr[] = [3, 2, 1, 34, 34, 1, 2, 34, 2, 1]
  *				Output: 3
- *				Explanation: All elements except 3 occurs thrice in the array.
+ *				Explanation: All elements except 3 occur thrice in the array.
  *
  *              Input: arr[] = {12, 1, 12, 3, 12, 1, 1, 2, 3, 3}
  *              Output: 2
- *              Explanation: In the given array all element appear three times except ‘2' which appears once
+ *              Explanation: In the given array all elements appear three times except ‘2' which appears once
  *
  * https://www.geeksforgeeks.org/dsa/find-the-element-that-appears-once/
  * https://leetcode.com/problems/single-number-ii/description/
