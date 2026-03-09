@@ -46,14 +46,16 @@ public class CheckPrime {
      *     Auxiliary Space: O(1)
      * */
     private static boolean isPrimeLegacy(int n) {
-        if (n <= 1)
+        if (n <= 1) {
             return false;
+        }
 
         // Check from 2 to square root of n : i <= Math.sqrt(n) or  i * i <= n
-        for (int i = 2; i <= Math.sqrt(n); i++)
-            if (n % i == 0)
+        for (int i = 2; i <= Math.sqrt(n); i++) {
+            if (n % i == 0) {
                 return false;
-
+            }
+        }
         return true;
     }
 
