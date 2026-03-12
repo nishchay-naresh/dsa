@@ -24,12 +24,15 @@ package com.nishchay.ds.linklist.a02easy;
 import com.nishchay.ds.linklist.Node;
 import com.nishchay.ds.linklist.Utils;
 
+import java.util.HashSet;
+
 public class DetectLoop {
 
     public static void main(String[] args) {
         Node head = Utils.createList();
         Utils.printList(head);
         System.out.printf("%s%n", isLoopExists(head) ? "Loop found" : "Loop not found");
+        System.out.printf("%s%n", detectLoop(head) ? "Loop found" : "Loop not found");
 
         System.out.println("-----------------------------------");
 
@@ -59,8 +62,24 @@ public class DetectLoop {
      *
      * Time Complexity  : O(n)
      * Space Complexity : O(n)
-     *
-     *
+     * */
+    private static boolean detectLoop(Node head) {
+        HashSet<Node> st = new HashSet<>();
+
+        while (head != null) {
+
+            // if this node is already present in HashSet, it means there is a cycle
+            if (st.contains(head)) {
+                return true;
+            }
+            // if we are seeing the node for the first time, insert it in hash
+            st.add(head);
+            head = head.next;
+        }
+        return false;
+    }
+
+    /*
      *  ================ [Expected Approach] Using Floyd's Cycle-Finding Algorithm - O(n) Time and O(1) Space =====================
      *
      *  The idea is to use Floyd's Cycle-Finding Algorithm to find a loop in a linked list.
