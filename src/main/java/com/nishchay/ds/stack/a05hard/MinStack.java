@@ -1,4 +1,4 @@
-package com.nishchay.ds.stack.a04hard;
+package com.nishchay.ds.stack.a05hard;
 
 import java.util.Stack;
 
