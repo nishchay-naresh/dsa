@@ -6,16 +6,16 @@ package com.nishchay.bit.divisible;
  *
  * Given a string of binary characters, check if it is multiple of 3 or not.
  * Examples:
- * 				Input : 1 0 1 0 / 10
- * 				Output : NO
+ * 				Input: 1 0 1 0 / 10
+ * 				Output: NO
  * 				Explanation: (1 0 1 0) is 10 and hence not a multiple of 3
  *
- * 				Input :  1 1 0 0 / 12
- * 				Output : YES
+ * 				Input:  1 1 0 0 / 12
+ * 				Output: YES
  * 				Explanation: (1 1 0 0) is 12 and hence a multiple of 3
  *
- *              Input : 1100101101 / 813
- *              Output : true
+ *              Input: 1100101101 / 813
+ *              Output: true
  *
  * https://www.geeksforgeeks.org/dsa/check-binary-string-multiple-3-using-dfa/
  */

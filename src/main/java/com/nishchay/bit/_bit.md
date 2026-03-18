@@ -1,4 +1,12 @@
 
+==== API for conversion, Decimal to binary and vice versa ====
+1. Decimal integer to a Binary string
+        
+        String binaryString = Integer.toBinaryString(decimalNumber);
+
+2. Binary string to Decimal integer
+
+        int decimalNumber1 = Integer.parseInt(binaryString, 2);
 
  ==== Bitwise Operators ====
 
