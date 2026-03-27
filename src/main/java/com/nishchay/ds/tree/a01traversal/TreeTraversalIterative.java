@@ -65,7 +65,6 @@ public class TreeTraversalIterative {
      * */
     public static List<Integer> preorderIterative(Node root) {
         List<Integer> preorder = new ArrayList<>();
-
         if (root == null) {
             return preorder;
         }
@@ -74,10 +73,11 @@ public class TreeTraversalIterative {
         stack.push(root);
         Node currNode;
         while (!stack.empty()) {
+            // visit the top node
             currNode = stack.pop();
             preorder.add(currNode.data);
 
-            // Push right first so left is processed first
+            // Push right first so that left subtree gets processed first due LIFO
             if (currNode.right != null) {
                 stack.push(currNode.right);
             }
@@ -100,14 +100,13 @@ public class TreeTraversalIterative {
      * 		    After visiting the node, move to its right subtree.
      *      Repeat until all nodes are processed.
      *
-     *  until visit all node
+     * Until visit all node
      * while (currNode != null || !stack.isEmpty()) {
      *
      *     while (currNode != null) {
-     *         push & go left
+     *         push and go left
      *     }
-     *
-     *     pop & visit
+     *     pop and visit
      *     go right
      * }
      *
@@ -129,12 +128,10 @@ public class TreeTraversalIterative {
                 stack.push(currNode);
                 currNode = currNode.left;
             }
-
             currNode = stack.pop();
             inorder.add(currNode.data);
             currNode = currNode.right;
         }
-
         return inorder;
     }
 }

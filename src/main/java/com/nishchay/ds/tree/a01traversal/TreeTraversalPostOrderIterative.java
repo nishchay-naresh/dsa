@@ -120,26 +120,13 @@ public class TreeTraversalPostOrderIterative {
     }
 
     /*
-     * =========== Iterative Inorder (with stack) - O(n) time and O(n) space ============
-     *          Inorder : Left -> Root -> Right
-     * Because recursion naturally uses a call stack, we simulate recursion using our own Stack<Node>
-     *              Use a stack
-     * Process:
-     * 		Keep going left and push nodes into the stack.
-     * 		When there is no left node:
-     * 		    Pop from stack -> visit it.
-     * 		    After visiting the node, move to its right subtree.
-     *      Repeat until all nodes are processed.
+     * =========== Iterative Postorder (with 1 stack) - O(n) time and O(n) space ============
+     * =========== [Expected Approach 3] Tracking Last Visited Node - O(n) Time and O(n) Space ===========
+     *          Inorder : Left  -> Right -> Root
      *
-     *  Until visit all node
-     * while (currNode != null || !stack.isEmpty()) {
-     *
-     *     while (currNode != null) {
-     *         push and go left
-     *     }
-     *     pop and visit
-     *     go right
-     * }
+     * It first pushes nodes onto the stack as it moves down the left side of the tree.
+     * Once it reaches a leaf, it starts processing the nodes by checking if the right child has been visited.
+     * If not, it traverses the right subtree; otherwise, it processes the node and adds it to the result.
      *
      * https://www.geeksforgeeks.org/dsa/iterative-postorder-traversal-using-stack/
      * */
@@ -151,37 +138,24 @@ public class TreeTraversalPostOrderIterative {
 
         Stack<Node> stk = new Stack<>();
 
-        // Step 2.1: Process until root becomes null
-        while (root != null || !stk.isEmpty()) {
-
-            // Move to the leftmost node and push right child and root
-            while (root != null) {
-                if (root.right != null) {
-                    stk.push(root.right);
-                }
-                stk.push(root);
-                root = root.left;
+        Node lastVisited = null;
+        Node curr = root;
+        while (!stk.isEmpty() || curr != null) {
+            if (curr != null) {
+                stk.push(curr);
+                curr = curr.left;
             }
-
-            // Step 2.2: Pop an item from the stack
-            root = stk.pop();
-
-            // Step 2.2a: If the popped node has a right child
-            // and the right child is on the top of the stack
-            if (!stk.isEmpty() && root.right != null
-                    && stk.peek() == root.right) {
-                stk.pop();
-                stk.push(root);
-                root = root.right;
-            } else {
-
-                // Step 2.2b: Else, print the node's
-                // data and set root as null
-                postorder.add(root.data);
-                root = null;
+            else {
+                Node peekNode = stk.peek();
+                if (peekNode.right != null && lastVisited != peekNode.right) {
+                    curr = peekNode.right;
+                } else {
+                    // visit the top node
+                    postorder.add(peekNode.data);
+                    lastVisited = stk.pop();
+                }
             }
         }
-
         return postorder;
     }
 }
