@@ -58,7 +58,8 @@ The AND operator (&) can quickly check if a number is odd or even. (x & 1) is no
 
 **Get the rightmost set bit(i.e. 1) from n:**
 
-    formula to get the rightmost set bit of a num        =>     num = num & -num
+Formula to get the rightmost set bit of a number        =>     num = num & -num
+    
 
         num     = 1 0 1 0 1 0 0
        -num     => ~num + 1 => 0 1 0 1 0 1 1 + 1 => 0 1 0 1 1 0 0
@@ -77,6 +78,15 @@ The AND operator (&) can quickly check if a number is odd or even. (x & 1) is no
     AND         ->	 0100
     rightmost set bit is now set to 1, everything else is set to 0
 
+**Check an integer is power of 2**
+
+Key trick: x & (x - 1) == 0
+
+Removes the lowest set bit, If result is 0 → only one bit was set
+
+      public boolean isPowerOfTwo(int x) {
+         return x > 0 && (x & (x - 1)) == 0;
+      }
 **Count set bits in an integer**
 
 Counting number of 1s in the binary representation of a number
