@@ -66,11 +66,11 @@ public class MaxSubarraySum {
         int n = arr.length;
         int maxSum = Integer.MIN_VALUE;
 
-        for (int start = 0 ; start < n; start++) {
+        for (int start = 0; start < n; start++) {
             for (int end = start; end < n; end++) {
                 // calculate the currSum of subarray [start...end]
                 int currSum = 0;
-                for (int k = start; k <= end; k++){
+                for (int k = start; k <= end; k++) {
                     currSum += arr[k];
                 }
                 maxSum = Math.max(currSum, maxSum);

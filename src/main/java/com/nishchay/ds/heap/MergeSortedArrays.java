@@ -7,7 +7,7 @@ import java.util.Arrays;
 import java.util.Collections;
 
 /*
- *============== k largest(or smallest) elements in an unsorted array ====================
+ *================================================ Merge Sorted Arrays ==================================================
  *
  * Given a 2D matrix, mat[][] consisting of sorted arrays, where each row is sorted in non-decreasing order,
  * find a single sorted array that contains all the elements from the matrix.
@@ -33,7 +33,6 @@ public class MergeSortedArrays {
                 {0, 9, 10, 11}
         };
 
-
         System.out.println("mergeSortedMatrix_sorting(mat) = " + mergeSortedMatrix_sorting(mat));
         System.out.println("mergeSortedMatrix_merging(mat) = " + Arrays.toString(mergeSortedMatrix_merging(mat)));
     }
@@ -41,7 +40,7 @@ public class MergeSortedArrays {
     /*
      * ======================================== [Naive Approach] Concatenate all and Sort ======================================
      * The idea is to merges sorted arrays by first flattening all the arrays into a single one-dimensional array.
-     * Then sorts this combined array using the standard sorting algorithm (sort() from the Arrays).
+     * Then sort this combined array using the standard sorting algorithm (sort() from the Arrays).
      * This ensures the final output is a fully sorted array containing all elements from the input arrays.
      *
      * Time complexity: O(n * log n), where n is total number of elements
@@ -50,22 +49,22 @@ public class MergeSortedArrays {
     private static ArrayList<Integer> mergeSortedMatrix_sorting(int[][] mat) {
         ArrayList<Integer> result = new ArrayList<>();
 
-        // Append all arrays into result
-        for (int i = 0; i < mat.length; i++) {
-            for (int j = 0; j < mat[i].length; j++) {
-                result.add(mat[i][j]);
+        // Append all arrays into a list
+        for (int[] row : mat) {
+            for (int val : row) {
+                result.add(val);
             }
         }
 
-        // Sort the result
+        // Sort the list
         Collections.sort(result);
         return result;
     }
 
     /*
      * ======================================== [Improved Approach] Incremental Two-Array Merge ======================================
-     * we weill utilize com.nishchay.ds.array.a10medium.MergeTwoSortedArray.mergeSortedArray(-,-) to solve this problem
-     *	1. Take the first row as the initial sorted array
+     * we will utilize com.nishchay.ds.array.a10medium.MergeTwoSortedArray.mergeSortedArray(-,-) to solve this problem
+     *	1. Take the first row as the initially sorted array
      *	2. Merge it with the second row
      *	3. Merge the result with the third row
      *	4. Continue until all rows are merged

@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 
 /*
- *===================================== PriorityQueue in Java =====================================
+ *===================================== Sorting Algorithms =====================================
  *
  * Sorting Algorithms:
  * Comparison Based : Selection Sort, Bubble Sort, Insertion Sort, Merge Sort, Quick Sort, Heap Sort, Cycle Sort, 3-way Merge Sort
@@ -12,8 +12,8 @@ import java.util.Arrays;
  * Hybrid Sorting Algorithms : IntroSort, TimSort
  *
  *
- * Time Complexities of Sorting Algorithms :
- *      Selection Sort, Bubble Sort	, Insertion Sort	- O(n^2)
+ * Time Complexities of Sorting Algorithms:
+ *      Selection Sort, Bubble Sort, Insertion Sort	- O(n^2)
  *      Heap Sort, Quick Sort, Merge Sort 				- O(n log n)
  *
  * Arrays.sort() for Primitive Types
@@ -46,9 +46,9 @@ public class AlgorithmsSorting {
      * Like - the way bubble is coming out of water
      * */
     private static void bubbleSort(int[] arr) {
-        int size = arr.length;
-        for (int i = 1; i < size; i++) {
-            for (int j = 0; j < size - i; j++) {
+        int n = arr.length;
+        for (int i = 1; i < n; i++) {
+            for (int j = 0; j < n - i; j++) {
                 if (arr[j] > arr[j + 1]) {
                     // swipe arr[j] & arr[j+1]
                     int t = arr[j];
