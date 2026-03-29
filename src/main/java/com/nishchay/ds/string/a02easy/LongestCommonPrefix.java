@@ -56,7 +56,14 @@ public class LongestCommonPrefix {
     /*
      * ================ [Expected Approach] by char by char Matching - O(n * m) Time and O(1) Space =====================
      *
-     * Longest Common Prefix using char by char Matching
+     * Vertical Scanning - Longest Common Prefix using char by char Matching
+     *	c l u s t e r
+     *	c l u e
+     *	c l u t c h
+     *	c l u b
+     *	c l u m s y
+     *	^ ^ ^
+     *	| | | ... so on
      *
      *	The maximum possible prefix limited by the shortest string
      *	Compare characters at the same index across all strings
@@ -74,11 +81,11 @@ public class LongestCommonPrefix {
 
         String first = strs[0];
         for (int i = 0; i < first.length(); i++) {
-            char c = first.charAt(i);
+            char currChar = first.charAt(i);
 
             for (int j = 1; j < strs.length; j++) {
                 // string ended or mismatch found
-                if (i >= strs[j].length() || strs[j].charAt(i) != c) {
+                if (i >= strs[j].length() || strs[j].charAt(i) != currChar) {
                     return first.substring(0, i);
                 }
             }
