@@ -5,7 +5,7 @@ import java.util.Arrays;
 /*
  * ====================== Rotate an array by 1 places ==========================
  *
- * Types of Rotations in Array
+ * Types of Rotations in Array, movement will always happen below the array (never from the top of the array )
  *       1. Right Rotation (or Clockwise)
  *                  right ->     arr[10, 20, 30, 40, 50], temp = arr[n-1] because this is getting rotated
  *                                   |------<----<-----|

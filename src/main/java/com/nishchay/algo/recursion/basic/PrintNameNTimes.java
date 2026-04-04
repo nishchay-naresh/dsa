@@ -27,7 +27,7 @@ public class PrintNameNTimes {
     }
 
     private static void printName(String name, int n) {
-        if (n == 0){
+        if (n == 0) {
             return;
         }
         System.out.println(name);

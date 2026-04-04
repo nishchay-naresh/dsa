@@ -1,13 +1,12 @@
 package com.nishchay.ds.array.a10medium;
 
-
 import java.util.HashMap;
 import java.util.Map;
 
 /*
- *  ==================================== Merge two sorted arrays ====================================
+ *  ============================= Minimum delete operations to make all elements of array same ==========================
  *
- * Given an array of n elements such that ds.array.a10mediumelement may repeat. We can delete any number of elements from the array.
+ * Given an array of n elements such that element may repeat. We can delete any number of elements from the array.
  * The task is to find a minimum number of elements to be deleted from the array to make it equal.
  * Examples:
  *
@@ -68,5 +67,4 @@ public class EqualizeArray {
         }
         return arr.length - maxFreq;
     }
-
 }

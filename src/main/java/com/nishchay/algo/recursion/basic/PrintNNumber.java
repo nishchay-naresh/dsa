@@ -19,7 +19,7 @@ public class PrintNNumber {
 
     /*
      * recursive solution
-     * printing 1 to n
+     * printing 1 to n : 1 2 3 4 5 6 7 8 9 10
      *
      *  10 -> 9 -> 8->......1 first calling all recursive calls, then while returning printing it
      *  print(1)-> print(2)-> print(3)->......10
@@ -34,8 +34,8 @@ public class PrintNNumber {
 
     /*
      * recursive solution
-     * printing  n to 1
-     * 1 -> 2 -> 3 ....10
+     * printing  n to 1 : 10 9 8 7 6 5 4 3 2 1
+     * 10 -> 9 -> 8->......1 first printing the current value, then calling all recursive calls
      * 10 print(10)-> 9 print(9)-> 8 print(8)->......1
      * */
     private static void printNFromN(int n) {
@@ -45,5 +45,4 @@ public class PrintNNumber {
         System.out.print(n + " ");
         printNFromN(n - 1);
     }
-
 }

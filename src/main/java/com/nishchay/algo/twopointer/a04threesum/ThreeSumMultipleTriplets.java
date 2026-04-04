@@ -9,7 +9,7 @@ import java.util.*;
  * Given an array arr[], and an integer target, find all possible unique triplets in the array whose sum is equal to the given target value.
  * We can return triplets in any order, but all the returned triplets should be internally sorted,
  * i.e., for any triplet [q1, q2, q3], the condition q1 ≤ q2 ≤ q3 should hold.
- * In other words, given an array arr and a target value target, return all triplets a, b, c such that a + b + c = target.
+ * In other words, given an array arr and a target value target, return all triplets a, b, c such as a + b + c = target.
  *
  * Examples :
  *				Input: arr[] = {12, 3, 6, 1, 6, 9}, target = 24
@@ -20,7 +20,7 @@ import java.util.*;
  *
  *				Input: arr[] = {-2, 0, 1, 1, 2}, target = 10
  *				Output: {}
- *				Explanation: There is not triplet with sum 10.
+ *				Explanation: There is no triplet with sum 10.
  *
  *
  * Examples - 1
@@ -33,7 +33,7 @@ import java.util.*;
  *
  * Examples - 3
  *			    Input : arr[] = {12, 3, 4, 1, 6, 9}, target = 24
- *			    Output : {12, 3, 9}
+ *			    Output: {12, 3, 9}
  *
  * Examples - 4
  *			    Input : arr[] = {1, 2, 3, 4, 5}, target = 9
@@ -134,28 +134,31 @@ public class ThreeSumMultipleTriplets {
     }
 
     /*
-     * ========= [Naive Approach] - By Exploring all the triplets - O(n^4) Time and O(1) Space =========
+     * ========= [Naive Approach] - By Exploring all the triplets - O(n^3) Time and O(1) Space =========
      *
      *  The basic approach is to generate all the possible triplets and check if any of them add up to the target value.
      *  To generate all triplets, we simply run three nested loops.
      *
      *	1. Run 3 nested loops to maintain i, j, k index in array
-     *	2. If at any point, the sum of values at these three indices is equal to the 0
+     *	2. If at any point, the sum of values at these three indices is equal to target
      *
      *
      *	Approach:
      *	1. 	Run three nested loops with loop counter i, j, k
-     *	2. 	The first loops will run from 0 to n-3 and
-     *          second loop from i+1 to n-2 and
-     *          the third loop from j+1 to n-1.
-     *	3. 	Check if the sum of elements at i’th, j’th, k’th is equal to target or not.
+     *	2. 	The first loops will run from 0 to n-3
+     *              second loop from i+1 to n-2
+     *                  third loop from j+1 to n-1.
+     *	3. 	Check if the target of elements at i’th, j’th, k’th is equal to target or not.
+     *          arr[i] + arr[j] + arr[k] == target
      *          Print these elements
      *
-     * Time Complexity: O(n^4).
+     * Key Idea (Reduce 3-Sum → 2-Sum)
+     *
+     * Time Complexity: O(n^3).
      * Auxiliary Space: O(1).
      *
      * */
-    private static List<List<Integer>> findTriplets_bruteforce(int[] arr, int sum) {
+    private static List<List<Integer>> findTriplets_bruteforce(int[] arr, int target) {
 
         int n = arr.length;
         List<List<Integer>> triplets = new ArrayList<>();
@@ -163,7 +166,7 @@ public class ThreeSumMultipleTriplets {
         for (int i = 0; i < n - 2; i++) {
             for (int j = i + 1; j < n - 1; j++) {
                 for (int k = j + 1; k < n; k++) {
-                    if (arr[i] + arr[j] + arr[k] == sum) {
+                    if (arr[i] + arr[j] + arr[k] == target) {
                         List<Integer> currTriplet = Arrays.asList(arr[i], arr[j], arr[k]);
                         Collections.sort(currTriplet);
 
@@ -181,16 +184,20 @@ public class ThreeSumMultipleTriplets {
 
     /*
      * ========= [Better Approach] - Using Hashing - O(n^2 log n) Time and O(n) Space =========
+     * Key Idea (Reduce 3-Sum → 2-Sum)
+     * Instead of fixing 3 numbers, we:
+     *      1.   Fix one number
+     *      2.   Solve Two Sum for the remaining part of the array using hashing
      *
      * The idea is to maintain a hash set to track whether a particular element occurred in the array so far or not.
      * As we traverse all pairs using two nested loops, for each pair {arr[i], arr[j]},
      * we check if the complement (target - arr[i] - arr[j]) is already in the set.
      * If it is, we have found a triplet whose target equals the target.
-     * Each valid triplet is inserted into ta hash set to avoid duplicates.
+     * Each valid triplet is inserted into hashSet to avoid duplicates.
      *
      *	Approach:
-     *	You just need to iterate through the array,
-     *  fix the first element, and then try to find the other two elements using the approach similar to the two target problem.
+     *	You need to iterate through the array,
+     *  fix the first element, and then try to find the other two elements using the approach similar to the two-sum problem.
      *
      * Time Complexity: O(n^2).
      * Auxiliary Space: O(n).
@@ -222,15 +229,24 @@ public class ThreeSumMultipleTriplets {
     /*
      * ========= [Expected Approach] - sorting then using Two Pointers Technique - O(n^2) Time and O(1) Space =========
      *
+     *  Sorting then using two pointers approach - like binary search
+     *
+     * 	Algorithm Steps:
+     * 		Sort the array
+     * 		Fix the first element 'i'
+     * 		Use two pointers: left = i + 1, Right = n - 1
+     * 		Check : sum = arr[i] + arr[left] + arr[right]
+     * 			then increment left and decrement right based on the current sum
+     *
      *	Approach:
      *	1.	Sort the array in ascending order.
      *	2.	Traverse the array from start to end.
      *	3.	For every index i, create two variables left = i + 1 and right = n – 1
-     *	4.	Run a loop until left is less than right if (array[i] +  array[left] + array[right]) == sum we got the triplet increment left, decrement right and continue the loop
-     *	5.	If the sum < 0 then increment the value of left
-     *		    , by increasing the value of left the sum will increase as array is sorted, so array[left+1] > array [left]
-     *	6.	If the sum > 0 then decrement the value of right
-     *          , by decreasing the value of right the sum will decrease as array is sorted, so array[right-1] < array [right].
+     *	4.	Run a loop until left is less than right if (array[i] +  array[left] + array[right]) == sum we got the triplet increment left, decrement right and continue loop
+     *	5.	If the sum < 0 then increments left,
+     *		    now sum will increase as array is sorted, array[left+1] > array[left]
+     *	6.	If the sum > 0 then decrement right,
+     *          now sum will decrease as array is sorted, so array[right-1] < array[right].
      *
      * Time Complexity: O(n * log n).
      * Auxiliary Space: O(1).
@@ -241,7 +257,6 @@ public class ThreeSumMultipleTriplets {
         int n = arr.length;
         List<List<Integer>> triplets = new ArrayList<>();
 
-        // sort array elements
         Arrays.sort(arr);
 
         for (int i = 0; i < n - 1; i++) {
@@ -256,18 +271,12 @@ public class ThreeSumMultipleTriplets {
                     triplets.add(currTriplet);
                     left++;
                     right--;
-                }
-
-                // If sum of three elements is less than zero then increment in left
-                else if (arr[i] + arr[left] + arr[right] < sum)
+                } else if (arr[i] + arr[left] + arr[right] < sum)
                     left++;
-                    // if sum is greater than zero then decrement in right side
                 else
                     right--;
             }
         }
         return triplets;
     }
-
-
 }

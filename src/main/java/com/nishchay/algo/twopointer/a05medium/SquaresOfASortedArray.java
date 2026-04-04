@@ -100,22 +100,43 @@ public class SquaresOfASortedArray {
     }
 
     /*
-     * ================ [Optimal Approach] 2 pointer approach  =====================
+     * ======================== [Optimal Approach] 2 pointer approach  ============================
+     * 	Key Observation (Very Important)
+     * 	In a sorted array:
+     * 		Most negative number → largest square
+     * 		Most positive number → largest square
      *
-     * The optimal solution uses two pointers to build the result in O(n) time by comparing absolute values from both ends:
+     * 	Example:			[-7, -3, 2, 3, 11]
+     * 						  ↑            ↑
+     * 					largest square candidates
+     * So the largest square must come from either end.
      *
+     * =============== Visualization ===============
+     * Input : [-7, -3, 2, 3, 11]
+     *
+     * 		Step comparisons
+     * 		L ----------- R
+     *
+     * Pick bigger absolute value.
+     * Place square at the end.
+     * Move pointers.
+     *
+     *
+     * The optimal solution uses two pointers by comparing absolute values from both ends:
      * 	1.	Initialize two pointers: left = 0 and right = n-1
-     * 	2.	Initialize an empty result array to store the squared values. Initialize writes index to n-1, bcus we are processing the bigger element first
+     * 	2.	Initialize an empty result array to store the squared values.
+     *      Initialize writes index to n-1, because we are processing the bigger element first
      * 	3.	While left <= right,
      * 			compare the absolute values of nums[left] and nums[right].
-     * 				If abs(nums[left]) is greater than abs(nums[right]), append nums[left] * nums[left] to result and increment left.
+     *          Math.abs(nums[left]) > Math.abs(nums[right])
+     * 				write nums[left] * nums[left] at writerIndex and increment left.
      * 			Otherwise,
-     * 				append nums[right] * nums[right] to result and decrement right.
+     *              write nums[right] * nums[right] at writerIndex and decrement right.
      * 	4.	Return result as the sorted array of squares.
      *
      *
      *  Time Complexity     : O(n)
-     *  Space complexity    : O(1)
+     *  Space complexity    : O(n)
      */
     private static int[] sortSquares_2pointers(int[] nums) {
         int n = nums.length;
@@ -123,7 +144,6 @@ public class SquaresOfASortedArray {
         int writerIndex = n - 1;
 
         int left = 0, right = n - 1;
-
 
         while (left <= right) {
             if (Math.abs(nums[left]) > Math.abs(nums[right])) {
@@ -136,5 +156,4 @@ public class SquaresOfASortedArray {
         }
         return result;
     }
-
 }

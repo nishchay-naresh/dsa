@@ -1,12 +1,11 @@
-package com.nishchay.algo.slidingwindow;
+package com.nishchay.algo.slidingwindow.window;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 /*
- *============== First negative integer in every window of size k ====================
- *
+ * =============================== First negative integer in every window of size k ====================================
  *
  * Given an array and a positive integer k, find the first negative integer for each window(contiguous subarray) of size k.
  * If a window does not contain a negative integer, then print 0 for that window.
@@ -49,9 +48,6 @@ public class FirstNegativeNumber {
         arr = new int[]{12, -1, -7, 8, -15, 30, 16, 28};
         k = 3;
         System.out.println("Negative Numbers - " +  Arrays.toString(firstNegInt(arr, k)));
-
-
-
     }
 
     /*
@@ -95,6 +91,8 @@ public class FirstNegativeNumber {
 
 
     /*
+     * TODO - do the below one
+     *  Also do this one - https://leetcode.com/problems/sliding-subarray-beauty/description/
      * ================ [Better Approach - 1] Using Prefix Sum - O(n) Time and O(n) Space  =====================
      *
      *  The idea is to precompute the prefix sum array where each element at index i stores the sum of elements from index 0 to i-1.

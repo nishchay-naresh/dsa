@@ -78,7 +78,7 @@ public class TripletsWithZeroSumDistinct {
     private static void bruteforceWay() {
         validateEdgeCase_bruteforce();
 
-        int[] arr = new int[] {0, -1, 2, -3, 1};
+        int[] arr = new int[]{0, -1, 2, -3, 1};
         printTriplets(findTriplets_bruteforce(arr)); // [0, -1, 1] [2, -3, 1]
 
         arr = new int[]{1, -2, 1, 0, 5};
@@ -95,7 +95,7 @@ public class TripletsWithZeroSumDistinct {
 
         validateEdgeCase_hashing();
 
-        int[] arr = new int[] {0, -1, 2, -3, 1};
+        int[] arr = new int[]{0, -1, 2, -3, 1};
         printTriplets(findTriplets_hashing(arr)); // [0, -1, 1] [2, -3, 1]
 
         arr = new int[]{1, -2, 1, 0, 5};
@@ -112,7 +112,7 @@ public class TripletsWithZeroSumDistinct {
 
         validateEdgeCase_twoPointers();
 
-        int[] arr = new int[] {0, -1, 2, -3, 1};
+        int[] arr = new int[]{0, -1, 2, -3, 1};
         printTriplets(findTriplets_twoPointers(arr)); // [0, -1, 1] [2, -3, 1]
 
         arr = new int[]{1, -2, 1, 0, 5};
@@ -128,7 +128,7 @@ public class TripletsWithZeroSumDistinct {
 
     private static void printTriplets(List<List<Integer>> triplets) {
         System.out.print("\nTriplets = ");
-        for(List<Integer> list : triplets){
+        for (List<Integer> list : triplets) {
             System.out.print(list);
         }
     }

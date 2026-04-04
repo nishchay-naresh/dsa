@@ -180,6 +180,7 @@ public class BoyerMooreVoteAlgorithm {
 
         // Find a candidate
         for (int curr : array) {
+            // get a candidate / change the current candidate
             if (count == 0) {
                 candidate = curr;
                 count = 1;

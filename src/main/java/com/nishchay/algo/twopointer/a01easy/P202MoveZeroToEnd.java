@@ -1,4 +1,4 @@
-package com.nishchay.ds.array.a01basic;
+package com.nishchay.algo.twopointer.a01easy;
 
 /*
  *  ======================= Move all Zeros to End of Array ====================
@@ -25,7 +25,7 @@ package com.nishchay.ds.array.a01basic;
 
 import java.util.Arrays;
 
-public class MoveZeroToEnd {
+public class P202MoveZeroToEnd {
 
     public static void main(String[] args) {
 
@@ -64,7 +64,7 @@ public class MoveZeroToEnd {
      *
      *  1. Traverse main array copy all non-zeros to temp array
      *  2. Fill the remaining cells with zeros in temp array
-     *  3. Copy everything from temp array to main array
+     *  3. Copy everything from temp array to the main array
      *
      *  Time Complexity     : O(n) + O(n) = O(2n)
      *  Space complexity    : O(n)
@@ -74,24 +74,26 @@ public class MoveZeroToEnd {
         int[] temp = new int[n];
 
         int t = 0;
-        for (int i = 0; i < n; i++) {
-            if (arr[i] != 0)
-                temp[t++] = arr[i];
+        for (int curr : arr) {
+            if (curr != 0){
+                temp[t++] = curr;
+                }
         }
         while (t < n) {
             temp[t++] = 0;
         }
 
-        for (int i = 0; i < n; i++)
+        for (int i = 0; i < n; i++) {
             arr[i] = temp[i];
+        }
     }
 
     /*
      * ================ [Better Approach] Using two pointer  =====================
      *
      *  1. First Traversal: Shift non-zero elements to the beginning of array using 2 pointer
-     *              1st pointer - to track the non-zeros elements
-     *              2nd pointer - to scan all elements of array
+     *              1st pointer - to track the non-zeros elements       -- writerIndex
+     *              2nd pointer - to scan all elements of array         -- i
      *  2. Second Traversal: Fill remaining positions with zeros
      *
      *
@@ -101,19 +103,19 @@ public class MoveZeroToEnd {
     private static void moveZerosToEnd_2pass(int[] arr) {
         int n = arr.length;
 
-        int nonZeroIndex = 0;
+        int writerIndex = 0;
         // Step 1: Move all non-zero elements forward
-        for (int i = 0; i < n; i++) {
-            if (arr[i] != 0) {
-                arr[nonZeroIndex] = arr[i];
-                nonZeroIndex++;
+        for (int curr : arr) {
+            if (curr != 0) {
+                arr[writerIndex] = curr;
+                writerIndex++;
             }
         }
 
         //  Step 2: Fill remaining positions with zeros
-        while (nonZeroIndex < n) {
-            arr[nonZeroIndex] = 0;
-            nonZeroIndex++;
+        while (writerIndex < n) {
+            arr[writerIndex] = 0;
+            writerIndex++;
         }
     }
 
@@ -131,7 +133,7 @@ public class MoveZeroToEnd {
      * If i == insertPos, nothing changes. Doing self-swaps
      * can improve this by applying
      *
-     * 	if (arr[i] != 0) {
+     * 	if(arr[i] != 0) {
      * 	    if (i != insertPos) {
      * 	        swap
      * 	    }
@@ -144,15 +146,15 @@ public class MoveZeroToEnd {
      *
      */
     private static void pushZerosToEnd_1pass(int[] arr) {
-        int insertPos = 0;
+        int writerIndex = 0;
 
-        // If i == insertPos, nothing changes.
+        // If i == writerIndex, nothing changes.
         for (int i = 0; i < arr.length; i++) {
             if (arr[i] != 0) {
                 int temp = arr[i];
-                arr[i] = arr[insertPos];
-                arr[insertPos] = temp;
-                insertPos++;
+                arr[i] = arr[writerIndex];
+                arr[writerIndex] = temp;
+                writerIndex++;
             }
         }
     }

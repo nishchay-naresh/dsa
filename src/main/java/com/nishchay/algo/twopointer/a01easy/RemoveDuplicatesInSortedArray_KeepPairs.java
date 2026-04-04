@@ -4,6 +4,8 @@ import java.util.Arrays;
 
 /*
  *==================== Remove duplicates from sorted array Keep Pairs ========================
+ *==================== Keep at most two occurrences of each number in a sorted array. ========================
+ * Anything appearing more than twice is removed.
  *
  * Given a sorted array, remove the duplicates from the array in-place such that each element appears at most twice, and return the new length.
  *
@@ -31,8 +33,11 @@ public class RemoveDuplicatesInSortedArray_KeepPairs {
 
     public static void main(String[] args) {
 
+        int[] arr = new int[]{1, 2, 2, 2, 2, 3, 4, 4, 4, 8, 8, 8, 7, 7};
+        int newSize = removeDuplicates(arr);
+        System.out.println(Arrays.toString(Arrays.copyOfRange(arr, 0, newSize)));
+        System.out.println("------------------------------------------------");
         twoPointersWay();
-
     }
 
     private static void twoPointersWay() {
@@ -84,9 +89,20 @@ public class RemoveDuplicatesInSortedArray_KeepPairs {
 
 
     /*
-     * ========= Approach : Two pointer approach  =========
+     * ================================= Approach : Two pointer approach  =========================================
      *
-     *	Just maintain a separate index for same array as maintained for different array in Method 1
+     *  Since we are using the same input array for a result as well, so we need to return the updated size of it.
+     *  Think of it like - compacting the array.
+     *
+     *	Key logic: if (i < n - 2 && arr[i] == arr[i + 2])
+     *	This checks:Is this element repeated at least 3 times consecutively?
+     *	Example:
+     *			Index: 0 1 2
+     *			Array: 1 1 1
+     *	Check:
+     *			arr[0] == arr[2] => 1 == 1 → true => There are at least 3 identical elements.
+     *			So we skip the first one.
+     *
      *
      * Time Complexity: O(n).
      * Auxiliary Space: O(1).
@@ -105,12 +121,12 @@ public class RemoveDuplicatesInSortedArray_KeepPairs {
         for (int i = 0; i < n; i++) {
 
             // If arr[i] == arr[i+2] then skip the arr[i] because it is repeated more than twice.
+            // Skipping the duplicate from the left, instead of right
             if (i < n - 2 && arr[i] == arr[i + 2]) {
                 continue;
             }
             arr[writeIndex++] = arr[i];
         }
-
         return writeIndex;
     }
 
@@ -120,7 +136,7 @@ public class RemoveDuplicatesInSortedArray_KeepPairs {
      * skipping the first 2 index, 0, 1 because an element can be almost - 2 unique / 1 pair, (1,2 or 1,1)
      *
      * star checking element for triplet from index 2
-     *      checking current element against of -2 index ( which is writeIndex)
+     *      checking the current element against of -2 index (which is writeIndex)
      *
      * */
     private static int removeDuplicates(int[] nums) {

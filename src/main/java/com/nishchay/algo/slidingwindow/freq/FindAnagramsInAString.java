@@ -106,7 +106,7 @@ public class FindAnagramsInAString {
      *	Instead of recomputing frequency every time
      *	we only update 2 characters
      *		+1 → new char entering window
-     *		-1 → char leaving window
+     *		-1 → char leaving a window
      *
      * Time Complexity: O(n), n - length(S)
      *  Auxiliary Space: O(26)

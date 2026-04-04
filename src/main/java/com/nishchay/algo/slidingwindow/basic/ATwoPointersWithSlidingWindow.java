@@ -1,4 +1,4 @@
-package com.nishchay.algo.slidingwindow;
+package com.nishchay.algo.slidingwindow.basic;
 
 import java.util.HashMap;
 import java.util.Map;

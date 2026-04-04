@@ -7,11 +7,11 @@ import java.util.HashSet;
  *	=================================== 2 Sum problem ================================
  *
  *	The 2-Sum problem is a popular algorithmic challenge where the goal is to identify two distinct elements in an array whose sum equals a specific target.
- *	Emphasizes ones understanding on :
+ *	Emphasizes ones understanding on:
  *	    - array manipulation
  *	    - optimizing search operations through hashing
  *
- *	Problem can categories in 2 gatories:
+ *	Problem can categories in 2 categories:
  *	    1. 2Sum on Unsorted Input
  *	    2. 2Sum on Sorted Input
  *
@@ -23,7 +23,7 @@ import java.util.HashSet;
  * Examples:
  * 				Input: arr[] = [0, -1, 2, -3, 1], target = -2
  * 				Output: true
- * 				Explanation: There is a pair (1, -3) with the sum equal to given target, 1 + (-3) = -2.
+ * 				Explanation: There is a pair (1, -3) with the sum equal to the given target, 1 + (-3) = -2.
  *
  * 				Input: arr[] = [1, -2, 1, 0, 5], target = 0
  * 				Output: false
@@ -55,7 +55,7 @@ public class TwoSumExist {
      */
     private static boolean twoSum_2loop(int[] arr, int target) {
         int n = arr.length;
-        for (int i = 0; i < n-1; i++) {
+        for (int i = 0; i < n - 1; i++) {
             // For each element arr[i], check every other element arr[j] that comes after it
             for (int j = i + 1; j < n; j++) {
                 // Check if the sum of the current pair equals the target
@@ -118,7 +118,7 @@ public class TwoSumExist {
      * ================ [Better Approach 2] Sorting and Two-Pointer Technique - O(n × log(n)) time and O(1) space  =====================
      *
      *  The idea is to use the two-pointer technique over sorted array
-     *  Once the array is sorted then we can use this approach by keeping one pointer at the beginning (left) and another at the end (right) of the array.
+     *  Once the array is sorted, then we can use this approach by keeping one pointer at the beginning (left) and another at the end (right) of the array.
      *  Keep moving left and right pointers based on their computed sum.
      *
      * Check the sum of the elements at these two pointers:
@@ -150,12 +150,18 @@ public class TwoSumExist {
     /*
      * ================ [Expected Approach] Using HashSet - O(n) time and O(n) space  =====================
      *
+     * 1. Generating all Possible Pairs using 2 nested loop - O(n^2)
+     * 2. Searching complement - using sequential search / binary search- O(n (O(n/log n))), but to apply binary search again we need to sort the data
+     * 3. Sort the data then apply 2 pointer approach - O(nlog n) + O(n)
+     * 4. Applying Hashing will do the searching in - O(1) => Single loop, Hash lookup
+     *      scan each element, compute its complement( target - arr[i]), search complete using hashing  => T-O(n), S-O(n)
+     *
      * Rather than checking every possible pair, we store each number in a HashSet during iterating over the array's elements.
-     * 	 For each number, we calculate its complement (i.e., target - current number) and check
-     * 		if this complement exists in hashMap
-     * 			found the pair that sums to the target
-     * 		else
-     * 			we store each number in a hashMap
+     *   Scan each element, compute its complement, search complete using hashing
+     *	 1.	Calculate what partner it needs
+     *	 2.	Check if that partner already exists in hashMap/HashSet -O(1)
+     *	 3.	If yes → pair found
+     *	 4.	If not → store the number for future matches
      *
      *
      * Step By Step Implementations:
@@ -163,8 +169,8 @@ public class TwoSumExist {
      * 		Iterate through the array and for each number in the array:
      * 		=> Calculate the complement (target - current number).
      * 		=> Check if the complement exists in the set:
-     * 				- If it is, then pair found.
-     * 				- If it isn’t, add the current number to the set.
+     * 				- If it is, then a pair found.
+     * 				- If it isn’t, add the current number to the set for future matches.
      * 		If the loop completes without finding a pair, return that no pair exists.
      *
      *

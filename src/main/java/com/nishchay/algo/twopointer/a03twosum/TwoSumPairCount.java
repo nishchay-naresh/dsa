@@ -60,7 +60,7 @@ public class TwoSumPairCount {
         int n = arr.length;
         int cnt = 0;
 
-        for (int i = 0; i < n-1; i++) {
+        for (int i = 0; i < n - 1; i++) {
             for (int j = i + 1; j < n; j++) {
                 if (arr[i] + arr[j] == target) {
                     cnt++;
@@ -92,7 +92,7 @@ public class TwoSumPairCount {
      *  Time Complexity     : O(n)
      *  Space complexity    : O(n)
      */
-    private static  int twoSumCount_hashing(int[] arr, int target) {
+    private static int twoSumCount_hashing(int[] arr, int target) {
         Map<Integer, Integer> freq = new HashMap<>();
         int cnt = 0;
 

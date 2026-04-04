@@ -17,7 +17,10 @@ import java.util.*;
  *		        Output: [-5, 20], [7, 8]
  *
  *		        Input: nums = [1, 2, 3, 4, 5, 6], target = 7
- *		        Output: [1, 6],[2, 5],[3, 4]
+ *		        Output: [1, 6], [2, 5], [3, 4]
+ *
+ *		        Input: nums = [2, 7, 11, 15, 3, 6], target = 9
+ *		        Output: [2, 7], [3, 6]
  *
  * https://coderbyte.com/algorithm/two-sum-problem
  * https://www.callicoder.com/two-sum-problem/
@@ -42,7 +45,7 @@ public class TwoSumMultiplePairs {
         printPairs(twoSum_2loop(arr, target));
         printPairs(twoSum_hashing(arr, target));
 
-        arr= new int[]{0, -1, 2, -3, 1};
+        arr = new int[]{0, -1, 2, -3, 1};
         target = -2;
         System.out.print("\n----------------");
         printPairs(twoSum_2loop(arr, target));
@@ -51,7 +54,7 @@ public class TwoSumMultiplePairs {
 
     private static void printPairs(List<int[]> res) {
         System.out.print("\nPairs = ");
-        for(int[] e : res){
+        for (int[] e : res) {
             System.out.print(Arrays.toString(e));
         }
     }
@@ -96,7 +99,7 @@ public class TwoSumMultiplePairs {
      *
      *
      * Step By Step Implementations:
-     * 		Create an empty HashMat
+     * 		Create an empty HashSet
      * 		Iterate through the array and for each number in the array:
      * 		=> Calculate the complement (target - current number).
      * 		=> Check if the complement exists in the set/map:
@@ -110,7 +113,7 @@ public class TwoSumMultiplePairs {
      *
      *  Efficient code works when an input array has duplicates
      */
-    private static  List<int[]> twoSum_hashing(int[] arr, int target) {
+    private static List<int[]> twoSum_hashing(int[] arr, int target) {
         List<int[]> pairs = new ArrayList<>();
         HashSet<Integer> set = new HashSet<>();
 
@@ -121,7 +124,7 @@ public class TwoSumMultiplePairs {
             }
             set.add(curr);
         }
-        if(pairs.isEmpty()){
+        if (pairs.isEmpty()) {
             pairs.add(new int[]{-1, -1});
         }
         return pairs;

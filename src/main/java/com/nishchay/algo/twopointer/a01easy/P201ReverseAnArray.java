@@ -1,6 +1,7 @@
 package com.nishchay.algo.twopointer.a01easy;
 
 import java.util.Arrays;
+
 /*
  * ===================================== 2 pointer Approach =======================================
  *	What is the Two Pointer Approach?
@@ -68,7 +69,7 @@ public class P201ReverseAnArray {
     /*
      * ================ [Optimal Approach] 2 pointer approach  =====================
      *
-     *  The idea is to maintain two pointers: at both end of the array
+     *  The idea is to maintain two pointers: at both ends of the array
      *          keep swaping the elements at these two positions.
      *  Until they don't meet/cross each other
      *

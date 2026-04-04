@@ -31,6 +31,17 @@ import java.util.Map;
 public class TwoSumIndex {
 
     public static void main(String[] args) {
+        twoSumIndexSortedEx();
+        twoSumIndexNonsortedEx();
+    }
+
+    private static void twoSumIndexSortedEx() {
+        int[] arr = new int[]{2,7,11,15};
+        int target = 9;
+        System.out.println(Arrays.toString(twoSum_2pointers(arr, target)));
+    }
+
+    private static void twoSumIndexNonsortedEx() {
         int[] arr = new int[]{0, -1, 2, -3, 1};
         int target = -2;
 
@@ -69,6 +80,38 @@ public class TwoSumIndex {
                 if (arr[i] + arr[j] == target)
                     return new int[]{i, j};
 
+        return new int[]{-1, -1};
+    }
+
+    /*
+     * ================ [Better Approach 2] Sorting and Two-Pointer Technique - O(n × log(n)) time and O(1) space  =====================
+     *
+     *  Given an sorted array, find the pair index using two-pointer technique(binary search).
+     *
+     * Check the sum of the elements at these two pointers:
+     *	-	If the sum equals the target, we’ve found the pair.
+     *	-	If the sum is less than the target, move the left pointer.
+     *	-	If the sum is greater than the target, move the right pointer.
+     *
+     *
+     *  Time Complexity     : O(n)
+     *  Space complexity    : O(1)
+     *
+     * https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/
+     */
+    private static int[] twoSum_2pointers(int[] numbers, int target) {
+
+        int left = 0, right = numbers.length - 1;
+
+        while (left < right) {
+            int sum = numbers[left] + numbers[right];
+            if (sum == target)
+                return new int[]{left+1,  right+1};
+            else if (sum < target)
+                left++;
+            else
+                right--;
+        }
         return new int[]{-1, -1};
     }
 

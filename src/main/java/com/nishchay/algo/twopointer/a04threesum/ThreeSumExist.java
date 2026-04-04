@@ -7,7 +7,8 @@ import java.util.Set;
 /*
  *	=================================== 3 Sum problem ================================
  *
- *	The 3-Sum problem is a classic algorithmic problem where the goal is to find all unique triplets in an array that sum up to a specific target value, usually zero.
+ *	The 3-Sum problem is a classic algorithmic problem where the goal is to
+ *  Find all unique triplets in an array that sum up to a specific target value, usually zero.
  *	Emphasizes ones understanding on:
  *	    - array manipulation
  *      - sorting
@@ -57,7 +58,7 @@ public class ThreeSumExist {
      * ================ [Naive Approach] Generating All Triplets - O(n^3) Time and O(1) Space  =====================
      *
      *  A simple method is to generate all possible triplets and compare the sum of every triplet with the given target.
-     *  If the sum is equal to target, return true. Otherwise, return false.
+     *  If the sum is equal to the target, return true. Otherwise, return false.
      *
      *  Time Complexity     : O(n^3)
      *  Space complexity    : O(1)
@@ -86,7 +87,7 @@ public class ThreeSumExist {
      * ================ [Better Approach] - Hash Set - O(n^2) Time and O(n) Space =====================
      *
      * The idea is to traverse every element arr[i] in a loop. For every arr[i],
-     * use the hashing based solution of 2 Sum Problem to check if there is a pair with sum equal to given sum - arr[i].
+     * use the hashing-based solution of 2 Sum Problem to check if there is a pair with sum equal to given sum - arr[i].
      *
      *	Approach:
      *	-	Iterate through the array, fixing the first element (arr[i]) for the triplet.
@@ -110,7 +111,7 @@ public class ThreeSumExist {
             for (int j = i + 1; j < n; j++) {
                 int third = target - arr[i] - arr[j];
 
-                // Search for third element in hash set
+                // Search for the third element in hashSet
                 if (set.contains(third)) {
                     return true;
                 }
@@ -124,7 +125,7 @@ public class ThreeSumExist {
      * ================ [Expected Approach] - Sorting and Two Pointer - O(n^2) Time and O(1) Space  =====================
      *
      *  We first sort the array. After sorting, we traverse every element arr[i] in a loop.
-     *  For every arr[i], use the Two Pointer Technique based solution of 2 Sum Problem to check if there is a pair with sum equal to given sum - arr[i].
+     *  For every arr[i], use the two pointer technique solution of 2 Sum Problem to check if there is a pair with sum equal to given sum - arr[i].
      *
      * Check the sum of the elements at these two pointers:
      *	-	If the sum equals the target, we’ve found the pair.

@@ -177,7 +177,8 @@ public class TrappingRainWater {
      *      lmax = max (lmax, height[left])
      *      rmax = max (rmax, height[right])
      *
-     * To optimize it further, if we know which is smaller out of right_max, left_max, we never need both of them, ====>  we only need one, the smaller one
+     * To optimize it further, if we know which is smaller out of right_max, left_max,
+     * We never need both of them, ====>  we only need one, the smaller one
      * we will never get both right_max, left_max in leaner traversal ---> or <----- . =====> we need to travel from both side
      * Why processing the smaller number first ====> because we need the smaller one out of right_max, left_max
      * When these loops get terminated ===> When both left and right pointer to the largest no

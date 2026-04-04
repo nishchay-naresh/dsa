@@ -1,5 +1,6 @@
 package com.nishchay.algo.slidingwindow;
 
+import java.util.Arrays;
 
 /*
  *  ======================= Longest Substring Without Repeating Characters ====================
@@ -20,11 +21,27 @@ package com.nishchay.algo.slidingwindow;
  *				Explanation: The longest substring without repeating characters is "abcdef".
  *
  *
+ *	Example 1:
+ *		  		Input: s = "abcabcbb"
+ *	      		Output: 3
+ *	      		Explanation: The answer is "abc", with the length of 3.
+ *
+ *	Example 2:
+ *	      		Input: s = "bbbbb"
+ *	      		Output: 1
+ *	      		Explanation: The answer is "b", with the length of 1.
+ *
+ *	Example 3:
+ *	      		Input: s = "pwwkew"
+ *	      		Output: 3
+ *	      		Explanation: The answer is "wke", with the length of 3.
+ *
+ * Notice that the answer must be a substring, "pwke" is a subsequence and not a substring.
+ *
  * https://www.geeksforgeeks.org/dsa/length-of-the-longest-substring-without-repeating-characters/
  * https://takeuforward.org/data-structure/length-of-longest-substring-without-any-repeating-character/
+ * https://leetcode.com/problems/longest-substring-without-repeating-characters/description/
  * */
-
-import java.util.Arrays;
 
 public class LongestSubstringWithoutRepeatingCharacters {
 
@@ -63,7 +80,7 @@ public class LongestSubstringWithoutRepeatingCharacters {
                 // If current character is visited break the loop
                 if (visited[s.charAt(j) - 'a'])
                     break;
-                    // Else update the result if this window is larger, and mark current character as visited.
+                    // Else update the result if this window is larger, and mark the current character as visited.
                 else {
                     int currSubstringLength = j - i + 1;
                     maxLength = Math.max(maxLength, currSubstringLength);
@@ -87,23 +104,19 @@ public class LongestSubstringWithoutRepeatingCharacters {
      */
     private static int longestNonRepeatingSubstring_slidingWindow(String s) {
 
-        int[] last = new int[26];
+        int[] last = new int[256];
         Arrays.fill(last, -1);
 
-        int l = 0, maxLen = 0;
-
+        int l = 0;
+        int maxLen = 0;
         for (int r = 0; r < s.length(); r++) {
-            int idx = s.charAt(r) - 'a';
-
-            if (last[idx] >= l) {
-                l = last[idx] + 1;   // shrink window - if char was visited Move left pointer to the right of the last occurrence of it
+            char c = s.charAt(r);
+            if (last[c] >= l) {
+                l = last[c] + 1;    // shrink window - if char was visited, Move a left pointer to the right of the last occurrence of it
             }
-
-            last[idx] = r;           // update last index
-            int currWindowLength = r - l + 1;
-            maxLen = Math.max(maxLen, currWindowLength);
+            last[c] = r;            // update last index
+            maxLen = Math.max(maxLen, r - l + 1);
         }
-
         return maxLen;
     }
 }

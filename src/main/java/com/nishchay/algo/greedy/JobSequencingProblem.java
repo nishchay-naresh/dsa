@@ -5,7 +5,7 @@ import java.util.Arrays;
 
 
 /*
- *  ======================= Print Maximum Meetings in One Room ====================
+ *  ========================================= Print Maximum Meetings in One Room =======================================
  *
  * Given two arrays, deadline[] and profit[],
  *   where deadline[i] is the last time unit by which the i-th job must be completed, and

@@ -107,6 +107,13 @@ public class LongestConsecutiveSequence {
      *
      * The idea is to use Hashing.
      *
+     *	Approach
+     *		1. Use a HashSet to store all numbers.
+     *		2. For each number, check if it’s the start of a sequence (i.e., num-1 not in set).
+     *		    Expand forward (num+1, num+2...) to count length.
+     *		    Track the maximum length.
+     *
+     *
      * We first insert all elements in a Hash Set.
      * Then, traverse over all the elements and check if the current element can be a starting element of a consecutive subsequence.
      *      If X is the starting of consecutive subsequence

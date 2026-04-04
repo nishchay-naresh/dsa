@@ -18,10 +18,11 @@ package com.nishchay.algo.recursion.basic;
 public class ARecursionDefinition {
 
     public static void main(String[] args) {
-        System.out.println("factorial(5) - " + factorial(5));
+        System.out.println("factorial(5)  = " + factorial(5));
         System.out.println("-----------------------------------");
-        sumOfFirstN(5, 0);
-        System.out.println("sumOfFirstN(5) - " + sumOfFirstN(5));
+        System.out.println("sumOfFirstN(5, 0) = " + sumOfFirstN(5, 0));
+        System.out.println("sumOfFirstN(5)    = " + sumOfFirstN(5));
+        System.out.println("sumOfFirstN(5, 2) = " + sumOfFirstN(5, 2));
     }
 
     // function to find - factorial of a number
@@ -33,19 +34,19 @@ public class ARecursionDefinition {
     }
 
     // function to find - sum of first n numbers
-    private static void sumOfFirstN(int n, int sum) {
-        if (n < 1) {
-            System.out.println(sum);
-            return;
-        }
-        sumOfFirstN(n-1, sum + n);
-    }
-
     private static int sumOfFirstN(int n) {
         if (n == 0) {
             return 0;
         }
-        return n + sumOfFirstN(n-1);
+        return n + sumOfFirstN(n - 1);
+    }
+
+    // Here passing sum as method argument
+    private static int sumOfFirstN(int n, int sum) {
+        if (n == 0) {
+            return 0;
+        }
+        return sum + n + sumOfFirstN(n - 1);
     }
 
 }

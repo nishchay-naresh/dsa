@@ -6,7 +6,7 @@ package com.nishchay.algo.stdalgo;
  *
  * Given an integer array nums, find the contiguous subarray (containing at least one number) which has the largest sum and return its sum.
  *
- *	For Example
+ * Examples:
  *                      0    1  2   3   4  5  6   7  8
  *		Input: nums =  {-2, -3, 4, -1, -2, 1, 5, -3,-1}
  *		Output: 7
@@ -23,8 +23,6 @@ package com.nishchay.algo.stdalgo;
  * https://leetcode.com/problems/maximum-subarray/
  *
  * */
-
-
 public class KadaneAlgorithm {
 
     public static void main(String[] args) {
@@ -38,11 +36,10 @@ public class KadaneAlgorithm {
         System.out.println("kadaneAlgorithm(arr)        = " + kadaneAlgorithm(arr));
     }
 
-
     /*
      * ================ [Naive/Bruteforce Approach] Using Two Nested Loops  =====================
      *
-     * Generating all possible sub arrays
+     * Generating all possible subarrays
      *
      *      1,  -3,  2,  1,  -1
      *      +----|---|---|----|
@@ -70,8 +67,8 @@ public class KadaneAlgorithm {
     /*
      *  ================ [Optimize/Expected Approach] Kadane's Algorithm - O(n) Time =====================
      *
-     * Since we are not required to find the subarray (sub array itself with elements or start index - index end )
-     * we only need to tell the sum of sub-array, so Kadane's algorithm can help us on this.
+     * Since we are not required to find the subarray (subarray itself with elements or start index - index end),
+     * we only need to tell the sum of subarray, so Kadane's algorithm can help us on this.
      * We aren't required to run loop 2, in one loop by finding the subarray sum we can find the max sum
      *
      * Intuition:

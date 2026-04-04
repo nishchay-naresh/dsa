@@ -1,6 +1,8 @@
 package com.nishchay.algo.recursion.permutation;
 
 /*
+ * ====================== Permutations of given String ==================================
+ *
  * Java program to print all permutations of a given string.
  * Print all permutations of a given string
  * Str - ABC
@@ -8,7 +10,7 @@ package com.nishchay.algo.recursion.permutation;
  *
  * https://www.techiedelight.com/generate-permutations-string-java-recursive-iterative/
  * https://www.baeldung.com/cs/array-generate-all-permutations
- * https://www.geeksforgeeks.org/write-a-c-program-to-print-all-permutations-of-a-given-string/
+ * https://www.geeksforgeeks.org/dsa/write-a-c-program-to-print-all-permutations-of-a-given-string/
  * */
 public class PrintAllPermutationStr {
 

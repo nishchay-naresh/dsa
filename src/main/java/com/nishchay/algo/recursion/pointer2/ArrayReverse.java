@@ -56,13 +56,13 @@ public class ArrayReverse {
 
     private static void reverseArray(int[] arr, int i, int n) {
         // base Case
-        if (i >= n/2)
+        if (i >= n / 2)
             return;
 
         // Swap
         int temp = arr[i];
-        arr[i] = arr[n-i];
-        arr[n-i] = temp;
+        arr[i] = arr[n - i];
+        arr[n - i] = temp;
 
         // Recursive call
         reverseArray(arr, i + 1, n);

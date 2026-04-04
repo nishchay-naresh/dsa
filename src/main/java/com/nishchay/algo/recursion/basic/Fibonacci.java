@@ -25,7 +25,6 @@ public class Fibonacci {
         printFibonacciSeriesExec();
         System.out.println("\n=====================================================================");
         getNthTermInFibonacci();
-
     }
 
     private static void printFibonacciSeriesExec() {
@@ -36,13 +35,12 @@ public class Fibonacci {
         System.out.println("\n------------------------------");
         printFibonacciRecursion(true, 0, 1, n);
         System.out.println("\n------------------------------");
-        for(int i = 0; i < n; i++){
+        for (int i = 0; i < n; i++) {
             System.out.print("  " + fibonacciRecursion(i));
         }
     }
 
     private static void getNthTermInFibonacci() {
-
         System.out.println("fibonacciRecursion(8)  - " + fibonacciRecursion(8));    // 21
         System.out.println("fibonacciRecursion(9)  - " + fibonacciRecursion(9));    // 34
         System.out.println("fibonacciRecursion(12) - " + fibonacciRecursion(12));   // 144
@@ -55,7 +53,8 @@ public class Fibonacci {
      * print fibonacci series using iteration
      * Time Complexity: O(N)
      * Auxiliary Space: O(1)
-     * */
+     *
+     */
     private static void printFibonacciIterative(int n) {
         int t1, t2, t3;
         t1 = 0;
@@ -71,7 +70,8 @@ public class Fibonacci {
 
     /**
      * Fibonacci series using recursion
-     * */
+     *
+     */
     private static void printFibonacciRecursion(boolean isStart, int a, int b, int n) {
 
         int c;
@@ -91,7 +91,7 @@ public class Fibonacci {
     }
 
     /*
-    private static int fibonacciRecursion1(int n) {
+    private static int fibonacciRecursion(int n) {
         if (n == 0)
             return 0;
         if (n == 1)
@@ -108,7 +108,4 @@ public class Fibonacci {
         else
             return fibonacciRecursion(n - 1) + fibonacciRecursion(n - 2);
     }
-
-
-
 }

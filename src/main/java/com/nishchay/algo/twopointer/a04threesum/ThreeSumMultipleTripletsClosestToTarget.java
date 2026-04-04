@@ -1,4 +1,4 @@
-package com.nishchay.algo.twopointer.a05medium;
+package com.nishchay.algo.twopointer.a04threesum;
 
 import java.util.Arrays;
 
@@ -33,7 +33,7 @@ import java.util.Arrays;
  * https://leetcode.com/problems/3sum-closest/description/
  *
  * */
-public class ThreeSumClosestToTarget {
+public class ThreeSumMultipleTripletsClosestToTarget {
 
     public static void main(String[] args) {
 

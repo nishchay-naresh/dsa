@@ -96,37 +96,40 @@ public class RemoveDuplicatesInSortedArray {
 
     /*
      * ================ [Optimal Approach] 2 pointer approach  =====================
+     * Since the array is sorted, we do not need to maintain a hash set.
+     * All occurrences of an element would be consecutive.
+     * So we mainly need to check if the current element is the same as the previous element or not.
      *
-     *  1st pointer - to track the unique elements
-     *  2nd pointer - to scan all elements of array
+     *  1st pointer - to track the unique elements      -- writerIndex
+     *  2nd pointer - to scan all elements of array     -- i
      *
-     * element arr[0] is always the right place, means it can't be duplicate, its unique
+     * The first element arr[0] is always the right place, means it can't be duplicate, its unique
      *
      *  Traverse the array from 1st index, check each element
-     *      check if its equivalent to arr[i]
-     *              keep moving j
+     *      check if its equivalent to arr[writerIndex]
+     *              keep moving i
      *      else
-     *              move 'i'
-     *              copy a[j] at a[i]
+     *              move 'writerIndex'
+     *              copy a[i] at a[writerIndex]
      *
-     * why returning i+1 - because 'i' is an index, we need to return the size of unique elements
+     * Why returning writerIndex+1 - because 'writerIndex' is an index, we need to return the size of unique elements
      *
      *  Time Complexity     : O(n)
      *  Space complexity    : O(1)
      */
     private static int removeDuplicates_2pointers(int[] arr) {
-        int writeIndex = 0; // the first element is always unique
+        int writerIndex = 0; // the first element is always unique
 
         // scanning the array from 1st index
-        for (int j = 1; j < arr.length; j++) {
-            if (arr[writeIndex] != arr[j]) {
+        for (int i = 1; i < arr.length; i++) {
+            if (arr[writerIndex] != arr[i]) {
                 // Move unique index forward
-                writeIndex++;
+                writerIndex++;
                 // copying the next unique element
-                arr[writeIndex] = arr[j];
+                arr[writerIndex] = arr[i];
             }
         }
-        return (writeIndex + 1);
+        return (writerIndex + 1);
     }
 
 }
