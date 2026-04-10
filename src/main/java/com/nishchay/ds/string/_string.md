@@ -7,7 +7,7 @@
 
     Element is used as key and the frequency is used as the value 
 
-GroupBy - <String, List<String>
+GroupBy =  Map<String, List<String>>
 
         public record City(String cityName, String countryName) {}
    
@@ -15,3 +15,12 @@ GroupBy - <String, List<String>
         for (City c : cities) {
             map.computeIfAbsent(c.countryName(), k -> new ArrayList<>()).add(c.cityName());
         }
+
+        Map<String, List<String>> countryWiseCity = cities.stream().collect(
+        Collectors.groupingBy(
+                c -> c.countryName(),
+                Collectors.mapping(e -> e.cityName(), Collectors.toList())
+        ));
+
+
+https://www.geeksforgeeks.org/dsa/top-50-string-coding-problems-for-interviews/
