@@ -1,9 +1,8 @@
-package com.nishchay.ds.string.a06medium;
+package com.nishchay.ds.string.a06med;
 
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 /*
  * ==================================== Coderbyte: "Word Split" Algorithm ====================================

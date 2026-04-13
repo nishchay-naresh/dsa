@@ -1,4 +1,4 @@
-package com.nishchay.ds.string.a02easy;
+package com.nishchay.ds.string.a01basic;
 
 /*
  *==============1528. Shuffle String====================

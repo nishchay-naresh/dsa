@@ -1,8 +1,6 @@
-package com.nishchay.ds.string.a05freq;
+package com.nishchay.ds.string.a04freq;
 
 import java.util.*;
-import java.util.function.Function;
-import java.util.stream.Collectors;
 
 
 /*
@@ -25,21 +23,13 @@ import java.util.stream.Collectors;
  * https://www.geeksforgeeks.org/dsa/frequent-word-array-strings/
  * https://leetcode.com/problems/most-common-word/description/
  * */
-public class MostFrequentWord {
+public class TopFrequentWord {
 
     public static void main(String[] args) {
         mostFrequentStrEx();
         mostFrequentStrExcludeBanedEx();
-        nMostFrequentCharEx();
     }
 
-
-
-    private static void nMostFrequentCharEx() {
-        System.out.println("nMostFrequentChar(\"bananassss\", 3) - " + nMostFrequentChar("bananassss", 3));
-        System.out.println("nMostFrequentChar(\"bananassss\", 2) - " + nMostFrequentChar("bananassss", 2));
-        System.out.println("nMostFrequentChar(\"java perl rep\", 1) - " + nMostFrequentChar("java perl rep", 1));
-    }
 
     private static void mostFrequentStrEx() {
         String[] strArray;
@@ -49,10 +39,10 @@ public class MostFrequentWord {
                 "computer", "science", "zoom", "yup",
                 "fire", "in", "be", "data", "geeks"};
 
-        System.out.println("Most frequent word is - " + mostFrequentString(strArray));
+        System.out.println("Most frequent word is - " + mostFrequent(strArray));
 
         strArray = new String[]{"hello", "world"};
-        System.out.println("Most frequent word is - " + mostFrequentString(strArray));
+        System.out.println("Most frequent word is - " + mostFrequent(strArray));
     }
 
 
@@ -65,22 +55,35 @@ public class MostFrequentWord {
      *  Time Complexity     = O(2*n) = O(n)
      *  Space complexity    = O(n)
      */
-    private static String mostFrequentString(String[] strArray) {
+    private static String mostFrequent(String[] arr) {
 
-        Map<String, Integer> feqMap = F00StringFrequencyUtility.getFrequencyMap(strArray);
+        Map<String, Integer> freqMap = new HashMap<>();
 
+        // Step 1: Count frequency
+        for (String word : arr) {
+            freqMap.put(word, freqMap.getOrDefault(word, 0) + 1);
+        }
+
+        // Step 2: Find max with tie-breaking
         String result = "";
-        int max  = 0;
-        for (Map.Entry<String, Integer> currEntry : feqMap.entrySet()) {
-            // Check for word having highest frequency
-            if (currEntry.getValue() > max ) {
-                max  = currEntry.getValue();
-                result = currEntry.getKey();
+        int maxFreq = 0;
+
+        for (Map.Entry<String, Integer> entry : freqMap.entrySet()) {
+            String word = entry.getKey();
+            int freq = entry.getValue();
+
+            if (freq > maxFreq) {
+                maxFreq = freq;
+                result = word;
+            }
+            // Tie-breaking: lexicographically larger word
+            else if (freq == maxFreq && word.compareTo(result) > 0) {
+                result = word;
             }
         }
+
         return result;
     }
-
     private static void mostFrequentStrExcludeBanedEx() {
 
         String paragraph;
@@ -135,23 +138,4 @@ public class MostFrequentWord {
         }
         return result;
     }
-
-    private static char nMostFrequentChar(String str, int n) {
-
-        Map<Character, Long> counter = str.chars()
-                .mapToObj(c -> (char) c)
-                .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
-
-        if (counter.size() < n) {
-            throw new IllegalArgumentException("Not enough different characters.");
-        }
-
-        return counter.entrySet().stream()
-                .sorted(Comparator.comparing(Map.Entry::getValue, Comparator.reverseOrder()))
-                .map(Map.Entry::getKey)
-                .collect(Collectors.toList())
-                .get(n - 1);
-
-    }
-
 }

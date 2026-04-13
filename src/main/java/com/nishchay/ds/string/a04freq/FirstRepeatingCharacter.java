@@ -1,4 +1,4 @@
-package com.nishchay.ds.string.a05freq;
+package com.nishchay.ds.string.a04freq;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -54,7 +54,7 @@ public class FirstRepeatingCharacter {
      *
      *  Logic - Using HashSet to track already seen characters
      *
-     *  Traversal string and try to add each char in HashSet
+     *  Traversal string and try to add each char in HashSet,
      *  HashSet will help you to identify the 2nd occurrence of char
      *  First repeated character is returned immediately
      *

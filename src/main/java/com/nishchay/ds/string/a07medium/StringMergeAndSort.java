@@ -1,4 +1,4 @@
-package com.nishchay.ds.string.a07med;
+package com.nishchay.ds.string.a07medium;
 
 import java.util.Arrays;
 import java.util.Comparator;

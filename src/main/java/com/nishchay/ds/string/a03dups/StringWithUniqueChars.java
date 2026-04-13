@@ -1,4 +1,4 @@
-package com.nishchay.ds.string.a05freq;
+package com.nishchay.ds.string.a03dups;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -43,7 +43,7 @@ public class StringWithUniqueChars {
     /*
      * ================ [Efficient Approach] Using hashSet – O(n) Time and O(n) Space =====================
      *
-     *  First traversal string and try to add each char in HashSet
+     *  First traversal string and try to add each char in HashSet,
      *  HashSet will help you to identify the 2nd occurrence of char
      *
      *  Time Complexity     = O(n)

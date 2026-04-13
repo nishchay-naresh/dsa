@@ -16,7 +16,7 @@ public class CapitaliseFirstChar {
     public static void main(String[] args) {
         String input = "i love java programming language";
         System.out.println("capitalizeWords - " + capitalizeWords(input));
-        input = "this is india and it is my country";
+        input = "this is India and it is my country";
         System.out.println("capitalizeWords - " + capitalizeWords(input));
 
     }

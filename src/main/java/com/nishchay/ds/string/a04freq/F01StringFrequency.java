@@ -1,17 +1,12 @@
-package com.nishchay.ds.string.a05freq;
+package com.nishchay.ds.string.a04freq;
 
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 public class F01StringFrequency {
     public static void main(String[] args) {
         wordFrequency();
-//        getFrequencyOfAWord();
-//        removeDuplicateWords();
-//        nMostFrequentString();
+        getFrequencyOfAWord();
+        removeDuplicateWords();
     }
 
     private static void wordFrequency() {
@@ -58,52 +53,6 @@ public class F01StringFrequency {
         System.out.println("unique words = " + freqMap.keySet());
     }
 
-    /*
-     * freqMap  =  {car=4, bus=3, jeep=3, cycle=3, bike=2, train=2, truck=1}
-     *
-     * most frequent word
-     * n=1, car
-     * n=2, bus
-     * n=3, bike
-     * n=4, truck
-     *
-     *  if there are multiple words with same freq, then consider the first one
-     *  listOfKeys = [car, bus, jeep, cycle, bike, train, truck]
-     *
-     * */
-    private static void nMostFrequentString() {
-
-        String mainStr = "car, bus, car, jeep, cycle, bike, train, bus, truck, jeep, car, jeep, cycle, train, car, bike, bus, cycle";
-        int n = 3;
-
-        Map<String, Long> freqMap = F00StringFrequencyUtility.getOrderedFrequencyMapStream(mainStr.split(", "));
-        System.out.println("freqMap  =  " + freqMap);
-
-        if (freqMap.size() < n) {
-            throw new IllegalArgumentException("Not enough different string.");
-        }
-
-        List<Map.Entry<String, Long>> freqMapStrKey = freqMap.entrySet().stream()
-                .sorted(Comparator.comparing(Map.Entry::getValue, Comparator.reverseOrder()))
-                .collect(Collectors.toList());
-        System.out.println("freqMapStrKey = " + freqMapStrKey);
-
-        Map<Long, String> freqMapIntKey = new HashMap<>(freqMapStrKey.size());
-        for (Map.Entry<String, Long> entry : freqMapStrKey) {
-            if (!freqMapIntKey.containsKey(entry.getValue())) {
-                freqMapIntKey.put(entry.getValue(), entry.getKey());
-            }
-        }
-
-        List<String> stringListFreqRev = freqMapIntKey.entrySet().stream()
-                .sorted(Comparator.comparing(Map.Entry::getKey, Comparator.reverseOrder()))
-                .map(Map.Entry::getValue)
-                .collect(Collectors.toList());
-
-        System.out.println("stringListFreqRev = " + stringListFreqRev);
-
-        System.out.println("nthFreqStr = " + stringListFreqRev.get(n - 1));
-    }
 }
 
 /*

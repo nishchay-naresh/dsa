@@ -1,4 +1,4 @@
-package com.nishchay.ds.string.a05freq;
+package com.nishchay.ds.string.a05anagram;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -116,7 +116,7 @@ public class GroupAnagrams {
         return new ArrayList<>(frequencyStringsMap.values());
     }
 
-    private static String getFrequencyString(String str) {
+    public static String getFrequencyString(String str) {
 
         int[] freq = new int[26];
 

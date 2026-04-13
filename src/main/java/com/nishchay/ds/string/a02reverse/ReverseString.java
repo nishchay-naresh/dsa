@@ -1,4 +1,4 @@
-package com.nishchay.ds.string.a03rev;
+package com.nishchay.ds.string.a02reverse;
 
 /*
  * Reverse a String character wise - each character should be reversed in a string

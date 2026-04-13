@@ -1,4 +1,4 @@
-package com.nishchay.ds.string.a05freq;
+package com.nishchay.ds.string.a04freq;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -9,6 +9,7 @@ import java.util.Map;
  *
  * Given a string s, the task is to identify all characters that appear more than once and print each as a list containing the character and its count.
  *
+ * Freq Of Repeating Chars =>  means get me the chars for which freq > 1
  * Examples:
  *				Input: s = "geeksforgeeks"
  *				Output: ['e', 4], ['g', 2], ['k', 2], ['s', 2]

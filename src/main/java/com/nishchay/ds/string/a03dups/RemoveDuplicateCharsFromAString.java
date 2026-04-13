@@ -1,7 +1,8 @@
-package com.nishchay.ds.string.a05freq;
+package com.nishchay.ds.string.a03dups;
 
 import java.util.Set;
 import java.util.LinkedHashSet;
+import java.util.stream.Collectors;
 
 /*
  * ========================== Remove duplicates from a string ====================================
@@ -69,4 +70,28 @@ public class RemoveDuplicateCharsFromAString {
         }
         return sb.toString();
     }
+
+    public static String removeAllDuplicate_stream(String input){
+
+        return input.chars()                          // IntStream
+                .mapToObj(c -> (char) c)          // Stream<Character>
+                .distinct()                           // remove duplicates
+                .map(String::valueOf)                 // Stream<String>
+                .collect(Collectors.joining());       // String
+
+        /*
+        // String to List<Character>
+        List<Character> list = input.chars()
+                .mapToObj(c -> (char) c) // Convert IntStream to Stream<Character>
+                .filter(c -> !Character.isWhitespace(c))
+                .distinct()
+                .collect(Collectors.toList());
+
+        // List<Character> to String
+        String result = list.stream()
+                .map(String::valueOf)
+                .collect(Collectors.joining());
+        */
+    }
+
 }

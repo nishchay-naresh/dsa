@@ -1,4 +1,4 @@
-package com.nishchay.ds.string.a05freq;
+package com.nishchay.ds.string.a05anagram;
 
 /*
  *	====================================== Check if the Sentence Is Pangram =================================================

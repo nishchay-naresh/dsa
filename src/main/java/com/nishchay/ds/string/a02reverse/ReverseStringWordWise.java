@@ -1,4 +1,4 @@
-package com.nishchay.ds.string.a03rev;
+package com.nishchay.ds.string.a02reverse;
 
 import java.util.Arrays;
 import java.util.Collections;

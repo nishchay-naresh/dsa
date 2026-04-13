@@ -1,4 +1,4 @@
-package com.nishchay.ds.string.a05freq;
+package com.nishchay.ds.string.a04freq;
 
 import java.util.LinkedHashMap;
 import java.util.Map;

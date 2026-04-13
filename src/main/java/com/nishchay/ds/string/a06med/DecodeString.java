@@ -1,4 +1,4 @@
-package com.nishchay.ds.string.a06medium;
+package com.nishchay.ds.string.a06med;
 
 
 import java.util.Stack;
