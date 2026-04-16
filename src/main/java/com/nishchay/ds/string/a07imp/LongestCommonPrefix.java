@@ -1,4 +1,4 @@
-package com.nishchay.ds.string.a07medium;
+package com.nishchay.ds.string.a07imp;
 
 /*
  * ================================= Longest Common Prefix =======================================
