@@ -1,10 +1,9 @@
 package com.nishchay.ds.matrix.a04med;
 
 
-
 /*
-* ================================= Set Matrix Rows and Columns to Zeroes ====================================
-*
+ * ================================= Set Matrix Rows and Columns to Zeroes ====================================
+ *
  * Given a matrix mat[][] of size nxm, the task is to update the matrix such that if an element is zero, set its entire row and column to zeroes.
  *
  * Examples:
@@ -32,15 +31,15 @@ package com.nishchay.ds.matrix.a04med;
  * https://leetcode.com/problems/set-matrix-zeroes/description/
  * https://youtu.be/N0MgLvceX7M?si=ExtigckeRAKj-abW
  *
-* */
+ * */
 public class SetMatrixZeroes {
 
     public static void main(String[] args) {
 
         int[][] mat = {
-                { 0, 1, 2, 0 },
-                { 3, 4, 0, 2 },
-                { 1, 3, 1, 5 }
+                {0, 1, 2, 0},
+                {3, 4, 0, 2},
+                {1, 3, 1, 5}
         };
 
         setMatrixZeroes(mat);
@@ -92,7 +91,7 @@ public class SetMatrixZeroes {
             for (int j = 0; j < m; j++) {
 
                 // Mark cell (i, j) with zero if either of rows[i] or cols[j] is true
-                if (rows[i] || cols[j] ) {
+                if (rows[i] || cols[j]) {
                     mat[i][j] = 0;
                 }
             }
