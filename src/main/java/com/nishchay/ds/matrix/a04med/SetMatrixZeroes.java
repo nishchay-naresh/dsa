@@ -36,15 +36,21 @@ public class SetMatrixZeroes {
 
     public static void main(String[] args) {
 
-        int[][] mat = {
+        int[][] mat1 = {
+                {1, -1, 1},
+                {-1, 0, 1},
+                {1, -1, 1}
+        };
+        setMatrixZeroes(mat1);
+        print(mat1);
+
+        int[][] mat2 = {
                 {0, 1, 2, 0},
                 {3, 4, 0, 2},
                 {1, 3, 1, 5}
         };
-
-        setMatrixZeroes(mat);
-
-        print(mat);
+        setMatrixZeroes_optimized(mat2);
+        print(mat2);
     }
 
     private static void print(int[][] mat) {
