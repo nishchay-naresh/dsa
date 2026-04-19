@@ -30,6 +30,9 @@ import java.util.HashSet;
  *
  * https://leetcode.com/problems/longest-consecutive-sequence/description/
  * https://www.geeksforgeeks.org/dsa/longest-consecutive-subsequence/
+ *
+ * Been asked in Xebai
+ *
  * */
 public class LongestConsecutiveSequence {
 
@@ -108,7 +111,7 @@ public class LongestConsecutiveSequence {
      * The idea is to use Hashing.
      *
      *	Approach
-     *		1. Use a HashSet to store all numbers.
+     *		1. Store all numbers in a set for fast lockup in future
      *		2. For each number, check if it’s the start of a sequence (i.e., num-1 not in set).
      *		    Expand forward (num+1, num+2...) to count length.
      *		    Track the maximum length.
@@ -125,7 +128,7 @@ public class LongestConsecutiveSequence {
      * if(currentElement - 1 is not there in hashTable) // means at the starting element of the sequence
      *   then only we will proceed with the sequence counting
      *
-     * Time complexity: O(n)
+     * Time complexity: O(n) + O(n) = O(n)
      * Auxiliary space: O(n)
      *
      * */
@@ -133,10 +136,10 @@ public class LongestConsecutiveSequence {
         HashSet<Integer> set = new HashSet<>();
         int maxCount = 0;
 
+        // store all numbers in a set for fast lockup in future
         for (int val : arr)
             set.add(val);
 
-        // check each possible sequence from the start
         for (int val : arr) {
             // If the current element is the starting element of a sequence
             if (set.contains(val) && !set.contains(val - 1)) {
