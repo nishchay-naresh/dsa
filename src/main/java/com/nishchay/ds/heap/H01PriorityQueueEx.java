@@ -97,7 +97,7 @@ import java.util.PriorityQueue;
  * https://www.geeksforgeeks.org/java/priority-queue-in-java/
  *
  * */
-public class A01PriorityQueueEx {
+public class H01PriorityQueueEx {
 
     public static void main(String[] args) {
         heapAPIMethods();

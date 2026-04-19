@@ -1,16 +1,12 @@
 package com.nishchay.ds.heap;
 
-import java.util.Comparator;
-import java.util.PriorityQueue;
-import java.util.Queue;
-
 
 /*
- *===================================== Heap Data Structure =====================================
- * A Heap is a complete binary tree data structure that satisfies the heap property:
- *   for every node, the value of its children is greater than or equal to its own value.
+ *================================================ Heap Data Structure ==================================================
  *
- * Heaps are usually used to implement priority queues, where the smallest (or largest) element is always at the root of the tree.
+ * A Heap is a specialized tree-based data structure that satisfies the heap property:
+ *      Min Heap → for every node, Parent ≤ Children
+ *      Max Heap → for every node, Parent ≥ Children
  *
  * Min–heap Property - in a min-heap, the root node always has the smallest value, keeps data in ascending order
  *
@@ -31,7 +27,7 @@ import java.util.Queue;
  * 		      3   4
  * 		     / \ / \
  * 		    5  6 7  8
-
+ *
  *
  * Max–heap Property - in a max-heap, the root node always has the largest value, keeps data in descending order
  *
@@ -54,11 +50,31 @@ import java.util.Queue;
  * 		    5  4 3  2
  *
  *
+ * there are two methods/opeartions in heap - heapify, buildHeap
+ *
+ *          void buildHeap(int[] arr) {
+ *              int n = arr.length;
+ *              for (int i = n/2 - 1; i >= 0; i--) {
+ *                  heapifyDown(arr, i, n);
+ *              }
+ *          }
+ * heapify(t entry) - operation to add and element in heap, do the shuffling among element to maintain the heap property again
+ *
+ *
+ * In java heaps are usually implement using priority queues, where the smallest (or largest) element is always at the root of the tree.
+ *
+ *
+ *⏱️ Time Complexity
+ *      Insert	            O(log N)
+ *      Remove (min/max)	O(log N)
+ *      Peek (min/max)	    O(1)
+ *
+ *
  * https://www.geeksforgeeks.org/dsa/heap-data-structure/
  * https://www.geeksforgeeks.org/dsa/binary-heap/
  *
  * */
-public class HeapUsingPQ {
+public class H01HeapDSImpl {
 
     public static void main(String[] args) {
         MinHeap h = new MinHeap(11);
@@ -81,10 +97,10 @@ public class HeapUsingPQ {
     static class MinHeap {
 
         // To store array of elements in heap
-        private int[] heapArray;
+        private final int[] heapArray;
 
         // max size of the heap
-        private int capacity;
+        private final int capacity;
 
         // Current number of elements in the heap
         private int current_heap_size;
@@ -123,7 +139,6 @@ public class HeapUsingPQ {
         // Inserts a new key
         public boolean insertKey(int key) {
             if (current_heap_size == capacity) {
-
                 // heap is full
                 return false;
             }
