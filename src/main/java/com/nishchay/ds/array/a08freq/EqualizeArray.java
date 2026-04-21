@@ -1,4 +1,4 @@
-package com.nishchay.ds.array.a10medium;
+package com.nishchay.ds.array.a08freq;
 
 import java.util.HashMap;
 import java.util.Map;

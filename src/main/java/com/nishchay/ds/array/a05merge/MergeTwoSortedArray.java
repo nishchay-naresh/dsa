@@ -1,4 +1,4 @@
-package com.nishchay.ds.array.a10medium;
+package com.nishchay.ds.array.a05merge;
 
 import java.util.Arrays;
 
