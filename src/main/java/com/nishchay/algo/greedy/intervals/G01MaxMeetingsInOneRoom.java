@@ -55,7 +55,6 @@ class G01MaxMeetingsInOneRoom {
         for (int meeting : meetings) {
             System.out.print(meeting + " ");
         }
-
     }
 
     /*
