@@ -15,7 +15,7 @@ import java.util.Arrays;
  * Examples:
  * 				Input: Input: greed[] = [1, 10, 3], cookie[] = [1, 2, 3]
  * 				Output: 2
- * 				Explanation: We can only assign  cookie to the first child and third child.
+ * 				Explanation: We can only assign cookie to the first child and third child.
  *
  * 				Input: greed[] = [10,100], cookie[] = [1, 2]
  * 				Output: 0
@@ -62,7 +62,7 @@ class G01AssignCookies {
 
     /*
      * ==================================== [Expected Approach] Use greedy approach  ===================================
-     * ============= [Approach] Using Sorting and Two Pointer - O(nlogn + mlogm) Time and O(1) Space  =================
+     * ============= [Approach] Using Sorting and Two Pointer - O(n log n + m log m) Time and O(1) Space  =================
      *
      * The idea is to assign the smallest cookie to each child as per their kids such that the child gets satisfied.
      * So, we can sort both kids[] and cookie[] and start assigning the smallest cookies to the children with the smallest kids.
