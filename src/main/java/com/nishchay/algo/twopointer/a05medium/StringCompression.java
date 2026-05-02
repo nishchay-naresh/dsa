@@ -1,4 +1,4 @@
-package com.nishchay.ds.string.a06medium;
+package com.nishchay.algo.twopointer.a05medium;
 
 import java.util.Arrays;
 
@@ -35,7 +35,6 @@ import java.util.Arrays;
  * https://leetcode.com/problems/string-compression/
  * https://www.geeksforgeeks.org/dsa/valid-compressed-string/
  * */
-
 public class StringCompression {
 
     public static void main(String[] args) {
@@ -43,28 +42,62 @@ public class StringCompression {
         char[] chars;
 
         chars = new char[] {'a','a','b','b','c','c','c'};
-        System.out.println(Arrays.toString(chars) + " compress form length - " + compress(chars));
+        System.out.println(Arrays.toString(chars) + ", compressed length = " + compress(chars));
 
         chars = new char[] {'a'};
-        System.out.println(Arrays.toString(chars) + " compress form length - " + compress(chars));
+        System.out.println(Arrays.toString(chars) + ", compressed length = " + compress(chars));
 
         chars = new char[]{'a','b','b','b','b','b','b','b','b','b','b','b','b'};
-        System.out.println(Arrays.toString(chars) + " compress form length - " + compress(chars));
+        System.out.println(Arrays.toString(chars) + ", compressed length = " + compress(chars));
     }
 
 
-    private static int compress(char[] chars) {
+    /*
+     * This is a classic two-pointer + in-place write problem.
+     *
+     *	------ Intuition --------
+     *
+     *	You need to:
+     *		-	Traverse the array
+     *		-	Identify groups of consecutive characters
+     *		-	Write compressed result back into same array
+     *
+     *	Key constraints:
+     *		-	No extra space (O(1))
+     *		-	Modify input array in-place
+     *
+     *	Core Idea, Use two pointers:
+     *		i → read pointer (iterate through array)
+     *		write → write pointer (where to store result)
+     *		For each group:
+     *			Count how many times character repeats
+     *			Write: character & count (if > 1)
+     *
+     *	------- Dry Run ---------
+     *
+     *	Input: [a, a, b, b, c, c, c]
+     *	Steps:
+     *			aa → a2
+     *			bb → b2
+     *			ccc → c3
+     *	Output array becomes: [a, 2, b, 2, c, 3]
+     *	Return length = 6
+     *
+     * Time complexity - O(n)
+     * Space complexity - O(1)
+     * */
+     private static int compress(char[] chars) {
         int n = chars.length;
-        int write = 0; // position to write compressed result
-        int read = 0;  // position to read original array
+        int write = 0;  // position to write compressed result
+        int i = 0;      // read pointer
 
-        while (read < n) {
-            char current = chars[read];
+        while (i < n) {
+            char current = chars[i];
             int count = 0;
 
-            // count repeating characters
-            while (read < n && chars[read] == current) {
-                read++;
+            // count occurrences of current character
+            while (i < n && chars[i] == current) {
+                i++;
                 count++;
             }
 
@@ -73,7 +106,8 @@ public class StringCompression {
 
             // write count if > 1
             if (count > 1) {
-                for (char c : String.valueOf(count).toCharArray()) {
+                String countStr = String.valueOf(count);
+                for (char c : countStr.toCharArray()) {
                     chars[write++] = c;
                 }
             }
