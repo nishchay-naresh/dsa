@@ -63,7 +63,6 @@ public class TopFrequentWord {
         for (String word : arr) {
             freqMap.put(word, freqMap.getOrDefault(word, 0) + 1);
         }
-
         // Step 2: Find max with tie-breaking
         String result = "";
         int maxFreq = 0;

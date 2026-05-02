@@ -73,7 +73,7 @@ public class TopKFrequent {
      *
      * You are asked: “Give me the k elements that appear most frequently”
      * So naturally, 2 steps come to mind:
-     * Step 1: Count frequency - constrcut a freqMap from this int[]
+     * Step 1: Count frequency - construct a freqMap from this int[]
      * Now the problem becomes: “Find top k elements from this frequency map”
      *
      *  The idea is to use a hashmap to store each element along with its frequency,
@@ -120,7 +120,7 @@ public class TopKFrequent {
      *
      *  Here we can't guarantee for the order of result - it's all about having topK in any order
      *
-     * Time complexity: O(n + n*log k), where n is the size of array.
+     * Time complexity: O(n + d log d), where n is the size of array.
      * Space complexity: O(d), where d is the count of distinct elements in the array.
      * */
     private static int[] topKFreq_heap(int[] arr, int k) {

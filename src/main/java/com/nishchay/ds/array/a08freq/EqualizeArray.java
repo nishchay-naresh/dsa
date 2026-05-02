@@ -26,6 +26,8 @@ import java.util.Map;
  *
  * https://www.hackerrank.com/challenges/equality-in-a-array/problem
  * https://www.geeksforgeeks.org/dsa/minimum-delete-operations-make-elements-array/
+ *
+ * Been asked in Xebia
  * */
 public class EqualizeArray {
 
@@ -37,7 +39,7 @@ public class EqualizeArray {
         System.out.println("minDelete - " + minDelete(arr)); //4
 
         arr = new int[] {2, 3, 4, 2, 3, 1, 3, 2};
-        System.out.println("minDelete - " + minDelete(arr)); // 5
+        System.out.println("minDelete - " + minDelete(arr)); //5
     }
 
     /*

@@ -42,6 +42,9 @@ public class CheckAnagram {
 
         System.out.println("isAnagram_intArray(rat, car)                = " +  isAnagram_intArray("rat", "car"));
         System.out.println("isAnagram_hashMap(rat, car)	                = " +  isAnagram_hashMap("rat", "car"));
+
+        System.out.println("isAnagram_hashMap(army, mary)               = " +  isAnagram_hashMap("army", "mary"));
+        System.out.println("isAnagram_hashMap(triangle, integral)       = " +  isAnagram_hashMap("triangle", "integral"));
     }
 
     /*
@@ -121,7 +124,8 @@ public class CheckAnagram {
         }
 
         for (char c : s2.toCharArray()) {
-            if (!map.containsKey(c)) return false;
+            if (!map.containsKey(c))
+                return false;
             map.put(c, map.get(c) - 1);
             if (map.get(c) == 0)
                 map.remove(c);

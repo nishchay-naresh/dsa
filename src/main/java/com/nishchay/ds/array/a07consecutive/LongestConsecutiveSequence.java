@@ -31,7 +31,7 @@ import java.util.HashSet;
  * https://leetcode.com/problems/longest-consecutive-sequence/description/
  * https://www.geeksforgeeks.org/dsa/longest-consecutive-subsequence/
  *
- * Been asked in Xebai
+ * Been asked in Xebia
  *
  * */
 public class LongestConsecutiveSequence {
@@ -71,7 +71,7 @@ public class LongestConsecutiveSequence {
      *		For each element arr[i]; we can have three cases:
      *			arr[i] = arr[i - 1], its duplicate, skip it
      *			arr[i] = arr[i - 1] + 1, increase the consecutive count and update result if consecutive count is greater than result.
-     *			Arr[i] > arr[i - 1], then reset the consecutive count to 1.
+     *			arr[i] > arr[i - 1], then reset the consecutive count to 1.
      *	3.	After iterating over all the elements, return the result.
      *
      *  Time Complexity     : O(n*log n)
@@ -145,11 +145,11 @@ public class LongestConsecutiveSequence {
             if (set.contains(val) && !set.contains(val - 1)) {
 
                 // Then check for next elements in the sequence
-                int cur = val, cnt = 0;
-                while (set.contains(cur)) {
+                int curr = val, cnt = 0;
+                while (set.contains(curr)) {
                     // Remove this number to avoid recomputation
-                    set.remove(cur);
-                    cur++;
+                    set.remove(curr);
+                    curr++;
                     cnt++;
                 }
                 maxCount = Math.max(maxCount, cnt);
